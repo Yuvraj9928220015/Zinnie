@@ -1,0 +1,719 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+
+:root {
+  --accent: #4a7c59;
+  --accent-warm: #b5651d;
+  /* warm brown accent */
+  --accent-blue: #2a6090;
+  --green-bg: #c9ddb3;
+  --cream-bg: #f5e9dc;
+  --yellow-bg: #f7f06e;
+  --blue-bg: #a8cce8;
+
+  --text-dark: #1a1a1a;
+  --text-mid: #444444;
+  --text-light: #666666;
+
+  --font-serif: 'Playfair Display', 'Times New Roman', serif;
+}
+
+/* ─── Banner ─────────────────────────────────── */
+.distributor-page-banner {
+  width: 100%;
+  height: 100vh;
+  min-height: 300px;
+}
+
+.distributor-page-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── Page wrapper ───────────────────────────── */
+.distributor-page {
+  background-color: #f0f0ec;
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+.distributor-page-title {
+  padding: 48px 20px 24px;
+  text-align: center;
+  font-size: clamp(24px, 5vw, 42px);
+  font-family: var(--font-serif);
+  letter-spacing: 5px;
+  color: var(--accent);
+  background-color: #f0f0ec;
+  border-bottom: 2px solid rgba(74, 124, 89, 0.2);
+}
+
+/* ─── Pastel Product Backgrounds ─────────────── */
+.green-bg {
+  background-color: var(--green-bg);
+}
+
+.cream-bg {
+  background-color: var(--cream-bg);
+}
+
+.yellow-bg {
+  background-color: var(--yellow-bg);
+}
+
+.blue-bg {
+  background-color: var(--blue-bg);
+}
+
+/* ─── Product Hero Sections ──────────────────── */
+.product-hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 60px 20px;
+  box-sizing: border-box;
+  transition: background-color 0.4s ease;
+}
+
+.product-container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.product-container.reverse {
+  flex-direction: row-reverse;
+}
+
+.product-image-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.floating-bottle {
+  height: 70vh;
+  max-height: 600px;
+  width: auto;
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.18));
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  display: block;
+}
+
+.floating-bottle:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.product-info {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ─── Product Title (dark on pastel) ─────────── */
+.product-title {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: var(--text-dark);
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+  text-shadow: none;
+}
+
+/* Per-bg title accent colors */
+.green-bg .product-title {
+  color: #2d5a3d;
+}
+
+.cream-bg .product-title {
+  color: #7a4a1a;
+}
+
+.yellow-bg .product-title {
+  color: #5a4a00;
+}
+
+.blue-bg .product-title {
+  color: #1a3a5c;
+}
+
+/* ─── Description ────────────────────────────── */
+.description {
+  font-weight: 400;
+  max-width: 500px;
+  line-height: 1.75;
+  font-size: clamp(15px, 2vw, 17px);
+  color: var(--text-mid);
+  margin-bottom: 40px;
+}
+
+/* ─── View Product Button ────────────────────── */
+.view-btn {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  padding: 14px 44px;
+  font-size: 0.82rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #000000a6;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.green-bg .view-btn {
+  background-color: #2d5a3d;
+  border-color: #2d5a3d;
+}
+
+.cream-bg .view-btn {
+  background-color: #7a4a1a;
+  border-color: #7a4a1a;
+}
+
+.yellow-bg .view-btn {
+  background-color: #5a4a00;
+  border-color: #5a4a00;
+  color: #fff;
+}
+
+.blue-bg .view-btn {
+  background-color: #1a3a5c;
+  border-color: #1a3a5c;
+}
+
+.view-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 202, 202, 0.18);
+}
+
+/* ─── Contact Section ────────────────────────── */
+.distributor-contact {
+  background: linear-gradient(135deg, #f0f0ec 0%, #e8ede4 50%, #f0f0ec 100%);
+  border-top: 2px solid rgba(74, 124, 89, 0.2);
+  padding: 100px 40px;
+  box-sizing: border-box;
+}
+
+.contact-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+/* ─── Left: Info ─────────────────────────────── */
+.contact-details {
+  flex: 0 0 360px;
+  padding-top: 10px;
+}
+
+.contact-eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 5px;
+  color: var(--accent);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.contact-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  color: var(--text-dark);
+  margin: 0 0 24px;
+}
+
+.accent-text {
+  color: var(--accent);
+}
+
+.contact-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent), transparent);
+  margin-bottom: 24px;
+}
+
+.contact-desc {
+  font-size: clamp(15px, 2vw, 17px);
+  font-weight: 400;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.contact-info-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-info-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text-mid);
+  font-size: 0.95rem;
+  word-break: break-word;
+}
+
+.info-icon {
+  font-size: 1.1rem;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: rgba(74, 124, 89, 0.1);
+  border: 1px solid rgba(74, 124, 89, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ─── Right: Form ────────────────────────────── */
+.contact-form-wrapper {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid rgba(74, 124, 89, 0.2);
+  border-radius: 6px;
+  padding: 50px 48px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.07);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.contact-form-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--green-bg), var(--yellow-bg), var(--blue-bg));
+  border-radius: 6px 6px 0 0;
+}
+
+.form-success {
+  background: rgba(74, 124, 89, 0.1);
+  border: 1px solid rgba(74, 124, 89, 0.4);
+  color: var(--accent);
+  padding: 14px 20px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-bottom: 28px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.contact-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  background: #f8f8f6;
+  border: 1.5px solid #d8d8d0;
+  border-radius: 4px;
+  color: var(--text-dark);
+  font-size: 0.95rem;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  font-family: var(--font-serif);
+  resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px #4a7c591a;
+}
+
+.form-submit-row {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 8px;
+}
+
+.submit-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 16px 52px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  border-radius: 3px;
+  font-family: var(--font-serif);
+}
+
+.submit-btn:hover {
+  background: #3a6647;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px #4a7c594d;
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+════════════════════════════════════════════════ */
+
+/* ─── Large Tablets & Small Desktops (≤1200px) ── */
+@media (max-width: 1200px) {
+  .product-container {
+    gap: 40px;
+    width: 95%;
+  }
+
+  .contact-inner {
+    gap: 48px;
+  }
+
+  .contact-details {
+    flex: 0 0 300px;
+  }
+
+  .contact-form-wrapper {
+    padding: 40px 32px;
+  }
+}
+
+/* ─── Tablets (≤1024px) ──────────────────────── */
+@media (max-width: 1024px) {
+  .product-hero {
+    padding: 50px 30px;
+  }
+
+  .floating-bottle {
+    height: 55vh;
+    max-height: 450px;
+  }
+
+  .contact-inner {
+    gap: 40px;
+  }
+
+  .contact-details {
+    flex: 0 0 260px;
+  }
+
+  .contact-form-wrapper {
+    padding: 36px 28px;
+  }
+}
+
+/* ─── Product Stack (≤968px) ─────────────────── */
+@media (max-width: 968px) {
+  .product-hero {
+    min-height: auto;
+    padding: 60px 24px;
+  }
+
+  .product-container,
+  .product-container.reverse {
+    flex-direction: column !important;
+    gap: 32px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .product-image-box {
+    order: -1;
+  }
+
+  .floating-bottle {
+    height: 45vh;
+    max-height: 380px;
+  }
+
+  .product-info {
+    align-items: center;
+  }
+
+  .description {
+    max-width: 90%;
+  }
+}
+
+/* ─── Tablets Portrait (≤768px) ─────────────── */
+@media (max-width: 768px) {
+  .distributor-page-banner {
+    height: 50vh;
+    min-height: 220px;
+  }
+
+  .distributor-page-title {
+    font-size: 26px;
+    letter-spacing: 2px;
+    padding: 30px 16px 10px;
+  }
+
+  .product-hero {
+    padding: 50px 16px;
+  }
+
+  .floating-bottle {
+    height: 40vh;
+    max-height: 320px;
+  }
+
+  .product-title {
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+  }
+
+  .description {
+    font-size: 15px;
+    max-width: 100%;
+  }
+
+  .view-btn {
+    padding: 12px 32px;
+    font-size: 0.7rem;
+  }
+
+  /* Contact section */
+  .distributor-contact {
+    padding: 60px 20px;
+  }
+
+  .contact-inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .contact-details {
+    flex: unset;
+    width: 100%;
+  }
+
+  .contact-heading {
+    font-size: 2.2rem;
+  }
+
+  .contact-form-wrapper {
+    padding: 32px 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* ─── Large Phones (≤600px) ──────────────────── */
+@media (max-width: 600px) {
+  .distributor-page-banner {
+    height: 40vh;
+    min-height: 200px;
+  }
+
+  .distributor-page-title {
+    font-size: 22px;
+    letter-spacing: 1px;
+  }
+
+  .product-hero {
+    padding: 40px 14px;
+  }
+
+  .floating-bottle {
+    height: 36vh;
+    max-height: 280px;
+  }
+
+  .product-title {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .view-btn {
+    padding: 12px 28px;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+  }
+
+  .distributor-contact {
+    padding: 50px 16px;
+  }
+
+  .contact-heading {
+    font-size: 1.9rem;
+  }
+
+  .contact-desc {
+    font-size: 15px;
+  }
+
+  .contact-form-wrapper {
+    padding: 28px 18px;
+  }
+}
+
+/* ─── Small Phones (≤480px) ──────────────────── */
+@media (max-width: 480px) {
+  .distributor-page-banner {
+    height: 35vh;
+    min-height: 180px;
+  }
+
+  .distributor-page-title {
+    font-size: 18px;
+    padding: 24px 12px 8px;
+    letter-spacing: 1px;
+  }
+
+  .product-hero {
+    padding: 36px 12px;
+  }
+
+  .floating-bottle {
+    height: 32vh;
+    max-height: 240px;
+  }
+
+  .product-title {
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+
+  .description {
+    font-size: 13.5px;
+    margin-bottom: 28px;
+  }
+
+  .view-btn {
+    width: 100%;
+    max-width: 260px;
+    padding: 13px 20px;
+    text-align: center;
+  }
+
+  .contact-heading {
+    font-size: 1.8rem;
+  }
+
+  .contact-form-wrapper {
+    padding: 24px 16px;
+  }
+
+  .contact-info-list li {
+    font-size: 0.85rem;
+  }
+
+  .submit-btn {
+    width: 100%;
+    text-align: center;
+    padding: 16px 20px;
+  }
+
+  .form-submit-row {
+    justify-content: center;
+  }
+}
+
+/* ─── Extra Small Phones (≤360px) ───────────── */
+@media (max-width: 360px) {
+  .distributor-page-banner {
+    height: 30vh;
+    min-height: 160px;
+  }
+
+  .distributor-page-title {
+    font-size: 16px;
+  }
+
+  .floating-bottle {
+    height: 28vh;
+    max-height: 200px;
+  }
+
+  .product-title {
+    font-size: 1rem;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .contact-heading {
+    font-size: 1.6rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 12px;
+    font-size: 0.9rem;
+  }
+}
