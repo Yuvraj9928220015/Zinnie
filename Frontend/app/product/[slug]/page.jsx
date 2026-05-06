@@ -2,7 +2,7 @@
 
 import ProductDetailClient from "./ProductDetailClient";
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 const API_URL = `${API_BASE_URL}/api`;
 
 export async function generateStaticParams() {

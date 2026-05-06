@@ -2,7 +2,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 const ADMIN_TOKEN_KEY = "admin_token";
 
 const VALID_SIZES = [
@@ -201,7 +201,7 @@ function ProductForm({ initial, onSave, onCancel, token }) {
 
 // ─── Main Admin Panel ────────────────────────────────────────────────────────
 export default function AdminPage() {
-  const [token, setToken] = useState(() => typeof window !== "undefined" ? localStorage.getItem(ADMIN_TOKEN_KEY) : null);
+  const [token, setToken] = useState(null);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
@@ -209,6 +209,11 @@ export default function AdminPage() {
   const [deleteId, setDeleteId] = useState(null);
   const [deleting, setDeleting] = useState(false);
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    const stored = localStorage.getItem(ADMIN_TOKEN_KEY);
+    if (stored) setToken(stored);
+  }, []);
 
   useEffect(() => {
     if (token) fetchProducts();
@@ -266,9 +271,9 @@ export default function AdminPage() {
   );
 
   return (
-    <div style={{ minHeight: "100vh", background: "#f8f8f6"}}>
+    <div style={{ minHeight: "100vh", background: "#f8f8f6" }}>
       {/* Header */}
-      <div style={{  padding: "6rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+      <div style={{ padding: "6rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div>
           <h1 style={{ fontSize: "1.25rem", fontWeight: 600, margin: 0 }}>Zinnie Zeera — Admin</h1>
           <p style={{ color: "#888", fontSize: "0.8rem", margin: 0 }}>Product Management</p>
