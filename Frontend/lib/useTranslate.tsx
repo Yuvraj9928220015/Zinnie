@@ -20,7 +20,7 @@ const LanguageContext = createContext<LanguageContextType>({
   setLanguage: () => {}, t: (k) => k,
 });
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:5000";
+const BACKEND_URL = "https://api.zinniezeera.com";
 
 // { nav: { home: "Home" } } → { "nav.home": "Home" }
 function flatten(obj: Record<string, any>, prefix = ""): Record<string, string> {

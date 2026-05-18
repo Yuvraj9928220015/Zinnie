@@ -19,7 +19,7 @@ const LanguageContext = createContext<LanguageContextType>({
   countryCode: "US", isLoading: true,
   setLanguage: () => {}, t: (k) => k,
 });
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = "https://api.zinniezeera.com";
 
 // { nav: { home: "Home" } } → { "nav.home": "Home" }
 function flatten(obj: Record<string, any>, prefix = ""): Record<string, string> {

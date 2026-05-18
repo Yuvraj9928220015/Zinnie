@@ -108,7 +108,7 @@ const getCountryFromIP = async (ip) => {
             ip.startsWith("192.168") ||
             ip.startsWith("10.")
         ) {
-            return "IN";
+            return "DE";
         }
 
         const response = await axios.get(`https://ipapi.co/${ip}/json/`, {
@@ -119,10 +119,10 @@ const getCountryFromIP = async (ip) => {
             return response.data.country_code;
         }
 
-        return "IN";
+        return "DE";
     } catch (error) {
         console.error("IP lookup error:", error.message);
-        return "IN";
+        return "DE";
     }
 };
 
