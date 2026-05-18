@@ -21,6 +21,8 @@ const translateRoutes = require("./routes/translateRoutes");
 
 const app = express();
 
+app.set("trust proxy", true);
+
 app.use(cors({
     origin: function (origin, callback) {
         const allowedOrigins = [

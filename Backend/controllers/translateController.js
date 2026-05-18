@@ -131,10 +131,11 @@ const detectLanguage = async (req, res) => {
     try {
         // Get real IP (works behind proxies/load balancers)
         const ip =
-            req.headers["x-forwarded-for"]?.split(",")[0] ||
+            req.headers["cf-connecting-ip"] ||
+            req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
             req.headers["x-real-ip"] ||
-            req.connection.remoteAddress ||
-            req.ip;
+            req.ip ||
+            req.socket.remoteAddress;
 
         const countryCode = await getCountryFromIP(ip.trim());
         const languageCode = countryToLanguage[countryCode] || "fr";
