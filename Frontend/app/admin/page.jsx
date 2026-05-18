@@ -271,106 +271,108 @@ export default function AdminPage() {
   );
 
   return (
-    <div style={{ minHeight: "100vh", background: "#f8f8f6" }}>
-      {/* Header */}
-      <div style={{ padding: "6rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div>
-          <h1 style={{ fontSize: "1.25rem", fontWeight: 600, margin: 0 }}>Zinnie Zeera — Admin</h1>
-          <p style={{ color: "#888", fontSize: "0.8rem", margin: 0 }}>Product Management</p>
-        </div>
-        <div style={{ display: "flex", gap: "0.75rem" }}>
-          <button style={btnStyle} onClick={() => { setShowForm(true); setEditProduct(null); }}>+ Add Product</button>
-          <button style={{ ...btnStyle, background: "#f0f0ec", color: "#666" }} onClick={logout}>Logout</button>
-        </div>
-      </div>
-
-      <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "1.5rem 2rem" }}>
-        {/* Add/Edit Form */}
-        {(showForm || editProduct) && (
-          <div style={{ marginBottom: "1.5rem" }}>
-            <ProductForm
-              initial={editProduct}
-              token={token}
-              onSave={handleSave}
-              onCancel={() => { setShowForm(false); setEditProduct(null); }}
-            />
+    <>
+      <div style={{ minHeight: "100vh", background: "#f8f8f6" }}>
+        {/* Header */}
+        <div style={{ padding: "6rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div>
+            <h1 style={{ fontSize: "1.25rem", fontWeight: 600, margin: 0 }}>Zinnie Zeera — Admin</h1>
+            <p style={{ color: "#888", fontSize: "0.8rem", margin: 0 }}>Product Management</p>
           </div>
-        )}
+          <div style={{ display: "flex", gap: "0.75rem" }}>
+            <button style={btnStyle} onClick={() => { setShowForm(true); setEditProduct(null); }}>+ Add Product</button>
+            <button style={{ ...btnStyle, background: "#f0f0ec", color: "#666" }} onClick={logout}>Logout</button>
+          </div>
+        </div>
 
-        {/* Delete Confirm */}
-        {deleteId && (
-          <div style={{ background: "#fff7f7", border: "1px solid #fcc", borderRadius: "10px", padding: "1rem 1.5rem", marginBottom: "1.5rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <span style={{ color: "#a33" }}>Kya aap sure hain? Yeh product delete ho jayega.</span>
-            <div style={{ display: "flex", gap: "0.75rem" }}>
-              <button style={{ ...btnStyle, background: "#c33" }} onClick={handleDelete} disabled={deleting}>{deleting ? "Deleting..." : "Delete Karein"}</button>
-              <button style={{ ...btnStyle, background: "#f0f0ec", color: "#333" }} onClick={() => setDeleteId(null)}>Cancel</button>
+        <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "1.5rem 2rem" }}>
+          {/* Add/Edit Form */}
+          {(showForm || editProduct) && (
+            <div style={{ marginBottom: "1.5rem" }}>
+              <ProductForm
+                initial={editProduct}
+                token={token}
+                onSave={handleSave}
+                onCancel={() => { setShowForm(false); setEditProduct(null); }}
+              />
             </div>
-          </div>
-        )}
+          )}
 
-        {/* Search */}
-        <input
-          style={{ ...inputStyle, maxWidth: "360px", marginBottom: "1rem" }}
-          placeholder="Search by name or category..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-        />
+          {/* Delete Confirm */}
+          {deleteId && (
+            <div style={{ background: "#fff7f7", border: "1px solid #fcc", borderRadius: "10px", padding: "1rem 1.5rem", marginBottom: "1.5rem", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+              <span style={{ color: "#a33" }}>Kya aap sure hain? Yeh product delete ho jayega.</span>
+              <div style={{ display: "flex", gap: "0.75rem" }}>
+                <button style={{ ...btnStyle, background: "#c33" }} onClick={handleDelete} disabled={deleting}>{deleting ? "Deleting..." : "Delete Karein"}</button>
+                <button style={{ ...btnStyle, background: "#f0f0ec", color: "#333" }} onClick={() => setDeleteId(null)}>Cancel</button>
+              </div>
+            </div>
+          )}
 
-        {/* Stats */}
-        <p style={{ color: "#888", fontSize: "0.875rem", marginBottom: "1rem" }}>
-          Total: {products.length} products {search && `(${filtered.length} results)`}
-        </p>
+          {/* Search */}
+          <input
+            style={{ ...inputStyle, maxWidth: "360px", marginBottom: "1rem" }}
+            placeholder="Search by name or category..."
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
 
-        {/* Products Table */}
-        {loading ? (
-          <div style={{ textAlign: "center", padding: "3rem", color: "#888" }}>Loading...</div>
-        ) : (
-          <div style={{ background: "#fff", borderRadius: "12px", border: "1px solid #e8e8e4", overflow: "hidden" }}>
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <thead>
-                <tr style={{ background: "#f8f8f6", borderBottom: "1px solid #e8e8e4" }}>
-                  <th style={thStyle}>Image</th>
-                  <th style={thStyle}>Title</th>
-                  <th style={thStyle}>Category</th>
-                  <th style={thStyle}>Sizes</th>
-                  <th style={thStyle}>Price Range</th>
-                  <th style={thStyle}>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.length === 0 ? (
-                  <tr><td colSpan={6} style={{ textAlign: "center", padding: "2rem", color: "#888" }}>Koi product nahi mila.</td></tr>
-                ) : filtered.map(p => {
-                  const prices = p.priceVariations?.map(v => v.price) || [];
-                  const min = Math.min(...prices), max = Math.max(...prices);
-                  const priceStr = prices.length ? (min === max ? `₹${min}` : `₹${min} – ₹${max}`) : "—";
-                  return (
-                    <tr key={p._id} style={{ borderBottom: "1px solid #f0f0ec" }}>
-                      <td style={tdStyle}>
-                        <img src={getImageUrl(p.image)} alt={p.title} style={{ width: 75, height: 100, objectFit: "cover", borderRadius: "6px", border: "1px solid #e8e8e4" }} />
-                      </td>
-                      <td style={tdStyle}>
-                        <div style={{ fontWeight: 500, fontSize: "0.9rem" }}>{p.title}</div>
-                        <div style={{ color: "#aaa", fontSize: "0.78rem" }}>/{p.slug}</div>
-                      </td>
-                      <td style={tdStyle}><span style={{ background: "#f0f0ec", padding: "0.25rem 0.6rem", borderRadius: "6px", fontSize: "0.8rem" }}>{p.category}</span></td>
-                      <td style={tdStyle}>{p.priceVariations?.length || 0} sizes</td>
-                      <td style={{ ...tdStyle, fontWeight: 500 }}>{priceStr}</td>
-                      <td style={tdStyle}>
-                        <div style={{ display: "flex", gap: "0.5rem" }}>
-                          <button style={{ ...btnStyle, fontSize: "0.8rem", padding: "0.3rem 0.75rem" }} onClick={() => { setEditProduct(p); setShowForm(false); }}>Edit</button>
-                          <button style={{ ...btnStyle, background: "#fee", color: "#c33", fontSize: "0.8rem", padding: "0.3rem 0.75rem" }} onClick={() => setDeleteId(p._id)}>Delete</button>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        )}
+          {/* Stats */}
+          <p style={{ color: "#888", fontSize: "0.875rem", marginBottom: "1rem" }}>
+            Total: {products.length} products {search && `(${filtered.length} results)`}
+          </p>
+
+          {/* Products Table */}
+          {loading ? (
+            <div style={{ textAlign: "center", padding: "3rem", color: "#888" }}>Loading...</div>
+          ) : (
+            <div style={{ background: "#fff", borderRadius: "12px", border: "1px solid #e8e8e4", overflow: "hidden" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr style={{ background: "#f8f8f6", borderBottom: "1px solid #e8e8e4" }}>
+                    <th style={thStyle}>Image</th>
+                    <th style={thStyle}>Title</th>
+                    <th style={thStyle}>Category</th>
+                    <th style={thStyle}>Sizes</th>
+                    <th style={thStyle}>Price Range</th>
+                    <th style={thStyle}>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filtered.length === 0 ? (
+                    <tr><td colSpan={6} style={{ textAlign: "center", padding: "2rem", color: "#888" }}>Koi product nahi mila.</td></tr>
+                  ) : filtered.map(p => {
+                    const prices = p.priceVariations?.map(v => v.price) || [];
+                    const min = Math.min(...prices), max = Math.max(...prices);
+                    const priceStr = prices.length ? (min === max ? `₹${min}` : `₹${min} – ₹${max}`) : "—";
+                    return (
+                      <tr key={p._id} style={{ borderBottom: "1px solid #f0f0ec" }}>
+                        <td style={tdStyle}>
+                          <img src={getImageUrl(p.image)} alt={p.title} style={{ width: 75, height: 100, objectFit: "cover", borderRadius: "6px", border: "1px solid #e8e8e4" }} />
+                        </td>
+                        <td style={tdStyle}>
+                          <div style={{ fontWeight: 500, fontSize: "0.9rem" }}>{p.title}</div>
+                          <div style={{ color: "#aaa", fontSize: "0.78rem" }}>/{p.slug}</div>
+                        </td>
+                        <td style={tdStyle}><span style={{ background: "#f0f0ec", padding: "0.25rem 0.6rem", borderRadius: "6px", fontSize: "0.8rem" }}>{p.category}</span></td>
+                        <td style={tdStyle}>{p.priceVariations?.length || 0} sizes</td>
+                        <td style={{ ...tdStyle, fontWeight: 500 }}>{priceStr}</td>
+                        <td style={tdStyle}>
+                          <div style={{ display: "flex", gap: "0.5rem" }}>
+                            <button style={{ ...btnStyle, fontSize: "0.8rem", padding: "0.3rem 0.75rem" }} onClick={() => { setEditProduct(p); setShowForm(false); }}>Edit</button>
+                            <button style={{ ...btnStyle, background: "#fee", color: "#c33", fontSize: "0.8rem", padding: "0.3rem 0.75rem" }} onClick={() => setDeleteId(p._id)}>Delete</button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

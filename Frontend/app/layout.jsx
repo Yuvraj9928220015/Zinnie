@@ -1,6 +1,6 @@
 import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { LanguageProvider } from "../lib/languageContext";
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 
@@ -12,6 +12,11 @@ export const metadata = {
     'Discover our premium range of drinks. Fresh, healthy and delicious beverages crafted with care.',
   keywords: 'drinks, beverages, healthy drinks, Zinnie',
 
+  icons: {
+    icon: '/Zinnie-logo.png',
+  },
+
+
   openGraph: {
     title: 'Zinnie - Premium Drinks',
     description: 'Discover our premium range of drinks.',
@@ -21,23 +26,26 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
-        />
-      </head>
+    <>
+      <html lang="en" suppressHydrationWarning>
+        <head>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
+          />
+        </head>
 
-      <body suppressHydrationWarning>
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-S07YWT3NCJ"
-          strategy="afterInteractive"
-        />
+        <body suppressHydrationWarning>
+          <LanguageProvider>
 
-        <Script strategy="afterInteractive">
-          {`
+            {/* Google Analytics */}
+            <Script
+              src="https://www.googletagmanager.com/gtag/js?id=G-S07YWT3NCJ"
+              strategy="afterInteractive"
+            />
+
+            <Script strategy="afterInteractive">
+              {`
             window.dataLayer = window.dataLayer || [];
 
             function gtag(){
@@ -47,12 +55,16 @@ export default function RootLayout({ children }) {
             gtag('js', new Date());
             gtag('config', 'G-S07YWT3NCJ');
           `}
-        </Script>
+            </Script>
 
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
-    </html>
+            <Navbar />
+            {children}
+            <Footer />
+
+          </LanguageProvider>
+
+        </body>
+      </html>
+    </>
   );
 }

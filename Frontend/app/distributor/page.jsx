@@ -2,51 +2,52 @@
 
 import React, { useState } from 'react';
 import "./distributor.css";
+import DistributorPageContent from './DistributorPageContent';
 
 const products = [
   {
     id: 1,
     title: "Zinnie Zeera",
     bg: "green-bg",
-    img: "distributor-1.png",
+    img: "4.png",
     reverse: false,
-    link: "/product/desi-jeera/",
+    link: "/product/zinnie-zeera/",
     des: "ZINNIE ZEERA delivers a bold, fizzy masala kick with the authentic taste of Indian jeera. Every sip refreshes your body while helping digestion with its classic spice blend. Perfect after meals or on a hot day, it gives you that desi cooling sensation with a punch of flavor. ZINNIE ZEERA — the ultimate fizzy masala refreshment!"
   },
   {
     id: 2,
     title: "Mango",
     bg: "cream-bg",
-    img: "distributor-2.png",
+    img: "5.png",
     reverse: true,
-    link: "/product/apple-fiizi/",
+    link: "/product/zinnie-mango/",
     des: "ZINNIE MANGO bursts with the rich, juicy taste of ripe mangoes in every sip. Smooth, sweet, and refreshing, it delivers a tropical vibe that instantly lifts your mood. Perfect for beating the heat or enjoying a fruity break anytime. ZINNIE MANGO — the king of fruits in a refreshing drink!"
   },
   {
     id: 3,
     title: "Ginger Lemon",
     bg: "yellow-bg",
-    img: "distributor-3.png",
+    img: "2.png",
     reverse: false,
-    link: "/product/sweet-lemon/",
+    link: "/product/ginger-lemon/",
     des: "ZINNIE GINGER LEMON blends the zesty freshness of lemon with a warm hint of ginger for a perfectly balanced taste. It refreshes instantly while giving a light, soothing kick that energizes your body. Ideal for a fresh start or a midday boost. ZINNIE GINGER LEMON — a refreshing fusion with a spicy twist!"
   },
   {
     id: 4,
     title: "Nimbu Zeera",
     bg: "blue-bg",
-    img: "distributor-4.png",
+    img: "1.png",
     reverse: true,
-    link: "/product/cola-drink/",
+    link: "/product/nimbu-zeera/",
     des: "ZINNIE NIMBU ZEERA combines tangy lemon with the bold taste of roasted jeera for a perfectly refreshing desi drink. It cools you down, aids digestion, and delivers a unique spicy-tangy flavor in every sip. ZINNIE NIMBU ZEERA — the perfect blend of nimbu freshness and jeera punch!"
   },
   {
     id: 5,
-    title: "Chill Guava",
+    title: "Chilli Guava",
     bg: "green-bg",
-    img: "distributor-5.png",
+    img: "3.png",
     reverse: false,
-    link: "/product/clear-lemon/",
+    link: "/product/chilli-guava/",
     des: "ZINNIE CHILLI GUAVA brings a unique twist of sweet guava with a spicy chilli kick. This bold fusion creates an exciting flavor that refreshes and energizes instantly. Perfect for those who love a tangy, spicy edge in their drink. ZINNIE CHILLI GUAVA — sweet, spicy, and totally refreshing!"
   }
 ];
@@ -230,6 +231,7 @@ export default function Distributor() {
           </div>
         </section>
       </div>
+      <DistributorPageContent />
     </>
   );
 }

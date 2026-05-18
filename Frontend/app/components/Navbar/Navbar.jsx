@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import "./Navbar.css";
+import { useLanguage } from '../../../lib/languageContext';
 
 const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const { t } = useLanguage();
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen((prev) => !prev);
@@ -65,36 +67,39 @@ const Navbar = () => {
                                     <ul>
                                         <li>
                                             <Link href="/" onClick={handleLinkClick}>
-                                                Home
+                                                {t('nav.home')}
                                             </Link>
                                         </li>
                                         <li>
                                             <Link href="/about" onClick={handleLinkClick}>
-                                                About Us
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/blog" onClick={handleLinkClick}>
-                                                Blog
+                                                {t('nav.about')}
                                             </Link>
                                         </li>
                                         <li>
                                             <Link href="/product" onClick={handleLinkClick}>
-                                                Products
+                                                {t('nav.products')}
                                             </Link>
                                         </li>
                                         <li>
                                             <Link href="/distributor" onClick={handleLinkClick}>
-                                                Distributor
+                                                {t('nav.distributor')}
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link href="/faqs" onClick={handleLinkClick}>
-                                                Faqs
+                                            <Link href="/blog" onClick={handleLinkClick}>
+                                                {t('nav.blog')}
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/contact" onClick={handleLinkClick}>
+                                                {t('nav.contact')}
                                             </Link>
                                         </li>
                                     </ul>
                                 </div>
+
+                                {/* LanguageSwitcher removed from here */}
+
                             </div>
 
                             {/* Mobile Menu Button */}
@@ -119,20 +124,23 @@ const Navbar = () => {
                     <ul>
                         <li>
                             <Link href="/" onClick={handleLinkClick}>
-                                Home
+                                {t('nav.home')}
                             </Link>
                         </li>
                         <li>
                             <Link href="/about" onClick={handleLinkClick}>
-                                About Us
+                                {t('nav.about')}
                             </Link>
                         </li>
                         <li>
                             <Link href="/blog" onClick={handleLinkClick}>
-                                Blog
+                                {t('nav.blog')}
                             </Link>
                         </li>
                     </ul>
+
+                    {/* LanguageSwitcher removed from here */}
+
                 </div>
 
             </div>

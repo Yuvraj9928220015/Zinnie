@@ -1,9 +1,11 @@
-const express = require('express');
+// ✅ STEP 1: dotenv SABSE PEHLE — koi bhi require se pehle
 const dotenv = require('dotenv');
+dotenv.config();
+
+const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
-const nodemailer = require('nodemailer');
 const fs = require('fs');
 
 // uploads folder auto-create
@@ -15,8 +17,8 @@ const productRoutes = require('./routes/productRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 const authRoutes = require('./routes/authRoutes');
 const checkoutRoutes = require('./routes/checkout');
+const translateRoutes = require("./routes/translateRoutes");
 
-dotenv.config();
 const app = express();
 
 app.use(cors({
@@ -29,8 +31,6 @@ app.use(cors({
             'http://localhost:3002',
             'http://localhost:8080',
             'http://127.0.0.1:3000',
-            'https://jcdrink.com',
-            'https://www.jcdrink.com',
             'https://zinniezeera.com',
             'https://www.zinniezeera.com'
         ];
@@ -38,7 +38,7 @@ app.use(cors({
             callback(null, true);
         } else {
             console.log("CORS blocked origin:", origin);
-            callback(null, true); // ✅ true — block mat karo
+            callback(null, true);
         }
     },
     credentials: true,
@@ -50,10 +50,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017/zinniezeera";
-
-mongoose.connect(MONGO_URL)
-    .then(() => console.log(" Mongoose Connected to MongoDB"))
+// ✅ STEP 2: MONGO_URI sahi se use karo (MONGO_URL wala hataya)
+mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/zinniezeera")
+    .then(() => console.log("✅ Mongoose Connected to MongoDB"))
     .catch(error => console.error("❌ Database Connection Error:", error));
 
 app.get('/', (req, res) => res.send('API is running...'));
@@ -62,6 +61,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/payment', paymentRoutes);
 app.use('/api/checkout', checkoutRoutes);
+app.use("/api/translate", translateRoutes);
 
 // Global error handler
 app.use((err, req, res, next) => {
@@ -70,4 +70,4 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(` Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));

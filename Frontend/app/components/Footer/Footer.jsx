@@ -4,7 +4,7 @@ import './Footer.css';
 
 const Footer = () => {
     return (
-         <footer className="footer-wrapper">
+        <footer className="footer-wrapper">
             <div className="footer-overlay" />
 
             <div className="footer-content">
@@ -29,6 +29,7 @@ const Footer = () => {
                         <ul className="footer-links">
                             <li><a href="/">Home</a></li>
                             <li><a href="/about">About Us</a></li>
+                            <li><a href="/faqs">Faqs</a></li>
                         </ul>
                     </div>
 

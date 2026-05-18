@@ -28,24 +28,26 @@ export default function About() {
     ];
 
     return (
-        <div className={`page-transition-enter ${visible ? 'page-transition-enter-active' : ''}`}>
-            {banners.map((banner, index) => (
-                <section className="banner" key={index}>
-                    {isMobile ? (
-                        <img
-                            src={banner.mobile}
-                            alt="Founder"
-                            className="banner__image"
-                        />
-                    ) : (
-                        <img
-                            src={banner.desktop}
-                            alt="Founder"
-                            className="banner__image"
-                        />
-                    )}
-                </section>
-            ))}
-        </div>
+        <>
+            <div className={`page-transition-enter ${visible ? 'page-transition-enter-active' : ''}`}>
+                {banners.map((banner, index) => (
+                    <section className="banner" key={index}>
+                        {isMobile ? (
+                            <img
+                                src={banner.mobile}
+                                alt="Founder"
+                                className="banner__image"
+                            />
+                        ) : (
+                            <img
+                                src={banner.desktop}
+                                alt="Founder"
+                                className="banner__image"
+                            />
+                        )}
+                    </section>
+                ))}
+            </div>
+        </>
     );
 }

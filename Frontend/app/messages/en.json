@@ -1,0 +1,49 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "products": "Products",
+    "blog": "Blog",
+    "faqs": "FAQs",
+    "admin": "Admin",
+    "distributor": "Distributor"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try Again",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "search": "Search",
+    "selectLanguage": "Select Language"
+  },
+  "home": {
+    "title": "Welcome to Our Website",
+    "subtitle": "Discover our amazing products and services",
+    "cta": "Get Started"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "We are a passionate team dedicated to bringing you the best experience."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Your Name",
+    "email": "Email Address",
+    "message": "Your Message",
+    "send": "Send Message",
+    "success": "Message sent successfully!"
+  },
+  "products": {
+    "title": "Our Products",
+    "addToCart": "Add to Cart",
+    "viewDetails": "View Details",
+    "outOfStock": "Out of Stock",
+    "price": "Price"
+  }
+}

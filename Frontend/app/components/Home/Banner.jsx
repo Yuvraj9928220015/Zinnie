@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import "./Banner.css";
+import Header from "./Header/Header";
 
 
 
@@ -36,6 +37,7 @@ export default function Banner() {
           />
         </section>
       ))}
+      <Header/>
     </>
   );
 }
