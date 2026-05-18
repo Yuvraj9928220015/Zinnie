@@ -4,6 +4,38 @@ import React, { useState } from 'react';
 import "./distributor.css";
 import DistributorPageContent from './DistributorPageContent';
 
+export const metadata = {
+  title: "Become a Beverage Distributor in India | Zinnie Soft Drinks",
+
+  description:
+    "Join Zinnie as a beverage distributor in India. Partner with a leading soft drink supplier and grow your business with jeera soda, nimbu zeera, masala soda, and flavored drinks.",
+
+  openGraph: {
+    title: "Become a Beverage Distributor in India | Zinnie Soft Drinks",
+    description:
+      "Join Zinnie as a beverage distributor in India. Partner with a leading soft drink supplier and grow your business with jeera soda, nimbu zeera, masala soda, and flavored drinks.",
+    url: "https://zinniezeera.com/distributor",
+    siteName: "Zinnie",
+    type: "website",
+    images: [
+      {
+        url: "/Blog-image-4.png",
+        width: 1200,
+        height: 630,
+        alt: "Zinnie Beverage Distributor",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Become a Beverage Distributor in India | Zinnie Soft Drinks",
+    description:
+      "Join Zinnie as a beverage distributor in India. Partner with a leading soft drink supplier and grow your business with jeera soda, nimbu zeera, masala soda, and flavored drinks.",
+    images: ["/Blog-image-4.png"],
+  },
+};
+
 const products = [
   {
     id: 1,

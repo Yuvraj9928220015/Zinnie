@@ -52,9 +52,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// ✅ STEP 2: MONGO_URI sahi se use karo (MONGO_URL wala hataya)
+// STEP 2: MONGO_URI sahi se use karo (MONGO_URL wala hataya)
 mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/zinniezeera")
-    .then(() => console.log("✅ Mongoose Connected to MongoDB"))
+    .then(() => console.log(" Mongoose Connected to MongoDB"))
     .catch(error => console.error("❌ Database Connection Error:", error));
 
 app.get('/', (req, res) => res.send('API is running...'));
@@ -72,4 +72,4 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(` Server running on port ${PORT}`));
