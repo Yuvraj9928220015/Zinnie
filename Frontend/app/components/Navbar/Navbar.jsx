@@ -67,39 +67,36 @@ const Navbar = () => {
                                     <ul>
                                         <li>
                                             <Link href="/" onClick={handleLinkClick}>
-                                                {t('nav.home')}
+                                                {t('home')}
                                             </Link>
                                         </li>
                                         <li>
                                             <Link href="/about" onClick={handleLinkClick}>
-                                                {t('nav.about')}
+                                                {t('about')}
                                             </Link>
                                         </li>
                                         <li>
                                             <Link href="/product" onClick={handleLinkClick}>
-                                                {t('nav.products')}
+                                                {t('products')}
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link href="/distributor" onClick={handleLinkClick}>
-                                                {t('nav.distributor')}
+                                            <Link href="/become-a-distributor" onClick={handleLinkClick}>
+                                                {t('distributor')}
                                             </Link>
                                         </li>
                                         <li>
                                             <Link href="/blog" onClick={handleLinkClick}>
-                                                {t('nav.blog')}
+                                                {t('blog')}
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link href="/contact" onClick={handleLinkClick}>
-                                                {t('nav.contact')}
+                                            <Link href="/contact-us" onClick={handleLinkClick}>
+                                                {t('contact Us')}
                                             </Link>
                                         </li>
                                     </ul>
                                 </div>
-
-                                {/* LanguageSwitcher removed from here */}
-
                             </div>
 
                             {/* Mobile Menu Button */}
@@ -120,29 +117,40 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Menu */}
-                <div className={`mobile-menu ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
+                <div className={`mobile-menu ${isMobileMenuOpen ? 'show' : ''}`}>
                     <ul>
                         <li>
                             <Link href="/" onClick={handleLinkClick}>
-                                {t('nav.home')}
+                                {t('nav.home') || t('home')}
                             </Link>
                         </li>
                         <li>
                             <Link href="/about" onClick={handleLinkClick}>
-                                {t('nav.about')}
+                                {t('nav.about') || t('about')}
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/product" onClick={handleLinkClick}>
+                                {t('products')}
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/become-a-distributor" onClick={handleLinkClick}>
+                                {t('distributor')}
                             </Link>
                         </li>
                         <li>
                             <Link href="/blog" onClick={handleLinkClick}>
-                                {t('nav.blog')}
+                                {t('nav.blog') || t('blog')}
+                            </Link>
+                        </li>
+                        <li>
+                            <Link href="/contact-us" onClick={handleLinkClick}>
+                                {t('contact Us')}
                             </Link>
                         </li>
                     </ul>
-
-                    {/* LanguageSwitcher removed from here */}
-
                 </div>
-
             </div>
         </>
     );

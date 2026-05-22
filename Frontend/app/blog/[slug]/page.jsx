@@ -1,7 +1,7 @@
 import BlogClient from "./BlogClient";
 import { blogs } from "../data";
 
-// ✅ Add karo
+//Add karo
 export const dynamicParams = false;
 
 export async function generateStaticParams() {

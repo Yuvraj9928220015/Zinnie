@@ -1,0 +1,106 @@
+/* Testimonials.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&display=swap');
+
+.testimonials-section {
+    width: 100%;
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    box-sizing: border-box;
+}
+
+.testimonials-title {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-style: italic;
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #222;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+/* ── Slider Wrapper ── */
+.testimonials-slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ── Track ── */
+.testimonials-track {
+    display: flex;
+    will-change: transform;
+}
+
+/* ── Each Card ── */
+.testimonial-card {
+    min-width: 100%;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 40px 60px;
+    box-sizing: border-box;
+}
+
+.testimonial-text {
+    font-family: 'Georgia', serif;
+    font-size: 21px;
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.quote-open,
+.quote-close {
+    font-size: 1.4rem;
+    color: #888;
+    vertical-align: middle;
+}
+
+.quote-open {
+    margin-right: 6px;
+}
+
+.quote-close {
+    margin-left: 6px;
+}
+
+.testimonial-author {
+    font-family: 'Georgia', serif;
+    font-size: 18px;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* ── Dots ── */
+.testimonials-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 28px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    outline: none;
+}
+
+.dot.active {
+    background-color: #555;
+    transform: scale(1.2);
+}
+
+.dot:hover {
+    background-color: #999;
+}

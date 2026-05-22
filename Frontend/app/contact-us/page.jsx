@@ -26,7 +26,12 @@ export default function Page() {
               <div className="form-row two-col">
                 <div className="form-group">
                   <label htmlFor="first-name">First Name</label>
-                  <input id="first-name" type="text" placehold  er="Aarav" required />
+                  <input
+                    id="first-name"
+                    type="text"
+                    placeholder="Aarav"
+                    required
+                  />
                 </div>
                 <div className="form-group">
                   <label htmlFor="last-name">Last Name</label>

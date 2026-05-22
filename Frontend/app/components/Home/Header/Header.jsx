@@ -446,30 +446,32 @@ const faqs = [
     },
 ];
 
-// ── Sub-components ─────────────────────────────────────────────────────────────
+// ── Sub-components ──
 
 function FaqItem({ faq, index }) {
     const [open, setOpen] = useState(false);
 
     return (
-        <div
-            className="faq-item"
-            style={{ animationDelay: `${index * 40}ms` }}
-        >
-            <button
-                className={`faq-question ${open ? "open" : ""}`}
-                onClick={() => setOpen(!open)}
-                aria-expanded={open}
+        <>
+            <div
+                className="faq-item"
+                style={{ animationDelay: `${index * 40}ms` }}
             >
-                <span className="faq-num">Q{index + 1}</span>
-                <span className="faq-text">{faq.q}</span>
-                <span className={`faq-arrow ${open ? "rotated" : ""}`}>▾</span>
-            </button>
+                <button
+                    className={`faq-question ${open ? "open" : ""}`}
+                    onClick={() => setOpen(!open)}
+                    aria-expanded={open}
+                >
+                    <span className="faq-num">Q{index + 1}</span>
+                    <span className="faq-text">{faq.q}</span>
+                    <span className={`faq-arrow ${open ? "rotated" : ""}`}>▾</span>
+                </button>
 
-            <div className={`faq-answer ${open ? "expanded" : ""}`}>
-                <p>{faq.a}</p>
+                <div className={`faq-answer ${open ? "expanded" : ""}`}>
+                    <p>{faq.a}</p>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 

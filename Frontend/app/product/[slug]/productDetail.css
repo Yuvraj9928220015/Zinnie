@@ -7,7 +7,6 @@
 }
 
 .product-detail-wrapper {
-    background-color: #fff6e6;
     padding: 40px 0;
 }
 
@@ -17,13 +16,13 @@
     padding: 30px;
 }
 
-/* ✅ Back Button */
+/* Back Button */
 .back-to-products-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid #ffffff4d;
     color: #ffffff;
     font-size: 15px;
     font-weight: 600;
@@ -326,7 +325,7 @@ nav.product-breadcrumb span {
     -moz-appearance: textfield;
 }
 
-/* ✅ Add to Cart Button with success state */
+/* Add to Cart Button with success state */
 .add-to-cart-button {
     flex: 1;
     display: inline-flex;
@@ -805,5 +804,234 @@ nav.product-breadcrumb span {
     .qty-input {
         width: 60px;
         font-size: 16px;
+    }
+}
+
+.product-seo-bottom-container {
+    background-color: #fff6e6;
+    padding: 60px 0px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ── Breadcrumb ── */
+.product-breadcrumb {
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #718096;
+}
+
+.product-breadcrumb ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+}
+
+.product-breadcrumb li {
+    display: flex;
+    align-items: center;
+}
+
+.product-breadcrumb a {
+    color: #718096;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.product-breadcrumb a:hover {
+    color: #1a202c;
+}
+
+.product-breadcrumb [aria-current="page"] {
+    color: #1a202c;
+    font-weight: 500;
+}
+
+/* ── SEO Content Sections ── */
+.seo-content-wrapper {
+    margin-top: 48px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+.seo-section-heading {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+}
+
+.seo-subsection {
+    margin-top: 16px;
+    padding-left: 16px;
+    border-left: 3px solid #e2e8f0;
+}
+
+.seo-subsection-heading {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 6px 0;
+}
+
+.seo-section-content {
+    font-size: 14.5px;
+    color: #4a5568;
+    line-height: 1.8;
+    margin: 0 0 8px 0;
+}
+
+/* ── FAQ Section — Static (server rendered) ── */
+.product-faq-section {
+    margin-top: 52px;
+    border-top: 2px solid #e2e8f0;
+    padding-top: 36px;
+}
+
+.faq-heading {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0 0 28px 0;
+}
+
+/* Static FAQ (page source mein dikhta hai — SEO ke liye) */
+.faq-static-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.faq-static-item {
+    padding: 18px 22px;
+    border-bottom: 1px solid #e2e8f0;
+    background: #fff;
+}
+
+.faq-static-item:last-child {
+    border-bottom: none;
+}
+
+.faq-static-question {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a202c;
+    margin: 0 0 8px 0;
+    line-height: 1.5;
+}
+
+.faq-static-answer {
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Interactive FAQ (ProductDetailClient mein accordion) */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e2e8f0;
+    background: #fff;
+    transition: background 0.15s;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-item.faq-open {
+    background: #fafafa;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1a202c;
+    text-align: left;
+    gap: 12px;
+    transition: color 0.15s;
+}
+
+.faq-question:hover {
+    color: #2b6cb0;
+}
+
+.faq-icon {
+    font-size: 18px;
+    font-weight: 400;
+    flex-shrink: 0;
+    color: #718096;
+    transition: color 0.15s;
+}
+
+.faq-open .faq-icon {
+    color: #2b6cb0;
+}
+
+.faq-answer {
+    padding: 0 20px 16px 20px;
+}
+
+.faq-answer p {
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+    .faq-heading {
+        font-size: 18px;
+    }
+
+    .faq-static-question {
+        font-size: 14px;
+    }
+
+    .seo-section-heading {
+        font-size: 17px;
+    }
+
+    .seo-subsection {
+        padding-left: 12px;
     }
 }

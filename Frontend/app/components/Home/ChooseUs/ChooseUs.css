@@ -1,0 +1,222 @@
+/* ---------- CSS Variables ---------- */
+:root {
+    --cu-bg: #ffffff;
+    --cu-section-py: 72px;
+    --cu-section-px: 20px;
+    --cu-max-width: 1350px;
+    --cu-title-color: #1a1a2e;
+    --cu-brand-color: #2e7d32;
+    --cu-subtitle-color: #555e6d;
+    --cu-divider-color: #2e7d32;
+    --cu-card-bg: #ffffff;
+    --cu-card-border: #e8edf3;
+    --cu-card-shadow: 0 2px 16px #00000012;
+    --cu-card-shadow-hover: 0 8px 32px #2e7d3221;
+    --cu-card-radius: 14px;
+    --cu-card-padding: 32px 24px 28px;
+    --cu-card-title-color: #1a1a2e;
+    --cu-card-desc-color: #2f3236;
+    --cu-font-heading: "Playfair Display", Georgia, serif;
+    --cu-font-body: "DM Sans", "Segoe UI", sans-serif;
+    --cu-transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Section Wrapper ---------- */
+.choose-us-section {
+    background-color: #f5e9dcef;
+    padding: var(--cu-section-py) var(--cu-section-px);
+    font-family: var(--cu-font-body);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* ---------- Container ---------- */
+.choose-us-container {
+    max-width: var(--cu-max-width);
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ---------- Header ---------- */
+.choose-us-header {
+    text-align: center;
+    margin-bottom: 52px;
+}
+
+.choose-us-title {
+    font-family: var(--cu-font-heading);
+    font-size: clamp(1.75rem, 4vw, 2.6rem);
+    font-weight: 400;
+    color: var(--cu-title-color);
+    line-height: 1.25;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+}
+
+.choose-us-brand {
+    color: var(--cu-brand-color);
+}
+
+.choose-us-subtitle {
+    font-size: clamp(0.95rem, 2vw, 1.07rem);
+    color: var(--cu-subtitle-color);
+    max-width: 620px;
+    margin: 0 auto 24px;
+    line-height: 1.7;
+    font-weight: 400;
+}
+
+.choose-us-divider {
+    width: 52px;
+    height: 3px;
+    background: var(--cu-divider-color);
+    border-radius: 99px;
+    margin: 0 auto;
+}
+
+/* ---------- Grid ---------- */
+.choose-us-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+/* ---------- Card ---------- */
+.choose-us-card {
+    background: var(--cu-card-bg);
+    border: 1.5px solid var(--cu-card-border);
+    border-radius: var(--cu-card-radius);
+    padding: var(--cu-card-padding);
+    text-align: center;
+    box-shadow: var(--cu-card-shadow);
+    transition: box-shadow var(--cu-transition), transform var(--cu-transition),
+        border-color var(--cu-transition);
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.choose-us-card:hover {
+    box-shadow: var(--cu-card-shadow-hover);
+    transform: translateY(-5px);
+    border-color: #b2dfdb;
+}
+
+/* ---------- Icon ---------- */
+.choose-us-icon {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.choose-us-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* ---------- Card Title ---------- */
+.choose-us-card-title {
+    font-family: var(--cu-font-heading);
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--cu-card-title-color);
+    margin: 0 0 12px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+
+/* ---------- Card Description ---------- */
+.choose-us-card-desc {
+    font-size: 16px;
+    color: var(--cu-card-desc-color);
+    line-height: 1.65;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* Tablet: 768px – 1023px → 2 columns */
+@media (max-width: 1023px) {
+    .choose-us-section {
+        padding: 56px var(--cu-section-px);
+    }
+
+    .choose-us-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 22px;
+    }
+
+    .choose-us-header {
+        margin-bottom: 40px;
+    }
+}
+
+/* Small tablet / large phone: 600px – 767px → 2 columns smaller */
+@media (max-width: 767px) {
+    .choose-us-section {
+        padding: 48px 16px;
+    }
+
+    .choose-us-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .choose-us-card {
+        padding: 24px 18px 22px;
+    }
+
+    .choose-us-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 16px;
+    }
+
+    .choose-us-header {
+        margin-bottom: 32px;
+    }
+}
+
+/* Mobile: ≤ 479px → 1 column */
+@media (max-width: 479px) {
+    .choose-us-section {
+        padding: 40px 14px;
+    }
+
+    .choose-us-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .choose-us-card {
+        padding: 24px 20px 22px;
+        text-align: left;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .choose-us-icon {
+        width: 52px;
+        height: 52px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .choose-us-card-title {
+        font-size: 1rem;
+    }
+
+    .choose-us-card-desc {
+        font-size: 0.875rem;
+    }
+}

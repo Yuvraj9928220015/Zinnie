@@ -10,7 +10,7 @@ const API_URL = `${API_BASE_URL}/api`;
 export default function ProductDetailClient({ slug, initialProduct }) {
   const router = useRouter();
 
-  // ✅ Fix: loading=true jab initialProduct nahi hai
+  // Fix: loading=true jab initialProduct nahi hai
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -26,7 +26,7 @@ export default function ProductDetailClient({ slug, initialProduct }) {
     return `${API_BASE_URL}/${imagePath.replace(/\\/g, "/").replace(/^\/+/, "")}`;
   };
 
-  // ✅ Main effect: initialProduct use karo ya fetch karo
+  // Main effect: initialProduct use karo ya fetch karo
   useEffect(() => {
     const initProduct = (p) => {
       setProduct(p);
@@ -40,12 +40,12 @@ export default function ProductDetailClient({ slug, initialProduct }) {
     };
 
     if (initialProduct) {
-      // ✅ Server se data aaya — directly use karo
+      // Server se data aaya — directly use karo
       initProduct(initialProduct);
       return;
     }
 
-    // ✅ Server se data nahi aaya — client fetch karo
+    // Server se data nahi aaya — client fetch karo
     const fetchProduct = async () => {
       try {
         setLoading(true);
@@ -72,7 +72,7 @@ export default function ProductDetailClient({ slug, initialProduct }) {
     fetchProduct();
   }, [slug, initialProduct]);
 
-  // ✅ Scroll to top
+  // Scroll to top
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [slug]);
@@ -108,7 +108,7 @@ export default function ProductDetailClient({ slug, initialProduct }) {
     return min === max ? `₹${min.toFixed(2)}` : `₹${min.toFixed(2)} – ₹${max.toFixed(2)}`;
   };
 
-  // ✅ Loading state
+  // Loading state
   if (loading) {
     return (
       <div className="product-detail-wrapper">

@@ -26,8 +26,7 @@ export default function About() {
     const banners = [
         { desktop: "/founder.jpg.jpeg", mobile: "/founder-Your-Story.jpeg" },
     ];
-
-    return (
+    return (    
         <>
             <div className={`page-transition-enter ${visible ? 'page-transition-enter-active' : ''}`}>
                 {banners.map((banner, index) => (

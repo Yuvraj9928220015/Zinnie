@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import "./Banner.css";
 import Header from "./Header/Header";
-
+import ChooseUs from "./chooseUs/ChooseUs";
+import Testimonials from "./Testimonials/Testimonials";
+import BestSelling from "./BestSelling/BestSelling";
 
 
 export default function Banner() {
@@ -37,6 +39,9 @@ export default function Banner() {
           />
         </section>
       ))}
+      <ChooseUs/>
+      <BestSelling/>
+      <Testimonials/>
       <Header/>
     </>
   );

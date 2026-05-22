@@ -1,9 +1,16 @@
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Merriweather } from "next/font/google";
 import { LanguageProvider } from "../lib/languageContext";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Script from "next/script";
+
+const merriweather = Merriweather({
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  display: "swap",
+});
 
 export const metadata = {
   metadataBase: new URL("https://zinniezeera.com"),
@@ -65,14 +72,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap"
-        />
-      </head>
-
-      <body suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className={merriweather.className}
+      >
         <LanguageProvider>
           {/* Google Analytics */}
           <Script
