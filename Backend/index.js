@@ -1,4 +1,4 @@
-// ✅ STEP 1: dotenv SABSE PEHLE — koi bhi require se pehle
+// STEP 1: dotenv SABSE PEHLE — koi bhi require se pehle
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -10,7 +10,7 @@ const fs = require('fs');
 
 // uploads folder auto-create
 if (!fs.existsSync('./uploads')) {
-    fs.mkdirSync('./uploads');
+  fs.mkdirSync('./uploads');
 }
 
 const productRoutes = require('./routes/productRoutes');
@@ -18,7 +18,6 @@ const paymentRoutes = require('./routes/paymentRoutes');
 const authRoutes = require('./routes/authRoutes');
 const checkoutRoutes = require('./routes/checkout');
 const translateRoutes = require("./routes/translateRoutes");
-const blogRoutes = require('./routes/blogRoutes');
 
 const app = express();
 
@@ -32,7 +31,7 @@ app.use(cors({
             'http://localhost:3000',
             'http://localhost:3001',
             'http://localhost:3002',
-            'https://api.zinniezeera.com',
+            'http://localhost:8080',
             'http://127.0.0.1:3000',
             'https://zinniezeera.com',
             'https://www.zinniezeera.com'
@@ -65,7 +64,6 @@ app.use('/api/products', productRoutes);
 app.use('/api/payment', paymentRoutes);
 app.use('/api/checkout', checkoutRoutes);
 app.use("/api/translate", translateRoutes);
-app.use('/api/blogs', blogRoutes);
 
 // Global error handler
 app.use((err, req, res, next) => {

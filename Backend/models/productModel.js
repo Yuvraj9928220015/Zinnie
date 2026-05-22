@@ -13,7 +13,7 @@ const priceVariationSchema = new mongoose.Schema({
 
 const productSchema = new mongoose.Schema({
     title: { type: String, required: [true, 'Please add a title'], trim: true },
-    slug: { type: String, unique: true, lowercase: true },   // ✅ sirf ek baar
+    slug: { type: String, unique: true, lowercase: true },   //sirf ek baar
     description: { type: String, required: [true, 'Please add a description'] },
     metaTitle: { type: String, default: "" },
     metaDescription: { type: String, default: "" },
