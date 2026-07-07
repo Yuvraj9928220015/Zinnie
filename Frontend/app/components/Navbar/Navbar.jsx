@@ -54,7 +54,7 @@ const Navbar = () => {
                                             src="/Zinnie-logo.png"
                                             alt="Zinnie Logo"
                                             width={120}
-                                            height={50}
+                                            height={90}
                                             priority
                                         />
                                     </Link>

@@ -13,7 +13,7 @@ const priceVariationSchema = new mongoose.Schema({
 
 const productSchema = new mongoose.Schema({
     title: { type: String, required: [true, 'Please add a title'], trim: true },
-    slug: { type: String, unique: true, lowercase: true },   //sirf ek baar
+    slug: { type: String, unique: true, lowercase: true },
     description: { type: String, required: [true, 'Please add a description'] },
     metaTitle: { type: String, default: "" },
     metaDescription: { type: String, default: "" },
@@ -29,7 +29,6 @@ const productSchema = new mongoose.Schema({
     image: { type: String, required: [true, 'Please add an image'] }
 }, { timestamps: true });
 
-// Auto-generate slug from title (only if slug not manually provided)
 productSchema.pre('save', function (next) {
     if (this.isModified('title') && !this.slug) {
         this.slug = this.title
@@ -39,7 +38,6 @@ productSchema.pre('save', function (next) {
             .replace(/\s+/g, '-')
             .replace(/-+/g, '-');
     }
-    // Unique sizes check
     const sizes = this.priceVariations.map(v => v.size);
     if (sizes.length !== new Set(sizes).size) {
         return next(new Error('Duplicate sizes are not allowed'));

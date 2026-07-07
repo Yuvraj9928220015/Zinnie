@@ -5,10 +5,9 @@ import ProductPageContent from "./ProductPageContent";
 
 const API_BASE_URL = "https://api.zinniezeera.com";
 
-// Metadata add karo
 export const metadata = {
-  title: "Products | Zinnie",
-  description: "Buy refreshing cold drinks, fruit drinks and desi beverages online at Zinnie",
+  title: "Buy Refreshing Soft Drinks Online in India",
+  description: "Looking to buy soft drinks online in India? Explore Zinnie’s range of refreshing and delicious soft drinks — order your favorite drinks today!",
 };
 
 function getPriceRange(product) {

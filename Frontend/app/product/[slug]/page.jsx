@@ -1,6 +1,3 @@
-// app/product/[slug]/page.jsx
-// ✅ Server Component — SEO content yahan render hoga taaki page source mein dike
-
 import ProductDetailClient from "./ProductDetailClient";
 import {
   productSeoData,
@@ -31,7 +28,14 @@ async function getAllProducts() {
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
-  return products.filter((p) => p.slug).map((p) => ({ slug: p.slug }));
+
+  console.log("Products Found:", products.length);
+
+  return products
+    .filter((p) => p.slug)
+    .map((p) => ({
+      slug: p.slug,
+    }));
 }
 
 export async function generateMetadata({ params }) {
@@ -51,7 +55,7 @@ export async function generateMetadata({ params }) {
     ? product.image
     : `${API_BASE_URL}/${product.image?.replace(/\\/g, "/").replace(/^\/+/, "")}`;
 
-  const metaTitle = seo?.metaTitle || product.metaTitle || `${product.title} | Zinnie Zeera`;
+  const metaTitle = seo?.metaTitle || product.metaTitle || `${product.title}`;
   const metaDescription =
     seo?.metaDescription ||
     product.metaDescription ||
@@ -78,16 +82,11 @@ export async function generateMetadata({ params }) {
       images: [imageUrl],
     },
     alternates: {
-      canonical: seo?.canonicalUrl || `https://zinniezeera.com/product/${slug}/`,
+      canonical: `https://zinniezeera.com/product/${slug}/`,
     },
   };
 }
 
-// ─────────────────────────────────────────────────────────────
-// SeoContentSection — Server Component
-// Pure HTML render karta hai — Google page source mein seedha
-// dekh sakta hai bina JavaScript execute kiye
-// ─────────────────────────────────────────────────────────────
 function SeoContentSection({ sections }) {
   if (!sections || sections.length === 0) return null;
 
@@ -119,10 +118,6 @@ function SeoContentSection({ sections }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────
-// FaqSection — Server Component
-// Static HTML — Google FAQ rich results ke liye
-// ─────────────────────────────────────────────────────────────
 function FaqSection({ faqList, productTitle }) {
   if (!faqList || faqList.length === 0) return null;
 
@@ -141,9 +136,6 @@ function FaqSection({ faqList, productTitle }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────
-// Main Page
-// ─────────────────────────────────────────────────────────────
 export default async function Page({ params }) {
   const { slug } = await params;
   const products = await getAllProducts();
@@ -178,7 +170,6 @@ export default async function Page({ params }) {
 
   return (
     <>
-      {/* ── JSON-LD Schemas — page source mein visible ── */}
       <div className="product-seo-bottom-container">
         {productSchema && (
           <script

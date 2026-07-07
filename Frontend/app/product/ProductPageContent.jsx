@@ -442,7 +442,7 @@ const faqs = [
     },
 ];
 
-// ── Sub-components ─────────────────────────────────────────────────────────────
+// ── Sub-components 
 
 function FaqItem({ faq, index }) {
     const [open, setOpen] = useState(false);

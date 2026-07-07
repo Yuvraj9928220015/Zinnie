@@ -16,8 +16,7 @@ export const metadata = {
   metadataBase: new URL("https://zinniezeera.com"),
 
   title: {
-    default: "Zinnie - Premium Drinks",
-    template: "%s | Zinnie",
+    default: "Buy Affordable Soft Drinks & Cold Drinks in India Online",
   },
 
   description:

@@ -4,8 +4,8 @@ export const productSeoData = {
     "nimbu-zeera-drink": {
         name: "Nimbu Zeera",
         image: "/images/1.png",
-        metaTitle: "Nimbu Zeera Drink – Refreshing Jeera Juice & Lemon Flavoured Cold Drink | Zinnie Zeera",
-        metaDescription: "Buy Nimbu Zeera Drink online — a refreshing blend of tangy lemon and aromatic jeera. India's favourite jeera cold drink in a convenient ready-to-drink bottle.",
+        metaTitle: "Buy Nimbu Zeera Drink Online | Jeera & Lemon Cold Drink",
+        metaDescription: "Enjoy the refreshing Nimbu Zeera drink — a perfect blend of jeera and lemon water. Order your bottle of this cooling jeera drink online today!",
         canonicalUrl: "https://zinniezeera.com/product/nimbu-zeera/",
         ratingValue: "4.9",
         reviewCount: "9924",
@@ -13,7 +13,7 @@ export const productSeoData = {
         category: "Soft Drinks",
         price: "10",
 
-        h1: "Nimbu Zeera Drink – Refreshing Jeera Juice & Lemon Flavoured Cold Drink",
+        h1: "Nimbu Zeera Drink – Refreshing Jeera & Lemon Water",
 
         seoSections: [
             {
@@ -135,8 +135,8 @@ export const productSeoData = {
     "zeera-masala-soda": {
         name: "Zeera Masala Soda",
         image: "/images/2.png",
-        metaTitle: "Zeera Masala Soda – Bold Jeera Soda Drink with Desi Masala Flavour | Zinnie Zeera",
-        metaDescription: "Experience Zeera Masala Soda — a bold blend of cumin, lemon, and Indian spices. The best jeera masala soda inspired by street-style nimbu soda. Buy online.",
+        metaTitle: "Buy Zeera Masala Soda Online | Refreshing Jeera Soda Drink",
+        metaDescription: "Enjoy Zinnie’s Zeera Masala Soda — a zesty jeera soft drink with nimbu flavor. Order your refreshing jeera masala soda bottle online today!",
         canonicalUrl: "https://zinniezeera.com/product/zinnie-zeera/",
         ratingValue: "4.9",
         reviewCount: "1040",
@@ -144,7 +144,7 @@ export const productSeoData = {
         category: "Soft Drinks",
         price: "10",
 
-        h1: "Zeera Masala Soda – Bold & Refreshing Jeera Soda Drink with Desi Masala Flavour",
+        h1: "Zeera Masala Soda – Refreshing Jeera & Nimbu Soft Drink",
 
         seoSections: [
             {
@@ -278,8 +278,8 @@ export const productSeoData = {
     "mango-drink": {
         name: "Mango Drink",
         image: "/images/4.png",
-        metaTitle: "Mango Drink – Refreshing Fruit Drink with Rich Tropical Mango Flavor | Zinnie Zeera",
-        metaDescription: "Buy Mango Drink online from Zinnie Zeera — a smooth, refreshing fruit drink with rich tropical mango flavor. Perfect for all ages, all seasons.",
+        metaTitle: "Buy Refreshing Mango Drink Online | Zinnie Fruit Drinks",
+        metaDescription: "Quench your thirst with Zinnie’s refreshing mango drink — a delicious fruit drink perfect for every occasion. Order your favorite mango beverage online today!",
         canonicalUrl: "https://zinniezeera.com/product/mango-drink/",
         ratingValue: "4.9",
         reviewCount: "2352",
@@ -439,8 +439,8 @@ export const productSeoData = {
     "ginger-lemon-drink": {
         name: "Ginger Lemon Drink",
         image: "/images/5.png",
-        metaTitle: "Ginger Lemon Drink – Refreshing, Zesty and Naturally Flavored Beverage | Zinnie Zeera",
-        metaDescription: "Buy Ginger Lemon Drink online from Zinnie Zeera — bold spice of ginger meets tangy lemon freshness. Light, refreshing, and perfect for everyday hydration.",
+        metaTitle: "Buy Ginger Lemon Drink Online | Refreshing Zinnie Beverage",
+        metaDescription: "Enjoy Zinnie’s refreshing ginger lemon drink — a perfect blend of zesty ginger and tangy lemon. Order your favorite drink online today!",
         canonicalUrl: "https://zinniezeera.com/product/ginger-lemon/",
         ratingValue: "4.9",
         reviewCount: "2125",
@@ -448,12 +448,12 @@ export const productSeoData = {
         category: "Fruit & Herbal Drinks",
         price: "10",
 
-        h1: "Ginger Lemon Drink – Refreshing, Zesty and Naturally Flavored Beverage",
+        h1: "Refreshing Ginger Lemon Drink – Zesty & Tangy Beverage",
 
         seoSections: [
             {
                 tag: "h2",
-                heading: "Ginger Lemon Drink – Refreshing, Zesty and Naturally Flavored Beverage",
+                heading: "Refreshing Ginger Lemon Drink – Zesty & Tangy Beverage",
                 paragraphs: [
                     "The ginger lemon drink is a refreshing and flavorful beverage that combines the bold spice of ginger with the tangy freshness of lemon. This unique combination creates a powerful ginger lemon drink that is both refreshing and energizing, making it a popular choice among modern beverage lovers.",
                     "Designed for those who prefer natural and zesty flavors, this drink delivers a clean and refreshing taste experience. Whether you are looking for a daily refreshment, a summer cooler, or a light beverage to enjoy anytime during the day, this ginger lemon drink offers a perfect balance of spice and citrus freshness.",
@@ -596,8 +596,8 @@ export const productSeoData = {
     "chilli-guava-drink": {
         name: "Chilli Guava Drink",
         image: "/images/3.png",
-        metaTitle: "Chilli Guava Drink – Bold Sweet and Spicy Fruit Beverage | Zinnie Zeera",
-        metaDescription: "Buy Chilli Guava Drink online from Zinnie Zeera — sweet guava meets bold chilli in every sip. A unique, refreshing fruit drink with a spicy twist.",
+        metaTitle: "Buy Chilli Guava Drink Online | Zinnie Chilli Guava Juice",
+        metaDescription: "Taste the spicy and refreshing Chilli Guava Drink by Zinnie. Order your favorite chilli guava juice online today and enjoy a unique, flavorful beverage!",
         canonicalUrl: "https://zinniezeera.com/product/chilli-guava/",
         ratingValue: "4.9",
         reviewCount: "3220",

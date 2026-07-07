@@ -1,58 +1,59 @@
-// app/blog/page.jsx
+"use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { blogs } from "./data";
 import "./blog.css";
 
-export const metadata = {
-  title: "Blog | Zinnie",
-  description:
-    "Explore our latest blogs on cold drinks, fruit drinks, desi beverages, and refreshing summer drinks in India.",
-};
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
-export default function BlogListPage() {
+function stripMarkdown(md = "") {
+  return md.replace(/[#*_`>~-]/g, "").replace(/\[(.*?)\]\(.*?\)/g, "$1").replace(/\n+/g, " ").trim();
+}
+
+export default function BlogPage() {
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${API_URL}/api/blogs`)
+      .then((res) => res.json())
+      .then((data) => { setBlogs(Array.isArray(data) ? data : []); setLoading(false); })
+      .catch((err) => { console.error("Blog fetch error:", err); setLoading(false); });
+  }, []);
+
   return (
-    <>
-      <div className="Blog">
-        <div className="Blog-line"></div>
-        <div className="Blog-container-Box-Image">
-          <div className="container">
-            <div className="row">
-              <div className="About-title">
-                <h2>Latest Blogs</h2>
-              </div>
-              {blogs.map((blog) => (
-                <div
-                  className="col-lg-4 col-md-4 col-sm-12 col-12"
-                  key={blog.slug}
-                >
-                  {/* onClick hataya — Link lagaya */}
-                  <Link
-                    href={`/blog/${blog.slug}`}
-                    style={{ textDecoration: "none", color: "inherit" }}
-                  >
-                    <div className="Blog-Section">
-                      <div className="blog-img-wrapper">
-                        <img src={blog.image} alt={blog.altTag || blog.title} />
-                      </div>
-                      <div className="blog-content">
-                        <div className="blog-meta">
-                          <span>{blog.author}</span>
-                          <span>{blog.date}</span>
-                        </div>
-                        <div className="Blog-title">{blog.heading}</div>
-                        <div className="Blog-des">{blog.subHeading}</div>
-                        <div className="blog-btn">
-                          <span>Read More →</span>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
+    <div className="blog-page-wrapper">
+      <div className="blog-hero"><h1>Zinnie Blog – Trends, Tips & Insights</h1></div>
+
+      {loading ? (
+        <p className="blog-loading">Loading...</p>
+      ) : blogs.length === 0 ? (
+        <p className="blog-loading">No blogs published yet.</p>
+      ) : (
+        <div className="blog-grid">
+          {blogs.map((blog) => {
+            const identifier = blog.urlHandle || blog.slug;
+            const imgSrc = blog.image
+              ? blog.image.startsWith("http") ? blog.image : `${API_URL}${blog.image}`
+              : "/placeholder-blog.jpg";
+            const excerpt = stripMarkdown(blog.content).slice(0, 140);
+
+            return (
+              <Link href={`/blog/${identifier}`} key={blog._id} className="blog-card">
+                <div className="blog-card-image"><img src={imgSrc} alt={blog.altTag || blog.title} /></div>
+                <div className="blog-card-body">
+                  <div className="blog-card-meta">
+                    <span>{blog.author}</span>
+                    <span>{new Date(blog.createdAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+                  </div>
+                  <h3>{blog.title}</h3>
+                  <p>{excerpt}...</p>
+                  <span className="blog-read-more">Read More →</span>
                 </div>
-              ))}
-            </div>
-          </div>
+              </Link>
+            );
+          })}
         </div>
-      </div>
-    </>
+      )}
+    </div>
   );
 }

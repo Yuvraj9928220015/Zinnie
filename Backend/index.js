@@ -1,4 +1,3 @@
-// STEP 1: dotenv SABSE PEHLE — koi bhi require se pehle
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -8,7 +7,6 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 
-// uploads folder auto-create
 if (!fs.existsSync('./uploads')) {
   fs.mkdirSync('./uploads');
 }
@@ -18,6 +16,7 @@ const paymentRoutes = require('./routes/paymentRoutes');
 const authRoutes = require('./routes/authRoutes');
 const checkoutRoutes = require('./routes/checkout');
 const translateRoutes = require("./routes/translateRoutes");
+const blogRoutes = require("./routes/blogRoutes");
 
 const app = express();
 
@@ -31,7 +30,7 @@ app.use(cors({
             'http://localhost:3000',
             'http://localhost:3001',
             'http://localhost:3002',
-            'http://localhost:8080',
+            'https://api.zinniezeera.com',
             'http://127.0.0.1:3000',
             'https://zinniezeera.com',
             'https://www.zinniezeera.com'
@@ -52,7 +51,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// STEP 2: MONGO_URI sahi se use karo (MONGO_URL wala hataya)
 mongoose.connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/zinniezeera")
     .then(() => console.log(" Mongoose Connected to MongoDB"))
     .catch(error => console.error("❌ Database Connection Error:", error));
@@ -64,8 +62,8 @@ app.use('/api/products', productRoutes);
 app.use('/api/payment', paymentRoutes);
 app.use('/api/checkout', checkoutRoutes);
 app.use("/api/translate", translateRoutes);
+app.use("/api/blogs", blogRoutes);
 
-// Global error handler
 app.use((err, req, res, next) => {
     console.error("❌ SERVER ERROR:", err);
     res.status(500).json({ message: err.message });

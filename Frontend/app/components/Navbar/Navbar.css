@@ -1,5 +1,4 @@
 .navbar-container {
-    padding: 10px 0;
     position: fixed;
     top: 0;
     width: 100%;
@@ -36,9 +35,7 @@
 
 .navbar-logo img {
     object-fit: contain;
-    width: auto;
-    height: auto;
-    max-height: 50px;
+    width: 100%;
 }
 
 .navbar-menu-section {

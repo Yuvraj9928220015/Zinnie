@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  trailingSlash: true, // 🔥 bas ye add karo
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;

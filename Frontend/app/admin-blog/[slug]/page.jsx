@@ -1,4 +1,4 @@
-import BlogClient from "./BlogClient";
+import EditBlogPageClient from "./EditBlogPage";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
@@ -9,13 +9,16 @@ export async function generateStaticParams() {
     if (!res.ok) return [{ slug: "placeholder" }];
     const blogs = await res.json();
     if (!Array.isArray(blogs) || blogs.length === 0) return [{ slug: "placeholder" }];
-    return [{ slug: "placeholder" }, ...blogs.map((b) => ({ slug: b.urlHandle || b.slug }))];
+    return [
+      { slug: "placeholder" },
+      ...blogs.map((blog) => ({ slug: blog.urlHandle || blog.slug })),
+    ];
   } catch {
     return [{ slug: "placeholder" }];
   }
 }
 
-export default async function BlogDetailPage({ params }) {
+export default async function EditBlogPage({ params }) {
   const { slug } = await params;
-  return <BlogClient slug={slug} />;
+  return <EditBlogPageClient slug={slug} />;
 }
