@@ -1,4 +1,5 @@
 import ProductDetailClient from "./ProductDetailClient";
+import "./productFaqAccordion.css";
 import {
   productSeoData,
   buildProductSchema,
@@ -8,6 +9,8 @@ import {
 
 const API_BASE_URL = "https://api.zinniezeera.com";
 const API_URL = `${API_BASE_URL}/api`;
+const SITE_URL = "https://zinniezeera.com";
+const DEFAULT_OG_IMAGE = `${SITE_URL}/ZinnieWebsiteImage.jpeg`;
 
 export const dynamicParams = false;
 
@@ -28,14 +31,21 @@ async function getAllProducts() {
 
 export async function generateStaticParams() {
   const products = await getAllProducts();
+  return products.filter((p) => p.slug).map((p) => ({ slug: p.slug }));
+}
 
-  console.log("Products Found:", products.length);
+function getProductOgImage(product, seo) {
+  if (seo?.image) {
+    return seo.image.startsWith("http") ? seo.image : `${SITE_URL}${seo.image}`;
+  }
 
-  return products
-    .filter((p) => p.slug)
-    .map((p) => ({
-      slug: p.slug,
-    }));
+  if (product?.image) {
+    return product.image.startsWith("http")
+      ? product.image
+      : `${API_BASE_URL}/${product.image.replace(/\\/g, "/").replace(/^\/+/, "")}`;
+  }
+
+  return DEFAULT_OG_IMAGE;
 }
 
 export async function generateMetadata({ params }) {
@@ -48,14 +58,13 @@ export async function generateMetadata({ params }) {
     return {
       title: "Product Not Found | Zinnie Zeera",
       description: "The product you are looking for does not exist.",
+      robots: { index: false, follow: false },
     };
   }
 
-  const imageUrl = product.image?.startsWith("http")
-    ? product.image
-    : `${API_BASE_URL}/${product.image?.replace(/\\/g, "/").replace(/^\/+/, "")}`;
-
-  const metaTitle = seo?.metaTitle || product.metaTitle || `${product.title}`;
+  const imageUrl = getProductOgImage(product, seo);
+  const pageUrl = seo?.canonicalUrl || `${SITE_URL}/product/${slug}/`;
+  const metaTitle = seo?.metaTitle || product.metaTitle || `${product.title} | Zinnie Zeera`;
   const metaDescription =
     seo?.metaDescription ||
     product.metaDescription ||
@@ -68,26 +77,53 @@ export async function generateMetadata({ params }) {
     keywords: [product.title, seo?.name, product.category, "Zinnie Zeera", "jeera drink", "buy online", "beverages India"]
       .filter(Boolean)
       .join(", "),
+
+    alternates: {
+      canonical: pageUrl,
+    },
+
     openGraph: {
       title: metaTitle,
       description: metaDescription,
-      images: [{ url: imageUrl, width: 800, height: 800, alt: product.title }],
-      type: "website",
+      url: pageUrl,
       siteName: "Zinnie Zeera",
+      locale: "en_IN",
+      type: "website",
+      images: [
+        {
+          url: imageUrl,
+          width: 800,
+          height: 800,
+          alt: product.title || seo?.name || "Zinnie Product",
+        },
+      ],
     },
+
     twitter: {
       card: "summary_large_image",
       title: metaTitle,
       description: metaDescription,
-      images: [imageUrl],
+      creator: "@zinnie",
+      images: [
+        {
+          url: imageUrl,
+          alt: product.title || seo?.name || "Zinnie Product",
+        },
+      ],
     },
-    alternates: {
-      canonical: `https://zinniezeera.com/product/${slug}/`,
+
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
     },
   };
 }
 
-function SeoContentSection({ sections }) {
+function SeoAboutContent({ sections }) {
   if (!sections || sections.length === 0) return null;
 
   return (
@@ -99,15 +135,56 @@ function SeoContentSection({ sections }) {
             <HeadingTag className="seo-section-heading">{section.heading}</HeadingTag>
 
             {section.paragraphs?.map((p, pIdx) => (
-              <p key={pIdx} className="seo-section-content">{p}</p>
+              <p
+                key={pIdx}
+                className="seo-section-content"
+                dangerouslySetInnerHTML={{ __html: p }}
+              />
+            ))}
+
+            {section.listIntro && (
+              <p
+                className="seo-section-content seo-list-intro"
+                dangerouslySetInnerHTML={{ __html: section.listIntro }}
+              />
+            )}
+
+            {section.list?.length > 0 && (
+              <ul className="seo-section-list">
+                {section.list.map((item, lIdx) => (
+                  <li
+                    key={lIdx}
+                    className="seo-section-list-item"
+                    dangerouslySetInnerHTML={{ __html: item }}
+                  />
+                ))}
+              </ul>
+            )}
+
+            {section.closingParagraphs?.map((p, cIdx) => (
+              <p
+                key={cIdx}
+                className="seo-section-content"
+                dangerouslySetInnerHTML={{ __html: p }}
+              />
             ))}
 
             {section.subSections?.map((sub, sIdx) => {
               const SubTag = sub.tag || "h3";
               return (
                 <div key={sIdx} className="seo-subsection">
-                  <SubTag className="seo-subsection-heading">{sub.heading}</SubTag>
-                  <p className="seo-section-content">{sub.text}</p>
+                  {sub.heading && (
+                    <SubTag
+                      className="seo-subsection-heading"
+                      dangerouslySetInnerHTML={{ __html: sub.heading }}
+                    />
+                  )}
+                  {sub.text && (
+                    <p
+                      className="seo-section-content"
+                      dangerouslySetInnerHTML={{ __html: sub.text }}
+                    />
+                  )}
                 </div>
               );
             })}
@@ -118,21 +195,24 @@ function SeoContentSection({ sections }) {
   );
 }
 
-function FaqSection({ faqList, productTitle }) {
+function FaqAnswerContent({ faqList }) {
   if (!faqList || faqList.length === 0) return null;
 
   return (
-    <section className="product-faq-section" aria-label="Frequently Asked Questions">
-      <h2 className="faq-heading">Frequently Asked Questions — {productTitle}</h2>
-      <div className="faq-static-list">
-        {faqList.map((item, idx) => (
-          <div key={idx} className="faq-static-item">
-            <h3 className="faq-static-question">{item.question}</h3>
-            <p className="faq-static-answer">{item.answer}</p>
-          </div>
-        ))}
-      </div>
-    </section>
+    <div className="faq-static-list">
+      {faqList.map((item, idx) => (
+        <div key={idx} className="faq-static-item">
+          <h3
+            className="faq-static-question"
+            dangerouslySetInnerHTML={{ __html: item.question }}
+          />
+          <p
+            className="faq-static-answer"
+            dangerouslySetInnerHTML={{ __html: item.answer }}
+          />
+        </div>
+      ))}
+    </div>
   );
 }
 
@@ -140,6 +220,7 @@ export default async function Page({ params }) {
   const { slug } = await params;
   const products = await getAllProducts();
   const initialProduct = products.find((p) => p.slug === slug) || null;
+
   const seo = productSeoData[slug] || null;
 
   if (!initialProduct) {
@@ -167,6 +248,7 @@ export default async function Page({ params }) {
   const productSchema = buildProductSchema(slug, initialProduct);
   const faqSchema = buildFaqSchema(slug);
   const breadcrumbSchema = buildBreadcrumbSchema(slug, initialProduct.title || seo?.name);
+  const productTitle = initialProduct.title || seo?.name || "";
 
   return (
     <>
@@ -203,13 +285,37 @@ export default async function Page({ params }) {
         <div className="">
           <div
             className="product-seo-bottom"
-            style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 0px 0px" }}
+            style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 0px 0px" }}
           >
-            <SeoContentSection sections={seo?.seoSections} />
-            <FaqSection
-              faqList={seo?.faq}
-              productTitle={initialProduct.title || seo?.name || ""}
-            />
+            <div className="accordion-root-container">
+              <div className="accordion-root">
+
+                {seo?.seoSections?.length > 0 && (
+                  <details className="acc-panel">
+                    <summary className="acc-panel-header">
+                      <span className="acc-panel-title">{productTitle}</span>
+                      <span className="acc-panel-chevron">▾</span>
+                    </summary>
+                    <div className="acc-panel-inner">
+                      <SeoAboutContent sections={seo?.seoSections} />
+                    </div>
+                  </details>
+                )}
+
+                {seo?.faq?.length > 0 && (
+                  <details className="acc-panel">
+                    <summary className="acc-panel-header">
+                      <span className="acc-panel-title">Frequently Asked Questions</span>
+                      <span className="acc-panel-chevron">▾</span>
+                    </summary>
+                    <div className="acc-panel-inner">
+                      <FaqAnswerContent faqList={seo?.faq} />
+                    </div>
+                  </details>
+                )}
+
+              </div>
+            </div>
           </div>
         </div>
       </div>

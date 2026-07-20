@@ -49,8 +49,45 @@ export default async function sitemap() {
       })
       .filter(Boolean);
   } catch (err) {
-    console.error("Sitemap fetch failed:", err);
+    console.error("Sitemap product fetch failed:", err);
   }
 
-  return [...staticPages, ...productPages];
+  let blogPages = [];
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/blogs`, {
+      next: { revalidate: 3600 },
+    });
+
+    if (!res.ok) throw new Error(`API ${res.status}`);
+
+    const blogs = await res.json();
+
+    const seenBlogSlugs = new Set();
+
+    blogPages = blogs
+      .filter((blog) => !blog.status || blog.status === "published")
+      .map((blog) => {
+        const slug = blog.urlHandle || blog.slug;
+        if (!slug || seenBlogSlugs.has(slug)) return null;
+
+        seenBlogSlugs.add(slug);
+
+        return {
+          url: `${SITE_URL}/blog/${slug}`,
+          lastModified: blog.updatedAt
+            ? new Date(blog.updatedAt)
+            : blog.createdAt
+            ? new Date(blog.createdAt)
+            : new Date(),
+          changeFrequency: "weekly",
+          priority: 0.7,
+        };
+      })
+      .filter(Boolean);
+  } catch (err) {
+    console.error("Sitemap blog fetch failed:", err);
+  }
+
+  return [...staticPages, ...productPages, ...blogPages];
 }

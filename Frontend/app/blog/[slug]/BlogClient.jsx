@@ -1,31 +1,74 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import "../blog.css";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 
-export default function BlogClient({ slug }) {
-  const router = useRouter();
-  const [blog, setBlog] = useState(null);
-  const [loading, setLoading] = useState(true);
+function getSlugFromURL() {
+  if (typeof window === "undefined") return null;
+  const parts = window.location.pathname.split("/").filter(Boolean);
+  const blogIndex = parts.indexOf("blog");
+  if (blogIndex !== -1 && parts[blogIndex + 1]) {
+    return decodeURIComponent(parts[blogIndex + 1]);
+  }
+  return null;
+}
+
+export default function BlogClient({ initialBlog }) {
+  const [blog, setBlog] = useState(initialBlog || null);
+  const [loading, setLoading] = useState(!initialBlog);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    if (!slug || slug === "placeholder") { setLoading(false); return; }
-    fetch(`${API_URL}/api/blogs/${slug}`)
-      .then((r) => r.json())
+    if (initialBlog) return;
+
+    const realSlug = getSlugFromURL();
+
+    if (!realSlug || realSlug === "placeholder") {
+      setLoading(false);
+      setFailed(true);
+      return;
+    }
+
+    fetch(`${API_URL}/api/blogs/${realSlug}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Blog not found");
+        return res.json();
+      })
       .then((data) => {
-        if (!data || data.message === "Blog not found") { router.push("/blog"); return; }
+        if (!data || data.message === "Blog not found") {
+          setFailed(true);
+          setLoading(false);
+          return;
+        }
         setBlog(data);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
-  }, [slug, router]);
+      .catch(() => {
+        setFailed(true);
+        setLoading(false);
+      });
+  }, [initialBlog]);
 
-  if (loading) return <div className="blog-detail-loading">Loading...</div>;
-  if (!blog) return <div className="blog-detail-loading">Blog not found.</div>;
+  useEffect(() => {
+    if (blog && !initialBlog) {
+      document.title = blog.pageTitle || blog.title;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute("content", blog.metaDescription || "");
+    }
+  }, [blog, initialBlog]);
+
+  if (loading) {
+    return <div style={{ padding: "60px", textAlign: "center" }}>Loading Blog...</div>;
+  }
+
+  if (failed || !blog) {
+    return notFound();
+  }
 
   const imgSrc =
     blog.image && blog.image.trim() !== ""
@@ -50,6 +93,7 @@ export default function BlogClient({ slug }) {
       )}
       <div className="blog-detail-content">
         <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
           rehypePlugins={[rehypeRaw]}
           components={{
             img: ({ node, ...props }) => {

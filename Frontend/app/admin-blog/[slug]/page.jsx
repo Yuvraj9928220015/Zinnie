@@ -1,6 +1,6 @@
 import EditBlogPageClient from "./EditBlogPage";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 
 export async function generateStaticParams() {
   try {

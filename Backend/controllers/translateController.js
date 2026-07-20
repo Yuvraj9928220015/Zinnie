@@ -99,7 +99,6 @@ const languageNames = {
     zu: "Zulu",
 };
 
-// Get country from IP using free ipapi.co service
 const getCountryFromIP = async (ip) => {
     try {
         if (
@@ -129,7 +128,6 @@ const getCountryFromIP = async (ip) => {
 // Detect language based on IP
 const detectLanguage = async (req, res) => {
     try {
-        // Get real IP (works behind proxies/load balancers)
         const ip =
             req.headers["cf-connecting-ip"] ||
             req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||

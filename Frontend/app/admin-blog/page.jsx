@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import "./admin-blog.css";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
-const SITE_URL = "https://egps.in";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+const SITE_URL = "http://localhost:8080";
 
 const MDXEditorComponent = dynamic(
   () => import("../components/Toolbar/MDXEditorComponent"),
@@ -27,7 +27,7 @@ export default function AdminPage() {
   const [blogs, setBlogs] = useState([]);
   const [loadingBlogs, setLoadingBlogs] = useState(true);
   const [seoOpen, setSeoOpen] = useState(false);
-  const [pageTitle, setPageTitle] = useState(""); // Meta Title
+  const [pageTitle, setPageTitle] = useState("");
   const [metaDescription, setMetaDescription] = useState("");
   const [script, setScript] = useState("");
 
@@ -110,7 +110,7 @@ export default function AdminPage() {
       });
       const data = await res.json();
       if (data.success) {
-        alert("Blog deleted!");
+        alert("Blog deleted!"); 
         fetchBlogs();
       }
     } catch (error) {
@@ -257,7 +257,6 @@ export default function AdminPage() {
           </form>
         </div>
 
-        {/* RIGHT: Published Blogs */}
         <div className="admin-card admin-blog-list-card">
           <div className="admin-header">
             <h2>Published Blogs</h2>

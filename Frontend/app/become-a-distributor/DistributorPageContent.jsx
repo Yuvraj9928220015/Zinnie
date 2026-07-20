@@ -79,428 +79,515 @@ const schemaOrganization = {
 const mainContent = [
     {
         level: "h2",
-        heading: "Become a Beverage Distributor in India – Build a Profitable Business with Zinnie Zeera",
+        heading: "Become a Beverage Distributor in India ",
     },
     {
         level: "p",
-        body: "The beverage industry in India is one of the fastest-growing segments in the FMCG sector, offering strong and consistent demand across urban and rural markets. If you are looking to start or expand your business, becoming a <b>beverage distributor in India</b> is a highly profitable opportunity.",
+        body: "If you are looking to grow your business in the fast-moving beverage industry, becoming a beverage distributor in India with Zinnie is a strong and future-ready opportunity. The demand for refreshing and flavorful drinks such as <b>jeera soda, nimbu jeera, masala soda, mango drinks,</b> and other fruit-based beverages is growing rapidly across both urban and rural markets. Consumers today are actively shifting towards drinks that offer better taste, variety, and convenience compared to traditional soft drinks, creating a strong and consistent demand throughout the year.",
     },
     {
         level: "p",
-        body: "Zinnie Zeera invites entrepreneurs, wholesalers, and distributors to join its expanding network and become part of a growing <b>drink distributor company</b> that focuses on delivering high-demand beverages across India.",
+        body: "Zinnie offers a modern and thoughtfully crafted range of ready-to-drink beverages designed for today’s evolving consumer preferences. Each product is developed to deliver a balanced flavor profile that combines traditional Indian taste inspirations with modern refreshment needs. This makes the products widely accepted across different age groups and market segments, including retail stores, restaurants, cafés, and general trade.",
     },
     {
         level: "p",
-        body: "With a diverse product portfolio, competitive pricing, and strong market demand, this is the right time to establish yourself as a successful <b>soft drink distributor in India.</b>",
+        body: "As a distribution partner, you get the opportunity to become part of this expanding beverage ecosystem and build a profitable, scalable, and long-term business. With growing category demand and increasing consumer awareness, this is the right time to enter the beverage distribution sector with a brand that focuses on quality, consistency, and strong market potential.",
     },
     {
         level: "h2",
-        heading: "Why the Beverage Distribution Business is Growing in India",
+        heading: " Why Choose Zinnie as Your Distribution Partner",
     },
     {
         level: "p",
-        body: "India's beverage market is evolving rapidly due to changing consumer lifestyles, increasing demand for ready-to-drink products, and the popularity of flavored beverages.",
+        body: "Zinnie is not just another drink brand in the market. It is built around a clear vision of delivering refreshing beverages that combine traditional Indian taste inspiration with modern production techniques and high-quality packaging standards. Each product is carefully developed to ensure consistency in taste, freshness, and overall drinking experience, making it suitable for a wide range of consumers across different regions.",
     },
     {
         level: "p",
-        body: "Consumers today are looking for refreshing daily-use drinks, affordable beverage options, unique and bold flavors, and convenient ready-to-drink products. This growing demand has created massive opportunities for those looking to become a <b>cold drink supplier in India</b> or enter the beverage dealership market.",
+        body: "As a distribution partner, you benefit from working with a brand that operates in a high-growth beverage category and focuses on long-term market potential rather than short-term trends. The demand for flavored and traditional-inspired drinks is increasing steadily, especially in categories like <b>jeera soda, masala soda, and fruit-based beverages.</b>",
+    },
+    {
+        level: "p",
+        body: "<b>Key advantages of partnering with Zinnie include:</b>",
+    },
+    {
+        level: "ul", items: [
+            "Strong and growing demand for flavored drinks in India",
+            "Rapid expansion of product categories such as jeera soda and fruit drinks",
+            "Attractive profit margins for distributors and retail partners",
+            "High repeat purchase potential due to taste and affordability",
+            "Products suitable for all age groups and diverse customer segments",
+            "Strong positioning in the fast-growing beverage industry",
+            "Expanding brand visibility across multiple markets",
+        ]
+    },
+    {
+        level: "p",
+        body: "This combination of product appeal, market demand, and brand positioning makes Zinnie a reliable and scalable choice for anyone looking for a soft drink distributor India opportunity or a long-term beverage dealership India business. It is designed for partners who want sustainable growth in a category that continues to expand year after year.",
     },
     {
         level: "h2",
-        heading: "Why Choose Zinnie Zeera as Your Distribution Partner",
+        heading: "High-Demand Beverage Categories You Can Distribute",
     },
     {
         level: "p",
-        body: "Selecting the right brand is one of the most important decisions for any distributor. Zinnie Zeera provides a strong foundation for building a successful beverage distribution business.",
+        body: "Zinnie offers a diverse and fast-selling range of <b>beverage products</b> that perform consistently well across different regions and customer segments. Each category is designed to match evolving consumer preferences, ensuring strong demand in retail stores, supermarkets, restaurants, cafés, and general trade outlets.",
     },
     {
         level: "h3",
-        heading: "High-Demand Product Portfolio",
+        heading: "1.Jeera-Based Drinks",
     },
     {
         level: "p",
-        body: "Our products are designed to meet everyday consumer demand. From traditional flavors to modern beverages, we offer products that sell consistently.",
+        body: "<a href='/product/nimbu-zeera-drink/'>Jeera soda and nimbu zeera drinks</a> are among the most popular traditional-inspired beverages in India. Their unique blend of cumin, citrus, and mild spices makes them a preferred choice for consumption with meals as well as during hot weather. These drinks have strong repeat demand due to their familiar yet refreshing taste profile.",
     },
     {
         level: "h3",
-        heading: "Strong Brand Positioning",
+        heading: "2.Masala Soda Range",
     },
     {
         level: "p",
-        body: "We focus on creating products that resonate with Indian consumers, making it easier for distributors to sell and expand.",
+        body: "The <a href='/product/zeera-masala-soda/'>masala soda drink</a> category offers a bold and flavorful alternative to conventional soft drinks. With a combination of spice, tanginess, and fizz, these beverages are especially popular in restaurants, street food outlets, cafés, and quick-service establishments where customers look for something more exciting than standard colas.",
     },
     {
         level: "h3",
-        heading: "Competitive Pricing Strategy",
+        heading: "3.Fruit Drinks",
     },
     {
         level: "p",
-        body: "We ensure pricing that allows distributors to maintain healthy profit margins while staying competitive in the market.",
+        body: "Fruit-based beverages such as <a href='/product/mango-drink/'>mango drinks</a> appeal to a wide and diverse audience, including families, children, and young consumers. Their naturally sweet and smooth flavor makes them suitable for everyday consumption, seasonal refreshment, and meal pairing, ensuring steady demand throughout the year.",
     },
     {
         level: "h3",
-        heading: "Reliable Supply Chain",
+        heading: "4.Flavored Refreshing Drinks",
     },
     {
         level: "p",
-        body: "Our efficient supply system ensures consistent product availability, helping distributors avoid stock shortages.",
+        body: "The <a href='/product/chilli-guava-drink/'>flavored drinks </a>segment is one of the fastest-growing categories in the Indian beverage market. Consumers are increasingly shifting toward innovative, ready-to-drink options that offer variety and refreshment beyond traditional soft drinks. Zinnie’s flavored beverages are designed to meet this demand with consistent taste and wide market acceptance.",
     },
     {
         level: "h2",
-        heading: "Product Range Available for Distributors",
+        heading: "Why Beverage Distribution is a Growing Business in India",
     },
     {
         level: "p",
-        body: "As a distributor, you will have access to a wide range of beverages that cater to different consumer preferences.",
+        body: "The beverage industry in India is experiencing strong and consistent growth, driven by evolving consumer preferences and lifestyle changes. Today’s consumers are becoming more selective about what they drink, moving away from overly sweet traditional soft drinks and increasingly choosing beverages that offer better flavor, variety, and a more refreshing experience.",
+    },
+    {
+        level: "p",
+        body: "Another major factor behind this shift is the growing demand for convenience.<b> Ready-to-drink beverages</b> that are easily available, portable, and require no preparation are becoming a preferred choice for busy urban and semi-urban populations. At the same time, rising exposure to new flavors and regional taste profiles has significantly expanded the market for innovative drinks such as jeera soda, masala soda, and fruit-based beverages.",
     },
     {
         level: "h3",
-        heading: "Jeera-Based Drinks",
+        heading: "Key growth drivers include the following:",
+    },
+    {
+        level: "ul", items: [
+            "Increasing demand for regional and traditional flavors inspired by Indian taste preferences",
+            "Rising consumption of ready-to-drink beverages across all age groups",
+            "Strong growth in retail, grocery, and HoReCa (Hotel, Restaurant, Café) sectors",
+            "Growing preference for convenient, hygienically packaged drinks",
+            "High seasonal demand, especially during summer months and festive periods",
+            "Expanding reach of organized distribution networks across urban and rural markets",
+        ]
     },
     {
         level: "p",
-        body: "A highly popular category in India, ideal for those looking to become a <b>jeera soda distributor in India.</b>",
-    },
-    {
-        level: "h3",
-        heading: "Nimbu Zeera Drinks",
-    },
-    {
-        level: "p",
-        body: "Refreshing and tangy beverages with strong demand, perfect for a <b>nimbu zeera distributor</b> network.",
-    },
-    {
-        level: "h3",
-        heading: "Masala Soda Drinks",
-    },
-    {
-        level: "p",
-        body: "A growing segment for those targeting the <b>masala soda supplier India</b> category.",
-    },
-    {
-        level: "h3",
-        heading: "Fruit-Based Drinks",
-    },
-    {
-        level: "p",
-        body: "Includes mango and innovative flavors like chilli guava, ideal for a <b>flavored drinks distributor</b> business.",
+        body: "These factors collectively create a strong and sustainable opportunity for anyone looking to enter the beverage industry. Whether you are exploring a cold drink supplier India partnership or building a drink distributor company network, the market offers long-term potential supported by rising demand and continuous category expansion.",
     },
     {
         level: "h2",
-        heading: "Market Opportunity for Beverage Distributors in India",
+        heading: "Who Can Become a Distributor",
     },
     {
         level: "p",
-        body: "The beverage industry offers consistent demand throughout the year. Unlike seasonal products, beverages are consumed daily, ensuring steady business flow.",
+        body: "The<b> Zinnie distribution</b> opportunity is designed to be accessible to a wide range of business partners across the FMCG and beverage ecosystem. Whether you are already established in the industry or planning to enter it for the first time, this business model offers flexibility and growth potential for different levels of investment and experience.",
     },
     {
         level: "h3",
-        heading: "Urban Market Demand",
+        heading: "This opportunity is especially suitable for:",
+    },
+    {
+        level: "ul", items: [
+            "Beverage wholesalers looking to expand their product portfolio",
+            "FMCG distributors seeking high-demand, fast-moving beverage categories",
+            "Retail business owners aiming to increase in-store product variety and margins",
+            "Super stockists managing large-scale regional or district-level supply networks",
+            "Entrepreneurs entering the beverage industry with a focus on scalable growth",
+            "Existing soft drink distributor India networks looking to add innovative and high-demand products",
+        ]
     },
     {
         level: "p",
-        body: "Cities have high demand due to lifestyle and convenience.",
-    },
-    {
-        level: "h3",
-        heading: "Rural Market Expansion",
-    },
-    {
-        level: "p",
-        body: "Rural markets are rapidly adopting packaged beverages.",
-    },
-    {
-        level: "h3",
-        heading: "Retail and Wholesale Opportunities",
-    },
-    {
-        level: "p",
-        body: "Distributors can serve both retail outlets and wholesale buyers.",
-    },
-    {
-        level: "h3",
-        heading: "Food Service Industry Demand",
-    },
-    {
-        level: "p",
-        body: "Restaurants, cafes, and vendors require a regular supply.",
+        body: "Whether you are starting fresh or expanding your current business operations, Zinnie provides scalable distribution opportunities that can adapt to different market sizes and business goals. The product range is designed to perform well across multiple channels, making it suitable for both small retailers and large distribution networks.",
     },
     {
         level: "h2",
-        heading: "Who Can Apply for Beverage Distributorship",
+        heading: "Benefits of Becoming a Zinnie Distributor",
     },
     {
         level: "p",
-        body: "Zinnie Zeera welcomes a wide range of applicants across different business backgrounds.",
+        body: "By <b>partnering with Zinnie as a distribution associate</b>, you gain access to a growing beverage brand that is designed for strong market performance and long-term scalability. The product range is built around high-demand categories, ensuring steady movement and repeat purchases across different customer segments.",
     },
     {
         level: "h3",
-        heading: "Existing Distributors",
+        heading: "As a distributor, you can expect several key advantages that support business growth and stability:",
+    },
+    {
+        level: "ul", items: [
+            "Consistent product demand across retail and HoReCa channels",
+            "Strong brand positioning in the fast-growing flavored beverages segment",
+            "Easy market acceptance driven by familiar and appealing taste profiles",
+            "Reliable support in product supply, logistics coordination, and availability",
+            "Opportunities to expand into multiple beverage categories within a single brand ecosystem",
+            "Increasing consumer demand for jeera soda distributor India and traditional-inspired beverages",
+        ]
     },
     {
         level: "p",
-        body: "Those already working in FMCG or beverage sectors.",
-    },
-    {
-        level: "h3",
-        heading: "Retailers and Wholesalers",
-    },
-    {
-        level: "p",
-        body: "Businesses looking to expand into distribution.",
-    },
-    {
-        level: "h3",
-        heading: "Entrepreneurs",
-    },
-    {
-        level: "p",
-        body: "Individuals seeking a new business opportunity.",
-    },
-    {
-        level: "h3",
-        heading: "Local Market Experts",
-    },
-    {
-        level: "p",
-        body: "People with strong knowledge of local distribution networks.",
+        body: "These advantages collectively help create stable and scalable growth potential for distributors operating in both urban and semi-urban markets. With rising interest in flavored and ready-to-drink beverages, Zinnie offers a strong foundation for building a sustainable and profitable distribution business.",
     },
     {
         level: "h2",
-        heading: "Benefits of Becoming a Zinnie Zeera Distributor",
+        heading: "Business Opportunity in Flavored Drinks Segment",
     },
     {
         level: "p",
-        body: "Partnering with Zinnie Zeera provides several business advantages.",
+        body: "The <b>flavored drinks distributor</b> segment has emerged as one of the fastest-growing categories within the Indian beverage industry. With shifting consumer preferences and increasing awareness around taste variety and drink quality, more people are actively moving away from conventional soft drinks and exploring newer, more flavorful alternatives.",
+    },
+
+    {
+        level: "p",
+        body: "Today’s consumers are not just looking for refreshment—they want beverages that offer a better overall drinking experience. This has significantly increased demand for innovative and taste-driven products that combine tradition with modern convenience.",
     },
     {
         level: "h3",
-        heading: "High Profit Margins",
+        heading: "Key Consumer Preferences Driving This Growth:",
     },
+    {
+        level: "ul", items: [
+            "Refreshing alternatives to colas and overly sugary soft drinks",
+            "Traditional Indian flavor-based beverages such as jeera, masala, and nimbu-based drinks",
+            "Affordable ready-to-drink options suitable for everyday use",
+            "Convenient products that can be consumed at home, work, or on the go",
+        ]
+    },
+
     {
         level: "p",
-        body: "Our pricing model ensures good returns on investment.",
-    },
-    {
-        level: "h3",
-        heading: "Fast-Moving Products",
-    },
-    {
-        level: "p",
-        body: "Products designed for quick sales and repeat demand.",
-    },
-    {
-        level: "h3",
-        heading: "Brand Support",
-    },
-    {
-        level: "p",
-        body: "We assist with branding and product positioning.",
-    },
-    {
-        level: "h3",
-        heading: "Easy Scalability",
-    },
-    {
-        level: "p",
-        body: "Expand your distribution network as your business grows.",
+        body: "Zinnie’s product range is strategically developed to align with these evolving preferences. By offering a mix of traditional-inspired and modern flavored beverages, the brand makes it easier for distributors to achieve faster market acceptance and stronger penetration across multiple retail channels. This creates a clear and scalable opportunity in the growing beverage distribution landscape",
     },
     {
         level: "h2",
-        heading: "How to Become a Beverage Distributor in India",
+        heading: "How to Get Started",
     },
     {
         level: "p",
-        body: "The process to join our distribution network is simple and transparent.",
+        body: "<b>Becoming a Zinnie distributor</b> is a simple and structured process designed to help you begin operations quickly and efficiently. The onboarding flow ensures clarity at every step, from initial inquiry to product distribution in your assigned territory.",
     },
     {
         level: "h3",
-        heading: "Step 1: Submit Your Inquiry",
+        heading: "Step-by-Step Process:",
     },
+    {
+        level: "ul", items: [
+            "Submit your business inquiry through the official channel",
+            "Our team reviews your application along with your location and market potential",
+            "Discussion of product range, pricing structure, and distribution terms",
+            "Finalization of onboarding and approval of partnership",
+            "Start supply and distribution in your allocated region",
+        ]
+    },
+
     {
         level: "p",
-        body: "Fill out the distributor form with your business details.",
-    },
-    {
-        level: "h3",
-        heading: "Step 2: Evaluation Process",
-    },
-    {
-        level: "p",
-        body: "We assess your location, capacity, and distribution reach.",
-    },
-    {
-        level: "h3",
-        heading: "Step 3: Approval and Onboarding",
-    },
-    {
-        level: "p",
-        body: "Once approved, you will be onboarded as an official distributor.",
-    },
-    {
-        level: "h3",
-        heading: "Step 4: Start Distribution",
-    },
-    {
-        level: "p",
-        body: "Begin supplying products and building your market presence.",
+        body: "Once onboarded, you can begin building your local market presence with Zinnie’s fast-moving beverage portfolio and start serving retail outlets, wholesalers, and HoReCa customers in your territory.",
     },
     {
         level: "h2",
-        heading: "Investment and Business Requirements",
+        heading: "Investment Requirements & Business Setup",
     },
     {
         level: "p",
-        body: "The investment required to become a beverage distributor in India depends on several factors including location and market size, storage and logistics capacity, initial stock purchase, and distribution network. Our team will guide you through the requirements based on your business goals.",
-    },
-    {
-        level: "h2",
-        heading: "Support Provided to Distributors",
-    },
-    {
-        level: "p",
-        body: "Zinnie Zeera ensures that all distributors receive the necessary support to succeed.",
+        body: "Starting your journey as a <b>Zinnie distribution partner </b>does not require a complicated setup. The business model is designed to be flexible so that both new entrepreneurs and experienced distributors can participate based on their scale of operation.",
     },
     {
         level: "h3",
-        heading: "Product Supply Support",
+        heading: "To begin, you will typically need:",
+    },
+    {
+        level: "ul", items: [
+            "Basic working capital for initial stock purchase",
+            "Storage space for inventory management",
+            "Delivery or logistics arrangement (own or third-party)",
+            "Local market network for retail distribution",
+        ]
+    },
+
+    {
+        level: "p",
+        body: "The investment level can vary depending on the territory size and product volume. Zinnie focuses on helping partners build a scalable business step by step rather than requiring heavy upfront commitments.",
+    },
+    {
+        level: "h2",
+        heading: "Territory & Market Potential",
     },
     {
         level: "p",
-        body: "Consistent availability of products.",
+        body: "Every distributor is assigned a specific territory to ensure focused growth and better market penetration. This helps avoid channel conflicts and allows partners to build strong relationships with retailers.",
     },
     {
         level: "h3",
-        heading: "Marketing Assistance",
+        heading: "Key advantages of territory-based distribution:",
     },
     {
+        level: "ul", items: [
+            "Exclusive focus on assigned region",
+            "Better control over retail network development",
+            "Higher brand visibility in local markets",
+            "Strong repeat ordering from established outlets",
+        ]
+    },
+
+    {
         level: "p",
-        body: "Guidance on promoting products in your area.",
+        body: "With increasing demand for beverages like<b> jeera soda, masala soda, and fruit drinks,</b> most territories offer strong untapped potential for growth.",
     },
     {
         level: "h3",
-        heading: "Business Growth Support",
+        heading: " Support Provided by Zinnie",
     },
     {
         level: "p",
-        body: "Strategies to expand your distribution network.",
+        body: "<b>Zinnie</b> believes in building long-term partnerships, not just supply relationships. Distributors receive ongoing support to help grow their business efficiently.",
     },
     {
         level: "h3",
-        heading: "Customer Demand Insights",
+        heading: "Support includes:",
     },
     {
+        level: "ul", items: [
+            "Product training and category understanding",
+            "Order and supply coordination assistance",
+            "Marketing and promotional guidance",
+            "New product launch updates",
+            "Retail placement support strategies",
+        ]
+    },
+
+    {
         level: "p",
-        body: "Understanding market trends and consumer preferences.",
+        body: "This ensures that partners can focus more on sales and expansion rather than operational challenges.",
     },
     {
         level: "h2",
-        heading: "Distribution Channels You Can Target",
+        heading: "Marketing & Brand Support",
     },
     {
         level: "p",
-        body: "As a distributor, you can supply products to multiple channels including retail stores, kirana shops, supermarkets, restaurants, cafes, street vendors, and wholesale markets. This wide reach ensures maximum sales potential.",
+        body: "To help distributors establish faster market presence, Zinnie supports brand-level visibility and marketing efforts",
+    },
+    {
+        level: "h3",
+        heading: "You benefit from:",
+    },
+
+
+    {
+        level: "ul", items: [
+            "Strong brand identity in flavored beverages",
+            "Product packaging designed for shelf appeal",
+            "Consumer-friendly taste positioning",
+            "Regional demand-driven product strategy",
+        ]
+    },
+    {
+        level: "p",
+        body: "This makes it easier to introduce products in new markets and build retailer trust quickly",
     },
     {
         level: "h2",
-        heading: "Why Beverage Distribution is a Long-Term Business Opportunity",
+        heading: "Sales Channels You Can Target",
     },
     {
         level: "p",
-        body: "The beverage industry offers long-term growth due to consistent consumer demand. Drinks are a daily-use product, ensuring repeat purchases and stable revenue. Becoming a <b>soft drink distributor in India</b> allows you to build a sustainable business with long-term profitability.",
+        body: "As a <b>distributor,</b> you can supply Zinnie beverages across multiple channels, increasing your earning potential.",
+    },
+    {
+        level: "h3",
+        heading: "Key channels include the following:",
+    },
+    {
+        level: "ul", items: [
+            "Grocery and general trade stores",
+            "Supermarkets and retail chains",
+            "Restaurants and cafés (HoReCa segment)",
+            "Hotels and catering businesses",
+            "Local vendors and beverage shops",
+        ]
+    },
+
+
+    {
+        level: "p",
+        body: "This multi-channel approach helps maximize product movement and recurring orders.",
     },
     {
         level: "h2",
-        heading: "Competitive Advantage of Zinnie Zeera Products",
+        heading: "Growth Opportunities with Zinnie",
     },
     {
         level: "p",
-        body: "Our products are designed to stand out in the market with unique flavor combinations, affordable pricing, high consumer appeal, and consistent quality. This gives distributors a competitive edge in selling and expanding their business.",
+        body: "Once established, distributors can expand their business in multiple directions within the Zinnie ecosystem.",
+    },
+    {
+        level: "h3",
+        heading: "Growth options include the following:",
+    },
+
+    {
+        level: "ul", items:
+            ["Expanding to nearby territories",
+                "Increasing product portfolio range",
+                "Adding new beverage categories as they launch",
+                "Scaling into super stockist roles",
+                "Building a regional distribution network",
+
+            ]
+    },
+    {
+        level: "p",
+        body: "This creates a long-term business pathway beyond just initial distribution.",
     },
     {
         level: "h2",
-        heading: "Expand Your Business with Flavored Drinks Distribution",
+        heading: "Why Now is the Right Time",
     },
     {
         level: "p",
-        body: "Flavored drinks are one of the fastest-growing segments in the beverage industry. Becoming a <b>flavored drinks distributor</b> allows you to tap into this growing demand and build a profitable business.",
+        body: "The beverage industry in India is undergoing a major shift. Consumers are actively moving toward:",
+    },
+
+    {
+        level: "ul", items:
+            [
+                "Traditional Indian flavors",
+                "Ready-to-drink convenience products",
+                "Affordable and refreshing alternatives to colas",
+            ]
+    },
+
+    {
+        level: "p",
+        body:"This shift is creating strong demand for products like jeera soda, nimbu jeera, masala soda, and fruit drinks—making it the right time to enter the market with a growing brand like Zinnie."
     },
     {
         level: "h2",
-        heading: "Start Your Journey as a Beverage Distributor Today",
+        heading: "Build a Strong Beverage Business with Zinnie",
     },
     {
         level: "p",
-        body: "If you are looking to become a <b>drink distributor company</b> or expand your current operations, Zinnie Zeera provides the right platform to succeed. With strong demand, reliable supply, and business support, this is your opportunity to grow in the beverage industry.",
+        body: "Zinnie offers a strong foundation for entrepreneurs looking to enter or expand in the beverage industry. With rising demand for masala soda, Indian networks, and regional flavored drinks, this is the right time to grow your business in the<a href='/https://zinniezeera.com/'> cold drinks</a> segment.",
+    },
+    {
+        level: "p",
+        body: "Whether you want to focus on<b> jeera soda, fruit drinks, or complete beverage distribution, </b>Zinnie provides the right product mix for long-term success."
     },
 ];
 
 const faqs = [
     {
-        q: "How can I become a beverage distributor in India?",
-        a: "You can apply through the distributor form and complete the approval process.",
+        q: " What is the Zinnie beverage distributor program?",
+        a: "It is a business opportunity where partners can distribute Zinnie’s ready-to-drink beverages across their assigned region.",
     },
     {
-        q: "What products can I distribute?",
-        a: "You can distribute jeera soda, nimbu drinks, masala soda, and fruit-based beverages.",
+        q: " How can I become a beverage distributor in India with Zinnie?",
+        a: "You can apply through the inquiry form, after which the team reviews your application and proceeds with onboarding.",
     },
     {
-        q: "Is beverage distribution profitable?",
-        a: "Yes, it offers strong demand and consistent sales opportunities.",
+        q: " Is prior experience required to become a distributor?",
+        a: "No, both experienced FMCG distributors and new entrepreneurs can apply.",
     },
     {
-        q: "Do you provide distributor support?",
-        a: "Yes, we provide supply, marketing, and business guidance.",
+        q: "What products will I be distributing?",
+        a: "You will handle products like jeera soda, masala soda, nimbu jeera, mango drink, and other flavored beverages.",
     },
     {
-        q: "Who is eligible for distributorship?",
-        a: "Retailers, wholesalers, entrepreneurs, and existing distributors.",
+        q: " What is the minimum investment required?",
+        a: "Investment depends on territory size and initial stock requirements. Details are shared after inquiry evaluation.",
     },
     {
-        q: "What is the investment required?",
-        a: "It depends on your location and business scale.",
+        q: " Do I get an exclusive territory?",
+        a: "Yes, distributors are assigned specific territories to avoid overlap and ensure focused growth.",
     },
     {
-        q: "Do you offer exclusive distribution rights?",
-        a: "This depends on availability and market evaluation.",
+        q: " What margins can I expect?",
+        a: "Zinnie offers attractive and competitive margins designed for long-term business growth.",
     },
     {
-        q: "How long does the approval process take?",
-        a: "Approval timelines vary based on application review.",
+        q: " Which regions are available for distribution?",
+        a: "Availability depends on current market coverage and is discussed during onboarding.",
     },
     {
-        q: "Can I expand to multiple areas?",
-        a: "Yes, based on your capacity and agreement.",
+        q: " Is this suitable for small business owners?",
+        a: "Yes, retail owners and small wholesalers can also become distributors.",
     },
     {
-        q: "Why should I choose Zinnie Zeera?",
-        a: "Because of high-demand products, strong support, and growth potential.",
+        q: " What support does Zinnie provide?",
+        a: "Support includes product guidance, supply coordination, marketing assistance, and business onboarding.",
     },
+    {
+        q: " How fast can I start after applying?",
+        a: "After approval, onboarding and supply can begin within a short time depending on location.",
+    },
+    {
+        q: " What makes Zinnie different from other beverage brands?",
+        a: "Zinnie focuses on traditional Indian-inspired flavors combined with modern packaging and consistency.",
+    },
+    {
+        q: " Are the products fast-moving in the market?",
+        a: "Yes, categories like jeera soda and fruit drinks have strong and growing demand.",
+    },
+    {
+        q: " Can I distribute multiple Zinnie products?",
+        a: "Yes, distributors can handle the full product range.",
+    },
+    {
+        q: " Is storage space required?",
+        a: "Yes, basic storage space is needed for inventory management.",
+    },
+    {
+        q: " Do I need my own delivery system?",
+        a: "You can use your own logistics or arrange local delivery partners.",
+    },
+    {
+        q: " Are these products suitable for all age groups?",
+        a: "Yes, Zinnie beverages are designed for wide consumer acceptance.",
+    },
+    {
+        q: " Can I expand my business later?",
+        a: "Yes, distributors can scale into larger territories or super stockist roles.",
+    },
+    {
+        q: " How is product supply managed?",
+        a: "Supply is coordinated regularly based on demand and distributor requirements.",
+    },
+    {
+        q: "How do I apply for Zinnie distribution?",
+        a: "You can apply directly through the official distributor inquiry page and the team will guide you through the process.",
+    }
 ];
 
 // ── Sub-components ──
 
 function FaqItem({ faq, index }) {
-    const [open, setOpen] = useState(false);
-
     return (
-        <div
-            className="faq-item"
-            style={{ animationDelay: `${index * 40}ms` }}
-        >
-            <button
-                className={`faq-question ${open ? "open" : ""}`}
-                onClick={() => setOpen(!open)}
-                aria-expanded={open}
-            >
-                <span className="faq-num">Q{index + 1}</span>
-                <span className="faq-text">{faq.q}</span>
-                <span className={`faq-arrow ${open ? "rotated" : ""}`}>▾</span>
-            </button>
-
-            <div className={`faq-answer ${open ? "expanded" : ""}`}>
-                <p>{faq.a}</p>
-            </div>
+        <div className="faq-static-item">
+            <h3 className="faq-static-question">
+                {index + 1}. {faq.q}
+            </h3>
+            <p className="faq-static-answer">
+                {faq.a}
+            </p>
         </div>
     );
 }
@@ -508,7 +595,7 @@ function FaqItem({ faq, index }) {
 function ContentCard({ item, index }) {
     const Tag = item.level;
     const isHeading = ["h1", "h2", "h3"].includes(item.level);
-
+    const isList = item.level === "ul"
     return (
         <div
             className={`content-card content-card--${item.level}`}
@@ -525,6 +612,13 @@ function ContentCard({ item, index }) {
                     className="card-text"
                     dangerouslySetInnerHTML={{ __html: item.body }}
                 />
+            ) : null}
+            {isList && item.items ? (
+                <ul className="card-list">
+                    {item.items.map((li, i) => (
+                        <li key={i}>{li}</li>
+                    ))}
+                </ul>
             ) : null}
         </div>
     );

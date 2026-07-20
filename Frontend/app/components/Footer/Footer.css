@@ -18,7 +18,7 @@
 
 .footer-grid {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     gap: 50px;
     align-items: start;
 }
@@ -151,16 +151,22 @@
 /* Bottom Bar */
 .footer-bottom {
     margin-top: 50px;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .divider {
     height: 1px;
     background: linear-gradient(90deg,
             transparent,
-            rgba(255, 200, 100, 0.4),
+            #ffc86466
             transparent);
     margin-bottom: 24px;
+}
+
+.Developed a {
+    text-decoration: none;
+    color: #ffc864;
 }
 
 .copyright {

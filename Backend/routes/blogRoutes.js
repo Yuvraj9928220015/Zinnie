@@ -4,10 +4,8 @@ const fs = require("fs");
 const multer = require("multer");
 const router = express.Router();
 const Blog = require("../models/Blog");
-
 const uploadDir = path.join(__dirname, "../uploads");
 
-// Agar uploads folder exist nahi karta to create kar do
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
 }
@@ -24,7 +22,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// STANDALONE IMAGE UPLOAD (MDX Editor ke liye) — ye sabse upar honi chahiye
 router.post("/upload-image", upload.single("image"), async (req, res) => {
   try {
     if (!req.file) {

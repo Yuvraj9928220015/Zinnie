@@ -13,15 +13,15 @@
 /* ── Header ── */
 .productContainerContent {
     text-align: center;
-    max-width: 600px;
+    /* max-width: 600px; */
     margin: 0 auto 50px;
 }
 
 .aboutHeading {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(2rem, 5vw, 2rem);
     font-weight: 400;
     margin-bottom: 12px;
-    color: rgb(73, 73, 73);
+    color: #494949;
 }
 
 .productContainerContentDes {

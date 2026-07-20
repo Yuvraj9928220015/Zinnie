@@ -27,6 +27,7 @@ export default function Banner() {
 
   return (
     <>
+      <h1 className="Affordable">Affordable Soft Drinks & Cold Drinks in India</h1>
       {banners.map((banner, index) => (
         <section className="banner" key={index}>
           <video

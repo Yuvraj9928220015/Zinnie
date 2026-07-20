@@ -1,13 +1,78 @@
-// "use client" hataya — Server Component
 import Link from "next/link";
 import styles from "./product.module.css";
 import ProductPageContent from "./ProductPageContent";
 
 const API_BASE_URL = "https://api.zinniezeera.com";
 
+const PAGE_URL = "https://zinniezeera.com/product";
+const OG_IMAGE = "/ZinnieWebsiteImage.jpeg";
+const TWITTER_IMAGE = "https://zinniezeera.com/Rustic-spice.png";
+const TITLE = "Buy Refreshing Soft Drinks Online in India";
+const DESCRIPTION =
+  "Looking to buy soft drinks online in India? Explore Zinnie's range of refreshing and delicious soft drinks — order your favorite drinks today!";
+
 export const metadata = {
-  title: "Buy Refreshing Soft Drinks Online in India",
-  description: "Looking to buy soft drinks online in India? Explore Zinnie’s range of refreshing and delicious soft drinks — order your favorite drinks today!",
+  title: {
+    default: TITLE,
+  },
+
+  alternates: {
+    canonical: PAGE_URL,
+  },
+
+  description: DESCRIPTION,
+
+  keywords: [
+    "soft drinks",
+    "cold drinks",
+    "cool drinks",
+    "beverages",
+    "healthy drinks",
+    "Zinnie",
+  ],
+
+  icons: {
+    icon: "/Zinnie-logo.png",
+  },
+
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: PAGE_URL,
+    siteName: "Zinnie",
+    type: "website",
+    locale: "en_IN",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "Affordable Soft Drinks",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    creator: "@zinnie",
+    images: [
+      {
+        url: TWITTER_IMAGE,
+        alt: "Affordable Soft Drinks",
+      },
+    ],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 function getPriceRange(product) {
@@ -45,7 +110,7 @@ export default async function ProductPage() {
     <>
       <div className={styles.productContainer}>
         <div className={styles.productContainerContent}>
-          <h1 className={styles.aboutHeading}>Our Products</h1>
+          <h1 className={styles.aboutHeading}>Affordable & Delicious Soft Drinks Collection</h1>
           <div className={styles.productContainerContentDes}>
             Our collection of Refreshing Drinks.
           </div>
@@ -59,7 +124,6 @@ export default async function ProductPage() {
           ) : (
             <div className={styles.productsGrid}>
               {products.map((product) => (
-                // Link already sahi hai — Google follow karega
                 <Link
                   key={product._id}
                   href={`/product/${product.slug}`}

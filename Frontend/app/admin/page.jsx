@@ -404,7 +404,7 @@ export default function AdminPage() {
   );
 
   return (
-    <div style={{ minHeight: "100vh", background: "#f8f8f6" }}>
+    <div className="Product-Admin" style={{ minHeight: "100vh", background: "#f8f8f6", marginTop: "50px", }}>
       {/* Header */}
       <div style={{ padding: "1.5rem 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #e8e8e4", background: "#fff" }}>
         <div>

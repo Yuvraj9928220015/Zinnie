@@ -25,11 +25,26 @@ const Footer = () => {
 
                     {/* Navigation Column */}
                     <div className="footer-col">
-                        <h4 className="footer-heading">Quick Links</h4>
+                        <h4 className="footer-heading">About</h4>
                         <ul className="footer-links">
                             <li><a href="/">Home</a></li>
                             <li><a href="/about">About Us</a></li>
                             <li><a href="/faqs">Faqs</a></li>
+                            <li><a href="/become-a-distributor/">Distributor</a></li>
+                            <li><a href="/blog/">Blog</a></li>
+                            <li><a href="/contact-us/">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <div className="footer-col">
+                        <h4 className="footer-heading">Products</h4>
+                        <ul className="footer-links">
+                            <li><a href="/product/">All Products</a></li>
+                            <li><a href="/product/chilli-guava-drink/">Chilli Guava Drink</a></li>
+                            <li><a href="/product/nimbu-zeera-drink/">Nimbu Zeera</a></li>
+                            <li><a href="/product/ginger-lemon-drink/">Ginger Lemon</a></li>
+                            <li><a href="/product/zeera-masala-soda/">Zinnie Zeera</a></li>
+                            <li><a href="/product/mango-drink/">Zinnie Mango</a></li>
                         </ul>
                     </div>
 
@@ -55,9 +70,12 @@ const Footer = () => {
 
                 {/* Bottom Bar */}
                 <div className="footer-bottom">
-                    <div className="divider" />
                     <p className="copyright">
                         © {new Date().getFullYear()} <span>Zinnie</span>. All rights reserved.
+                    </p>
+
+                    <p className="Developed">
+                       <a href="/sitemap"> Sitemap </a> | Developed By<a href="/lensclickerdigital.com"> LensClickerDigital </a>
                     </p>
                 </div>
             </div>

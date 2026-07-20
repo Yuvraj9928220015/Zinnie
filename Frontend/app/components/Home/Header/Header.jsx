@@ -3,7 +3,7 @@
 import { useState } from "react";
 import "./Header.css";
 
-// ── Schema Scripts (JSON-LD) ───────────────────────────────────────────────────
+// ── Schema Scripts (JSON-LD) ───
 
 const schemaOrganization = {
     "@context": "https://schema.org",
@@ -36,7 +36,7 @@ const schemaWebSite = {
 const schemaWebPage = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Buy Affordable Soft Drinks & Cold Drinks in India Online",
+    "name": "Buy Cold Drinks Online in India – Affordable & Best Soft Drinks",
     "url": "https://zinniezeera.com/",
     "description": "Searching for soft drinks in India? Zinnie offers affordable, refreshing cold drinks you'll love. Shop the best cool drinks online today!",
     "inLanguage": "en-IN",
@@ -59,427 +59,724 @@ const schemaBeverageBusiness = {
     "sameAs": ["https://www.instagram.com/zinniezeera/"]
 };
 
+const schemaItemList = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Buy Soft Drinks Online in India",
+    "url": "https://zinniezeera.com/",
+    "numberOfItems": 5,
+    "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "Zeera Masala Soda", "url": "https://zinniezeera.com/product/zeera-masala-soda/" } },
+        { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "Nimbu Zeera Drink", "url": "https://zinniezeera.com/product/nimbu-zeera/" } },
+        { "@type": "ListItem", "position": 3, "item": { "@type": "Product", "name": "Mango Drink", "url": "https://zinniezeera.com/product/zinnie-mango/" } },
+        { "@type": "ListItem", "position": 4, "item": { "@type": "Product", "name": "Ginger Lemon Drink", "url": "https://zinniezeera.com/product/ginger-lemon/" } },
+        { "@type": "ListItem", "position": 5, "item": { "@type": "Product", "name": "Chilli Guava Drink", "url": "https://zinniezeera.com/product/chilli-guava/" } },
+    ],
+};
+
 const schemaFAQPage = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-        {
-            "@type": "Question",
-            "name": "What are the best soft drinks in India?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "The best soft drinks in India offer a balance of taste, affordability, and quality. Zinnie Zeera provides refreshing and budget-friendly options."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Are affordable soft drinks good in quality?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, affordable soft drinks can maintain high quality when produced with proper standards and hygienic processes."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Which cold drinks are most popular in India?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Popular cold drinks include fruity beverages, fizzy sodas, and flavored drinks catering to various preferences."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Why is the demand for soft drinks increasing in India?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Demand is increasing due to changing lifestyles, hot climate, and preference for convenient beverages."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "What makes a soft drink brand the best in India?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Taste, pricing, availability, quality, and strong distribution networks define the best soft drink brands."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Are cold drinks suitable for daily consumption?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Cold drinks are best enjoyed occasionally for refreshment and social occasions."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "How to choose the right cold drink brand in India?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Choose based on taste, price, quality, and availability."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "What are the benefits of affordable soft drinks for retailers?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "They attract more customers, sell faster, and offer better margins."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Do soft drink brands offer distributorship opportunities in India?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, many brands including Zinnie Zeera offer distributorship opportunities."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "What flavours are available in cold drinks?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Flavours include orange, lemon, cola, and mixed fruit."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Are soft drinks safe to consume?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes, when produced under proper standards and consumed in moderation."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "What packaging options are available for soft drinks?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "They are available in small, large, and bulk packaging."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Why are cold drinks popular during summer in India?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "They provide instant cooling and refreshment."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "How can I start a soft drink distribution business in India?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Partner with a brand, study demand, and build a distribution network."
-            }
-        },
-        {
-            "@type": "Question",
-            "name": "Where can I buy affordable soft drinks in India?",
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "They are available via retailers, wholesalers, and distributors."
-            }
-        }
-    ]
+    "mainEntity": [],
 };
 
-// ── Data ──────────────────────────────────────────────────────────────────────
+
+function renderRichText(text) {
+    const regex = /\*\*(.+?)\*\*|\[([^\]]+)\]\(([^)]+)\)/g;
+    const nodes = [];
+    let lastIndex = 0;
+    let match;
+    let key = 0;
+
+    while ((match = regex.exec(text)) !== null) {
+        if (match.index > lastIndex) {
+            nodes.push(text.slice(lastIndex, match.index));
+        }
+        if (match[1] !== undefined) {
+            nodes.push(<strong key={key++}>{match[1]}</strong>);
+        } else if (match[2] !== undefined) {
+            nodes.push(
+                <a key={key++} href={match[3]} className="card-list-link">
+                    {match[2]}
+                </a>
+            );
+        }
+        lastIndex = regex.lastIndex;
+    }
+    if (lastIndex < text.length) {
+        nodes.push(text.slice(lastIndex));
+    }
+    return nodes;
+}
 
 const mainContent = [
     {
-        level: "h2",
-        heading: "Affordable Soft Drinks in India – Best Cold Drinks for Every Occasion",
+        level: "h1",
+        heading: "Buy Cold Drinks Online in India – Affordable & Best Soft Drinks",
     },
     {
         level: "p",
-        body: "Zinnie Zeera introduces a refreshing and value-driven range of affordable soft drinks in India, created to deliver the perfect combination of taste, quality, and accessibility. In a market where consumers are constantly looking for beverages that are both enjoyable and budget-friendly, our brand focuses on providing high-quality cold drinks that meet everyday needs.",
+        body: "Welcome to Zinnie — your trusted destination to **buy cold drinks online in India**. If you are searching for refreshing, flavorful, and affordable soft drinks, you are in the right place. At Zinnie, we bring you a unique range of beverages inspired by traditional Indian flavors, blended perfectly with a modern twist to suit today's taste preferences.",
     },
     {
         level: "p",
-        body: "Whether you are a consumer seeking instant refreshment, a retailer aiming to stock fast-moving products, or a distributor looking for profitable beverage options, Zinnie Zeera offers solutions tailored for everyone. With the growing demand for soft drinks in India, we are committed to delivering products that align with modern preferences while maintaining traditional taste satisfaction.",
+        body: "In today's fast-paced lifestyle, cold drinks are more than just beverages—they are a refreshing escape from daily routine. Whether you are relaxing at home, enjoying a meal, hosting guests, or looking for a quick refreshment on the go, the right drink can instantly elevate your experience. That's where Zinnie stands out by offering some of the best cool drinks in India that are not only refreshing but also full of authentic flavor.",
     },
     {
         level: "p",
-        body: "Our goal is simple — to become one of the best cool drinks in India by offering consistency, affordability, and great taste in every bottle.",
-    },
-    {
-        level: "h2",
-        heading: "Discover the Best Cool Drinks in India",
+        body: "Our goal is to redefine soft drinks in India by moving beyond regular sugary sodas and introducing beverages that deliver both taste and uniqueness. From fizzy refreshment to bold desi flavors, every product is carefully crafted to provide a satisfying and memorable drinking experience.",
     },
     {
         level: "p",
-        body: "Zinnie Zeera is dedicated to offering some of the best cool drinks in India, combining refreshing taste with consistent quality. Our beverages are crafted to meet the expectations of modern consumers who seek both flavor and value. With a focus on innovation and customer satisfaction, we ensure that every product delivers a unique and enjoyable experience.",
-    },
-    {
-        level: "h3",
-        heading: "Refreshing Flavours Loved Across India",
+        body: "If you are looking to **buy soft drinks online** that combine quality, affordability, and great taste, Zinnie is your perfect choice. We focus on delivering premium-quality cold drinks that match the expectations of modern consumers while staying connected to traditional Indian taste.",
     },
     {
         level: "p",
-        body: "India is a diverse country with varied taste preferences, and Zinnie Zeera understands the importance of catering to this diversity. Our beverages are carefully crafted to appeal to a wide audience by offering refreshing flavours that resonate with Indian consumers. From tangy fruit-based drinks to fizzy classics, each product is designed to deliver a satisfying and enjoyable experience.",
-    },
-    {
-        level: "h3",
-        heading: "Perfect Drinks for Summer & Daily Refreshment",
-    },
-    {
-        level: "p",
-        body: "With rising temperatures across most parts of India, the need for refreshing beverages has never been greater. Our cold drinks are specifically designed to provide instant cooling and refreshment, making them ideal for summer consumption as well as daily refreshment.",
+        body: "Explore our range and discover why more customers are choosing Zinnie for affordable soft drinks and refreshing beverages across India.",
     },
     {
         level: "h2",
-        heading: "Growing Demand for Soft Drinks in India",
+        heading: "Our Popular Flavors",
     },
     {
         level: "p",
-        body: "The demand for soft drinks in India is rapidly increasing due to lifestyle changes, urbanization, and the need for convenient refreshment options. Consumers are now more inclined toward ready-to-drink beverages that offer taste, affordability, and accessibility. This growing demand creates strong opportunities for brands that can consistently deliver value.",
+        body: "At Zinnie, we offer a carefully curated range of beverages designed to suit diverse taste preferences while staying true to authentic Indian flavors. Each drink is crafted to deliver a refreshing and memorable experience.",
     },
     {
-        level: "h3",
-        heading: "Why Soft Drinks Are Popular Among Indian Consumers",
+        level: "ul",
+        items: [
+            { name: "Zeera Masala Soda", href: "https://zinniezeera.com/product/zeera-masala-soda/", desc: " — A bold combination of cumin, spices, and fizz that delivers a tangy and refreshing kick" },
+            { name: "Nimbu Zeera Drink", href: "https://zinniezeera.com/product/nimbu-zeera/", desc: " — A perfect blend of citrusy lemon and traditional jeera for a balanced flavor" },
+            { name: "Mango Drink", href: "https://zinniezeera.com/product/zinnie-mango/", desc: " — Smooth, sweet, and tropical, ideal for those who enjoy fruity refreshment" },
+            { name: "Ginger Lemon Drink", href: "https://zinniezeera.com/product/ginger-lemon/", desc: " — A zesty fusion with a slight spicy undertone for a unique taste" },
+            { name: "Chilli Guava Drink", href: "https://zinniezeera.com/product/chilli-guava/", desc: " — A distinctive mix of sweet guava and mild spice, offering a modern twist" },
+        ],
     },
     {
         level: "p",
-        body: "Soft drinks have become an essential part of modern consumption habits. Their availability, variety, and instant refreshment make them a preferred choice among people of all age groups.",
-    },
-    {
-        level: "h3",
-        heading: "Trends in the Indian Beverage Market",
-    },
-    {
-        level: "p",
-        body: "The Indian beverage market is evolving with a strong focus on affordability and availability. Brands that provide competitive pricing along with quality are gaining more traction in both urban and rural markets.",
+        body: "Each flavor is developed to provide a unique alternative to regular soft drinks while maintaining consistency in quality and taste.",
     },
     {
         level: "h2",
-        heading: "Affordable Soft Drinks Without Compromising Taste",
+        heading: "Discover the Best Cold Drinks in India",
     },
     {
         level: "p",
-        body: "At Zinnie Zeera, affordability is not just about pricing—it's about delivering maximum value. Our affordable soft drinks are designed to ensure that customers enjoy great taste without spending more. We believe that everyone deserves access to high-quality beverages at reasonable prices.",
-    },
-    {
-        level: "h3",
-        heading: "Budget-Friendly Options for Retailers & Consumers",
+        body: "When it comes to choosing the **best cool drinks in India**, taste, quality, and uniqueness play a crucial role. Today's consumers are no longer satisfied with regular sugary sodas—they are looking for refreshing beverages that offer something different, something more flavorful, and something that connects with Indian taste preferences. At Zinnie, we understand this shift and focus on delivering cold drinks that truly stand out from conventional options.",
     },
     {
         level: "p",
-        body: "Our pricing strategy benefits both consumers and retailers by offering products that are easy to purchase and quick to sell. This creates a win-win situation for all stakeholders.",
-    },
-    {
-        level: "h3",
-        heading: "High Quality at Competitive Prices",
+        body: "Our beverages are carefully crafted to provide a perfect balance of refreshment and flavor. We combine traditional ingredients with modern carbonation techniques to create drinks that are both exciting and satisfying. Whether you are enjoying a meal, relaxing at home, or celebrating with friends, our drinks are designed to enhance every moment.",
     },
     {
         level: "p",
-        body: "We maintain strict quality standards while optimizing production costs, ensuring that every product meets expectations without becoming expensive.",
+        bold: true,
+        body: "Our signature Zeera Masala Soda is a perfect blend of:",
+    },
+    {
+        level: "ul",
+        items: [
+            "Refreshing fizz that instantly energizes",
+            "Tangy lemon flavor for a zesty kick",
+            "Traditional Indian spices for depth and richness",
+            "Authentic cumin (jeera) taste that adds a unique twist",
+        ],
+    },
+    {
+        level: "p",
+        body: "This powerful combination creates a bold and refreshing drink that is not only satisfying but also memorable. Unlike ordinary soft drinks, it delivers a distinct desi flavor that sets it apart in the growing market of soft drinks in India.",
+    },
+    {
+        level: "p",
+        body: "If you are searching for something beyond the usual, Zinnie brings you one of the best cold drinks in India—crafted for taste, quality, and a truly refreshing experience.",
     },
     {
         level: "h2",
-        heading: "Why Choose Zinnie Zeera Cold Drinks",
+        heading: "Why Choose Our Soft Drinks?",
     },
     {
         level: "p",
-        body: "Choosing the right beverage brand is important for both consumers and businesses. Zinnie Zeera stands out by offering reliability, taste, and affordability. Our commitment to quality and customer satisfaction makes us a preferred choice in the cold drinks segment.",
+        body: "At Zinnie, we are committed to delivering premium-quality **soft drinks** in India that offer the perfect combination of taste, quality, and value. In a market filled with ordinary carbonated beverages, we focus on creating drinks that are not only refreshing but also unique and memorable. Our goal is to provide customers with beverages that go beyond basic refreshment and deliver a complete flavor experience.",
+    },
+    {
+        level: "p",
+        body: "We understand that today's consumers are more conscious about what they drink. That's why we ensure that every product is carefully crafted using quality ingredients and thoughtful flavor combinations. Whether you are enjoying a meal, relaxing after a long day, or celebrating special moments, Zinnie **soft drinks** are designed to fit every occasion.",
     },
     {
         level: "h3",
-        heading: "Consistent Quality & Great Taste",
+        heading: "Key Benefits:",
+    },
+    {
+        level: "ul",
+        items: [
+            "Unique Indian flavor-based beverages inspired by traditional taste",
+            "Made with carefully selected, high-quality ingredients",
+            "Refreshing and digestive-friendly drinks suitable for Indian meals",
+            "Perfect for daily consumption as well as parties and gatherings",
+            "Affordable soft drinks that offer great value for money",
+        ],
     },
     {
         level: "p",
-        body: "We ensure that every bottle delivers the same level of taste and freshness, helping us build trust among customers.",
-    },
-    {
-        level: "h3",
-        heading: "Ideal for Distributors & Retail Businesses",
+        body: "Unlike regular carbonated drinks that focus only on sweetness and fizz, Zinnie beverages bring a distinctive desi twist that connects with Indian taste preferences. Our drinks are crafted to deliver a balanced flavor profile—refreshing, slightly tangy, and deeply satisfying.",
     },
     {
         level: "p",
-        body: "Our products are designed for high demand, making them easy to sell and profitable for distributors and retailers.",
-    },
-    {
-        level: "h3",
-        heading: "Hygienic Production & Trusted Ingredients",
-    },
-    {
-        level: "p",
-        body: "We follow hygienic production practices and use quality ingredients to maintain safety and consistency.",
+        body: "If you are looking for the best cold drinks in India that combine authenticity, affordability, and quality, Zinnie is the perfect choice for you.",
     },
     {
         level: "h2",
-        heading: "Cold Drinks for Every Occasion",
+        heading: "Affordable Soft Drinks for Everyone",
     },
     {
         level: "p",
-        body: "Zinnie Zeera offers versatile beverage options suitable for every occasion. Whether it's a celebration or a daily refreshment need, our cold drinks provide the perfect solution for all situations.",
-    },
-    {
-        level: "h3",
-        heading: "Perfect for Parties, Events & Daily Use",
+        body: "At Zinnie, we strongly believe that great taste should not come at a high price. Everyone deserves to enjoy refreshing and high-quality beverages without worrying about cost. That's why we focus on offering **affordable soft drinks** that deliver premium taste, consistent quality, and excellent value for money.",
     },
     {
         level: "p",
-        body: "Our drinks are ideal for gatherings, events, and everyday consumption, making them a convenient and reliable choice.",
-    },
-    {
-        level: "h3",
-        heading: "A Refreshing Choice for All Age Groups",
+        body: "Our pricing is designed to make our products accessible to a wide range of customers while maintaining the highest standards in flavor and freshness. Whether you are purchasing for personal use or business needs, Zinnie ensures that you get the best return on your investment.",
     },
     {
         level: "p",
-        body: "With a wide range of flavours, our beverages appeal to people of all ages, ensuring broad market acceptance.",
+        bold: true,
+        body: "Whether you are:",
+    },
+    {
+        level: "ul",
+        items: [
+            "Hosting a party or celebration with friends and family",
+            "Running a retail store, restaurant, or café",
+            "Buying for everyday home consumption",
+        ],
+    },
+    {
+        level: "p",
+        body: "Zinnie offers the perfect balance of affordability and quality to suit every requirement.",
+    },
+    {
+        level: "p",
+        body: "Unlike many options in the market that either compromise on quality or come at a higher price, our soft drinks are crafted to deliver both. With Zinnie, you don't have to choose between cost and taste—you get both in every bottle.",
+    },
+    {
+        level: "p",
+        body: "If you are looking for affordable soft drinks in India that provide a refreshing experience without exceeding your budget, Zinnie is the ideal choice for you.",
     },
     {
         level: "h2",
-        heading: "Soft Drink Distribution Opportunities in India",
+        heading: "Buy Soft Drinks Online with Ease",
     },
     {
         level: "p",
-        body: "The expanding market for soft drinks in India presents significant opportunities for distributors and retailers. Zinnie Zeera aims to build a strong distribution network by partnering with individuals and businesses looking to grow in the beverage sector.",
+        body: "Looking to buy soft drinks online in India? Zinnie makes the entire process simple, fast, and completely hassle-free. We understand that today's customers value convenience, speed, and security when shopping online, which is why we have created a seamless experience from browsing to delivery.",
+    },
+    {
+        level: "p",
+        body: "With just a few clicks, you can explore our wide range of **refreshing cold drinks**, compare options, and place your order without any complications. Our user-friendly platform ensures that you can easily find what you're looking for and complete your purchase in minutes.",
     },
     {
         level: "h3",
-        heading: "Partner With Us as a Distributor",
+        heading: "Easy Shopping Experience:",
+    },
+    {
+        level: "ul",
+        items: [
+            "Browse a wide range of cold drinks anytime, anywhere",
+            "Secure online payments with trusted payment gateways",
+            "Fast and reliable delivery across India",
+            "Simple and hassle-free ordering process",
+            "Smooth checkout with minimal steps",
+        ],
     },
     {
         level: "p",
-        body: "We offer easy onboarding and strong support to help our partners establish and expand their business.",
-    },
-    {
-        level: "h3",
-        heading: "Benefits of Joining Zinnie Zeera Network",
+        body: "Whether you are ordering for your home, office, party, or business, Zinnie ensures a convenient and dependable shopping experience every time. We focus on delivering not just products, but a complete, customer-friendly service that saves your time and effort.",
     },
     {
         level: "p",
-        body: "Our partners benefit from competitive pricing, consistent product demand, and reliable supply chains, ensuring long-term profitability.",
+        body: "Now you can enjoy your favorite soft drinks in India without stepping out. Simply place your order online and get refreshing beverages delivered right to your doorstep, fresh and ready to enjoy.",
     },
     {
         level: "h2",
-        heading: "Explore Our Range of Cold Drinks",
+        heading: "A New Trend in Soft Drinks in India",
     },
     {
         level: "p",
-        body: "Our diverse product range is designed to meet varying consumer needs and preferences. Zinnie Zeera focuses on offering multiple options to ensure strong demand and repeat purchases in the market.",
+        body: "The Indian beverage market is rapidly evolving, with consumers shifting their preferences from regular sugary sodas to more unique and flavorful options. Today, people are looking for **cold drinks** that not only refresh but also offer a distinctive taste experience rooted in Indian traditions. This growing demand has led to the rise of innovative beverages that blend authenticity with modern refreshment.",
+    },
+    {
+        level: "p",
+        body: "At Zinnie, we are proud to be part of this new trend in **soft drinks in India**. Our approach focuses on bringing traditional flavors back into the spotlight while enhancing them with a refreshing, fizzy twist that appeals to today's generation.",
+    },
+    {
+        level: "p",
+        bold: true,
+        body: "Zinnie's jeera-based cold drink is gaining popularity because:",
+    },
+    {
+        level: "ul",
+        items: [
+            "It offers a unique and bold taste compared to regular colas",
+            "It perfectly complements Indian meals by enhancing overall flavor",
+            "It provides a refreshing, tangy, and slightly spiced drinking experience",
+            "It stands out as a healthier-feeling alternative to overly sweet beverages",
+        ],
+    },
+    {
+        level: "p",
+        body: "This combination of tradition and innovation makes Zinnie one of the best cool drinks in India for modern consumers who are seeking something different from conventional options.",
+    },
+    {
+        level: "p",
+        body: "As more people explore new beverage choices, Zinnie continues to redefine what soft drinks can be—refreshing, flavorful, and truly connected to Indian taste.",
+    },
+    {
+        level: "h2",
+        heading: "Perfect Drink for Every Occasion",
+    },
+    {
+        level: "p",
+        body: "Zinnie soft drinks are crafted to fit seamlessly into every moment of your day, making them the perfect choice for any occasion. Whether you are looking for a quick refreshment or planning a special event, our beverages are designed to deliver consistent taste, freshness, and satisfaction every time.",
+    },
+    {
+        level: "p",
+        body: "In today's busy lifestyle, having a go-to cold drink that suits different situations is essential. Zinnie offers versatile **soft drinks in India** that complement both everyday routines and memorable celebrations. With their refreshing fizz and unique desi flavor, our drinks enhance every experience.",
+    },
+    {
+        level: "p",
+        bold: true,
+        body: "Zinnie soft drinks are suitable for:",
+    },
+    {
+        level: "ul",
+        items: [
+            "Daily refreshment at home after a long day",
+            "Family gatherings, celebrations, and festive occasions",
+            "Restaurants, cafés, and food service businesses",
+            "Travel, picnics, and outdoor activities",
+        ],
+    },
+    {
+        level: "p",
+        body: "No matter where you are or what you are doing, Zinnie beverages add a burst of freshness and flavor to your day. Their balanced taste makes them enjoyable on their own or alongside your favorite meals.",
+    },
+    {
+        level: "p",
+        body: "If you are searching for the best cold drinks in India that can match every occasion, Zinnie is the perfect choice for consistent refreshment and great taste.",
+    },
+    {
+        level: "h2",
+        heading: "Quality You Can Trust",
+    },
+    {
+        level: "p",
+        body: "At Zinnie, quality is at the core of everything we do. We understand that when it comes to **soft drinks in India**, customers expect not only great taste but also safety, consistency, and reliability. That's why we follow strict quality standards at every stage—from sourcing raw ingredients to final packaging and delivery.",
+    },
+    {
+        level: "p",
+        body: "Our process is designed to ensure that every bottle delivers the same refreshing taste and premium experience that our customers trust. We carefully select ingredients, use hygienic production methods, and implement quality checks to maintain high standards across all our products.",
     },
     {
         level: "h3",
-        heading: "Popular Flavours Available",
+        heading: "Our Quality Promise:",
+    },
+    {
+        level: "ul",
+        items: [
+            "Freshness and consistent taste in every sip",
+            "Safe and hygienic production processes",
+            "High-quality, secure, and durable packaging",
+            "Carefully sourced ingredients for better flavor",
+            "Strict quality control at every stage",
+        ],
     },
     {
         level: "p",
-        body: "We provide a variety of flavours that cater to different taste preferences, ensuring customer satisfaction across regions.",
-    },
-    {
-        level: "h3",
-        heading: "Packaging Options for Every Need",
+        body: "Unlike many ordinary options in the market, Zinnie focuses on delivering beverages that meet modern expectations of quality and safety while maintaining authentic flavor. Our commitment to excellence ensures that every product you receive is crafted with care and precision.",
     },
     {
         level: "p",
-        body: "Our products come in multiple packaging sizes suitable for retail, wholesale, and bulk distribution requirements.",
+        body: "We aim to deliver the best soft drinks in India that not only satisfy your taste buds but also earn your trust with every purchase.",
+    },
+    {
+        level: "h2",
+        heading: "Growing Popularity of Flavored Cold Drinks",
+    },
+    {
+        level: "p",
+        body: "The demand for flavored **cold drinks in India** is growing rapidly as consumers move beyond traditional sugary sodas and explore beverages that offer both refreshment and a unique taste experience. Today's customers are more conscious of what they consume—they are looking for drinks that not only quench thirst but also deliver memorable flavors and a sense of authenticity.",
+    },
+    {
+        level: "p",
+        body: "One of the biggest trends in **soft drinks in India** is the return of traditional flavors with a modern twist. Ingredients like jeera (cumin), lemon, and Indian spices are gaining popularity again because they provide a nostalgic connection while still feeling fresh and exciting. These flavors remind consumers of classic Indian drinks, but with improved taste, convenience, and presentation.",
+    },
+    {
+        level: "p",
+        body: "At Zinnie, we have carefully designed our products to align with this growing trend. Our beverages are created to satisfy modern preferences while staying rooted in traditional Indian taste.",
+    },
+    {
+        level: "p",
+        bold: true,
+        body: "Zinnie products are crafted by combining:",
+    },
+    {
+        level: "ul",
+        items: [
+            "Tradition — inspired by authentic Indian flavors",
+            "Innovation — enhanced with modern beverage techniques",
+            "Taste — balanced, bold, and enjoyable flavor profiles",
+            "Refreshment — fizzy, cooling, and satisfying experience",
+        ],
+    },
+    {
+        level: "p",
+        body: "This thoughtful blend allows Zinnie to stand out in the competitive cold drinks market and positions it among the best cold drinks in India. As more consumers seek unique and flavorful beverages, Zinnie continues to deliver products that perfectly match evolving tastes and expectations.",
+    },
+    {
+        level: "h2",
+        heading: "How to Enjoy Zinnie Drinks",
+    },
+    {
+        level: "p",
+        body: "Zinnie beverages are versatile and can be enjoyed in multiple ways depending on the occasion. **To get the best experience, follow these simple suggestions:**",
+    },
+    {
+        level: "ul",
+        items: [
+            "Serve chilled to enjoy maximum freshness and fizz",
+            "Add ice cubes or a slice of lemon for enhanced flavor",
+            "Pair with Indian meals such as snacks, street food, or main courses",
+            "Use as a refreshing option during gatherings, parties, or celebrations",
+            "Carry along for travel, picnics, or outdoor activities",
+        ],
+    },
+    {
+        level: "p",
+        body: "These drinks are designed to complement both everyday moments and special occasions.",
+    },
+    {
+        level: "h2",
+        heading: "Why Buy from Zinnie Online",
+    },
+    {
+        level: "p",
+        body: "We focus on delivering a seamless and reliable online shopping experience so that customers can easily access their favorite beverages from anywhere in India.",
+    },
+    {
+        level: "ul",
+        items: [
+            "Simple and user-friendly ordering process",
+            "Secure payment options with trusted gateways",
+            "Fast and dependable delivery services",
+            "Carefully packaged products to maintain freshness",
+            "Competitive pricing for better value",
+        ],
+    },
+    {
+        level: "p",
+        body: "Our goal is to make buying soft drinks online convenient, safe, and efficient for every customer.",
+    },
+    {
+        level: "h2",
+        heading: "For Businesses and Bulk Buyers",
+    },
+    {
+        level: "p",
+        body: "Zinnie also supports business customers by offering flexible solutions for **bulk purchasing and distribution**. Our products are ideal for commercial environments that require consistent quality and supply.",
+    },
+    {
+        level: "ul",
+        items: [
+            "Suitable for restaurants, cafés, and food service outlets",
+            "Bulk purchasing options for retailers and wholesalers",
+            "Ideal for events, catering services, and large gatherings",
+            "Unique beverage options that help businesses stand out",
+        ],
+    },
+    {
+        level: "p",
+        body: "We aim to build long-term partnerships with businesses by providing reliable products and competitive pricing.",
+    },
+    {
+        level: "h2",
+        heading: "Special Offers and Deals",
+    },
+    {
+        level: "p",
+        body: "To make our products even more accessible, we regularly provide offers that deliver additional value to our customers:",
+    },
+    {
+        level: "ul",
+        items: [
+            "Discounts on bulk and combo purchases",
+            "Seasonal and festive promotions",
+            "Special pricing for repeat customers",
+            "Occasional free delivery offers",
+        ],
+    },
+    {
+        level: "p",
+        body: "These deals are designed to ensure customers get the best experience at the best price.",
+    },
+    {
+        level: "h2",
+        heading: "Packaging and Sizes",
+    },
+    {
+        level: "p",
+        body: "Zinnie beverages are available in different packaging formats to suit various needs. Whether for personal consumption or large-scale use, we provide flexible options.",
+    },
+    {
+        level: "ul",
+        items: [
+            "Multiple bottle sizes for convenience",
+            "Secure packaging to maintain product quality",
+            "Easy-to-carry designs for travel and outdoor use",
+            "Suitable for both individual and group consumption",
+        ],
+    },
+    {
+        level: "p",
+        body: "Our packaging ensures that every bottle reaches you in perfect condition.",
+    },
+    {
+        level: "h2",
+        heading: "Health-Conscious Refreshment Choice",
+    },
+    {
+        level: "p",
+        body: "Modern consumers are becoming more mindful of what they drink. While soft drinks are primarily enjoyed for refreshment, many customers today prefer beverages that feel lighter and more balanced.",
+    },
+    {
+        level: "p",
+        bold: true,
+        body: "Zinnie aligns with this shift by offering drinks that:",
+    },
+    {
+        level: "ul",
+        items: [
+            "Deliver bold flavor without being overly sweet",
+            "Provide a refreshing and satisfying experience",
+            "Complement Indian meals naturally",
+            "Feel more balanced compared to traditional sodas",
+        ],
+    },
+    {
+        level: "p",
+        body: "This makes Zinnie a preferred choice for those exploring better alternatives in soft drinks in India.",
+    },
+    {
+        level: "h2",
+        heading: "Compare Zinnie vs Regular Soft Drinks",
+    },
+    {
+        level: "table",
+        headers: ["Feature", "Zinnie", "Regular Soft Drinks"],
+        rows: [
+            ["Flavor Profile", "Indian-inspired, tangy & spiced", "Mostly sweet & cola-based"],
+            ["Variety", "Unique desi flavors", "Limited standard options"],
+            ["Experience", "Refreshing + flavorful", "Only fizzy refreshment"],
+            ["Use Case", "Meals, daily use, occasions", "Mostly casual consumption"],
+        ],
+    },
+    {
+        level: "p",
+        body: "This comparison helps users easily understand our **unique selling proposition (USP)**.",
+    },
+    {
+        level: "h2",
+        heading: "Our Commitment to Innovation",
+    },
+    {
+        level: "p",
+        body: "At Zinnie, we continuously work on improving and expanding our product range. By combining traditional Indian flavors with modern beverage techniques, we aim to stay ahead in the evolving soft drinks market.",
+    },
+    {
+        level: "p",
+        bold: true,
+        body: "We focus on:",
+    },
+    {
+        level: "ul",
+        items: [
+            "Researching new flavor combinations",
+            "Enhancing product quality and consistency",
+            "Adapting to changing customer preferences",
+            "Maintaining a balance between tradition and innovation",
+        ],
+    },
+    {
+        level: "p",
+        body: "This commitment allows us to offer beverages that remain relevant and exciting for modern consumers.",
+    },
+    {
+        level: "h2",
+        heading: "Best-Selling Products",
+    },
+    {
+        level: "p",
+        body: "Explore our most popular drinks loved by customers across India.",
+    },
+    {
+        level: "ul",
+        items: [
+            { name: "Chilli Guava Drink", href: "https://zinniezeera.com/product/chilli-guava/", desc: " — Sweet, spicy, and bold" },
+            { name: "Nimbu Zeera Drink", href: "https://zinniezeera.com/product/nimbu-zeera/", desc: " — Tangy and refreshing" },
+            { name: "Ginger Lemon Drink", href: "https://zinniezeera.com/product/ginger-lemon/", desc: " — Zesty with a spicy twist" },
+            { name: "Zeera Masala Soda", href: "https://zinniezeera.com/product/zeera-masala-soda/", desc: " — Classic desi refreshment" },
+            { name: "Mango Drink", href: "https://zinniezeera.com/product/zinnie-mango/", desc: " — Smooth and fruity" },
+        ],
+    },
+    {
+        level: "p",
+        body: "These products are consistently chosen for their taste, quality, and refreshing experience.",
+    },
+    {
+        level: "h2",
+        heading: "Refresh Your Day with the Best Cold Drinks in India",
+    },
+    {
+        level: "p",
+        body: "Upgrade your beverage experience with Zinnie and discover a refreshing new way to enjoy **cold drinks in India**. Our beverages are crafted to deliver the perfect balance of authentic Indian flavors, refreshing fizz, and bold taste that stands out from ordinary soft drinks.",
+    },
+    {
+        level: "p",
+        body: "Whether you are looking for a daily refreshment or something special to serve guests, Zinnie offers a unique alternative to regular sodas. With our signature **jeera-based drinks,** you can enjoy a flavorful experience that is both satisfying and memorable.",
+    },
+    {
+        level: "h2",
+        heading: "Order the Best Soft Drinks in India Today",
+    },
+    {
+        level: "p",
+        body: "Looking to buy soft drinks online with ease and convenience? Zinnie is your ideal destination. We make it simple for you to explore, choose, and order your favorite beverages from the comfort of your home.",
+    },
+    {
+        level: "p",
+        body: "Enjoy affordable soft drinks that don't compromise on quality or taste. Our beverages are crafted to deliver consistent freshness along with a unique desi flavor that sets them apart from regular carbonated drinks.",
+    },
+    {
+        level: "p",
+        body: "Experience something different from ordinary sodas—try Zinnie's premium jeera-based beverages today and enjoy a refreshing twist of tradition and taste.",
+    },
+    {
+        level: "p",
+        body: "If you are searching for the best cold drinks in India, Zinnie brings you the perfect combination of taste, quality, and affordability—all in one bottle.",
+    },
+    {
+        level: "p",
+        bold: true,
+        body: "Order now and enjoy fast delivery, great value, and the true taste of one of the best soft drinks in India.",
     },
 ];
 
 const faqs = [
     {
-        q: "What are the best soft drinks in India?",
-        a: "The best soft drinks in India offer a perfect balance of taste, affordability, and quality. Brands like Zinnie Zeera focus on delivering refreshing and budget-friendly options for everyday consumption.",
+        q: "What makes Zinnie cold drinks different from regular soft drinks?",
+        a: "Zinnie cold drinks are inspired by traditional Indian flavors like jeera, lemon, and spices, combined with modern carbonation to create a unique and refreshing taste.",
     },
     {
-        q: "Are affordable soft drinks good in quality?",
-        a: "Yes, affordable soft drinks can maintain high quality when produced with proper standards, hygienic processes, and quality ingredients.",
+        q: "Where can I buy Zinnie soft drinks online?",
+        a: "You can easily buy soft drinks online directly from our official website with a simple and secure checkout process.",
     },
     {
-        q: "Which cold drinks are most popular in India?",
-        a: "Popular cold drinks in India include fruity beverages, fizzy sodas, and flavored soft drinks that cater to a wide range of taste preferences.",
+        q: "Are Zinnie soft drinks available across India?",
+        a: "Yes, we deliver our cold drinks across multiple locations in India with fast and reliable shipping.",
     },
     {
-        q: "Why is the demand for soft drinks increasing in India?",
-        a: "The demand for soft drinks in India is increasing due to changing lifestyles, rising temperatures, and the need for convenient and refreshing beverages.",
+        q: "Are your soft drinks affordable?",
+        a: "Yes, Zinnie offers affordable soft drinks without compromising on quality, taste, or freshness.",
     },
     {
-        q: "What makes a soft drink brand the best in India?",
-        a: "A soft drink brand becomes popular based on taste, pricing, availability, quality, and strong distribution networks.",
+        q: "Which are the best cold drinks in India offered by Zinnie?",
+        a: "Our popular options include Zeera Masala Soda, Nimbu Zeera Drink, Ginger Lemon Drink, Chilli Guava Drink, and Mango Drink.",
     },
     {
-        q: "Are cold drinks suitable for daily consumption?",
-        a: "Cold drinks can be enjoyed occasionally for refreshment, especially during hot weather or social gatherings.",
+        q: "Are Zinnie drinks suitable for daily consumption?",
+        a: "Yes, our beverages are designed for regular refreshment and can be enjoyed daily.",
     },
     {
-        q: "How to choose the right cold drink brand in India?",
-        a: "Choose a brand that offers good taste, competitive pricing, consistent quality, and easy availability in your area.",
+        q: "What is Zeera Masala Soda?",
+        a: "Zeera Masala Soda is a refreshing cold drink made with cumin (jeera), lemon, and traditional Indian spices, offering a bold and tangy flavor.",
     },
     {
-        q: "What are the benefits of affordable soft drinks for retailers?",
-        a: "Affordable soft drinks attract more customers, ensure faster sales, and provide better profit margins for retailers.",
+        q: "Do your drinks contain artificial preservatives?",
+        a: "We focus on quality ingredients and maintain strict production standards to ensure safe and enjoyable beverages.",
     },
     {
-        q: "Do soft drink brands offer distributorship opportunities in India?",
-        a: "Yes, many soft drink brands, including Zinnie Zeera, offer distributorship opportunities for business growth.",
+        q: "Are Zinnie drinks good for parties and events?",
+        a: "Absolutely, our soft drinks are perfect for parties, gatherings, celebrations, and special occasions.",
     },
     {
-        q: "What flavours are available in cold drinks?",
-        a: "Cold drinks are available in a wide variety of flavours such as orange, lemon, cola, and mixed fruit.",
+        q: "Can I order soft drinks in bulk for business use?",
+        a: "Yes, you can order in bulk for retail stores, restaurants, cafés, and events.",
     },
     {
-        q: "Are soft drinks safe to consume?",
-        a: "Yes, soft drinks are safe when produced under proper hygiene standards and consumed in moderation.",
+        q: "Do you offer distributor opportunities?",
+        a: "Yes, we provide opportunities for distributors. You can apply through our \"Become a Distributor\" page.",
     },
     {
-        q: "What packaging options are available for soft drinks?",
-        a: "Soft drinks are available in different packaging sizes, including small bottles, large bottles, and bulk packaging for distributors.",
+        q: "How long does delivery take?",
+        a: "Delivery time depends on your location, but we aim to provide fast and reliable shipping across India.",
     },
     {
-        q: "Why are cold drinks popular during summer in India?",
-        a: "Cold drinks provide instant refreshment and cooling, making them a preferred choice during hot summer months.",
+        q: "Are your cold drinks suitable for restaurants and cafés?",
+        a: "Yes, our beverages are ideal for restaurants, cafés, and food service businesses looking to offer unique drinks.",
     },
     {
-        q: "How can I start a soft drink distribution business in India?",
-        a: "You can start by partnering with a brand, understanding market demand, and building a local distribution network.",
+        q: "What flavors are available in Zinnie soft drinks?",
+        a: "We offer a variety of flavors including jeera-based drinks, lemon drinks, mango drinks, ginger lemon, and more.",
     },
     {
-        q: "Where can I buy affordable soft drinks in India?",
-        a: "Affordable soft drinks are available through local retailers, wholesalers, and directly from brand distributors.",
+        q: "Why are flavored cold drinks becoming popular in India?",
+        a: "Consumers prefer unique and traditional flavors that provide better taste and a refreshing experience compared to regular sodas.",
+    },
+    {
+        q: "Are your drinks safe and hygienically produced?",
+        a: "Yes, we follow strict quality control and hygienic production processes to ensure safety and freshness.",
+    },
+    {
+        q: "Can I enjoy Zinnie drinks with meals?",
+        a: "Yes, our drinks complement Indian meals perfectly and enhance the overall dining experience.",
+    },
+    {
+        q: "What payment options are available for online orders?",
+        a: "We offer secure payment options including online payment gateways for a smooth checkout experience.",
+    },
+    {
+        q: "Are Zinnie drinks better than regular colas?",
+        a: "Zinnie drinks offer a unique desi flavor and refreshing experience, making them a great alternative to regular colas.",
+    },
+    {
+        q: "Why should I choose Zinnie for soft drinks in India?",
+        a: "Zinnie combines quality, affordability, authentic Indian flavors, and convenience, making it one of the best choices for cold drinks in India.",
     },
 ];
 
+schemaFAQPage.mainEntity = faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.q,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+}));
+
 // ── Sub-components ──
-
 function FaqItem({ faq, index }) {
-    const [open, setOpen] = useState(false);
-
     return (
-        <>
-            <div
-                className="faq-item"
-                style={{ animationDelay: `${index * 40}ms` }}
-            >
-                <button
-                    className={`faq-question ${open ? "open" : ""}`}
-                    onClick={() => setOpen(!open)}
-                    aria-expanded={open}
-                >
-                    <span className="faq-num">Q{index + 1}</span>
-                    <span className="faq-text">{faq.q}</span>
-                    <span className={`faq-arrow ${open ? "rotated" : ""}`}>▾</span>
-                </button>
-
-                <div className={`faq-answer ${open ? "expanded" : ""}`}>
-                    <p>{faq.a}</p>
-                </div>
-            </div>
-        </>
+        <div className="faq-static-item">
+            <h3 className="faq-static-question">
+                {index + 1}. {faq.q}
+            </h3>
+            <p className="faq-static-answer">
+                {faq.a}
+            </p>
+        </div>
     );
 }
 
 // ── Dynamic Tag Renderer ───────────────────────────────────────────────────────
 
 function ContentCard({ item, index }) {
-    const Tag = item.level;
     const isHeading = ["h1", "h2", "h3"].includes(item.level);
+    const Tag = isHeading ? item.level : "div";
 
     return (
         <div
@@ -487,13 +784,55 @@ function ContentCard({ item, index }) {
             style={{ animationDelay: `${index * 40}ms` }}
         >
             {isHeading && item.heading ? (
-                <Tag className={`card-heading card-heading--${item.level}`}>
+                <h2 className={`card-heading card-heading--${item.level}`}>
                     {item.heading}
-                </Tag>
+                </h2>
             ) : null}
 
-            {item.body ? (
-                <p className="card-text">{item.body}</p>
+            {item.level === "p" && item.body ? (
+                <p className="card-text">
+                    {item.bold ? <strong>{item.body}</strong> : renderRichText(item.body)}
+                </p>
+            ) : null}
+
+            {item.level === "ul" && Array.isArray(item.items) ? (
+                <ul className="card-list">
+                    {item.items.map((li, i) =>
+                        typeof li === "string" ? (
+                            <li key={i} className="card-list-item">{renderRichText(li)}</li>
+                        ) : (
+                            <li key={i} className="card-list-item">
+                                <a href={li.href} className="card-list-link">
+                                    <strong>{li.name}</strong>
+                                </a>
+                                {li.desc}
+                            </li>
+                        )
+                    )}
+                </ul>
+            ) : null}
+
+            {item.level === "table" && Array.isArray(item.rows) ? (
+                <div className="card-table-wrap">
+                    <table className="card-table">
+                        <thead>
+                            <tr>
+                                {item.headers.map((h, i) => (
+                                    <th key={i}>{h}</th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {item.rows.map((row, r) => (
+                                <tr key={r}>
+                                    {row.map((cell, c) => (
+                                        <td key={c}>{cell}</td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             ) : null}
         </div>
     );
@@ -529,6 +868,10 @@ export default function Header() {
             />
             <script
                 type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaItemList) }}
+            />
+            <script
+                type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFAQPage) }}
             />
 
@@ -541,7 +884,7 @@ export default function Header() {
                         onClick={() => toggle("content")}
                         aria-expanded={openSection === "content"}
                     >
-                        <span className="panel-title">Zinnie Zeera – About Our Soft Drinks</span>
+                        <h2 className="panel-title">Zinnie – About Our Soft Drinks</h2>
                         <span className="panel-chevron">▾</span>
                     </button>
 
@@ -563,7 +906,7 @@ export default function Header() {
                         onClick={() => toggle("faq")}
                         aria-expanded={openSection === "faq"}
                     >
-                        <span className="panel-title">Frequently Asked Questions</span>
+                        <h2 className="panel-title">Frequently Asked Questions</h2>
                         <span className="panel-chevron">▾</span>
                     </button>
 

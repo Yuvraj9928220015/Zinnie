@@ -26,7 +26,6 @@ export default function ProductDetailClient({ slug, initialProduct }) {
     return `${API_BASE_URL}/${imagePath.replace(/\\/g, "/").replace(/^\/+/, "")}`;
   };
 
-  // Main effect: initialProduct use karo ya fetch karo
   useEffect(() => {
     const initProduct = (p) => {
       setProduct(p);
@@ -40,12 +39,10 @@ export default function ProductDetailClient({ slug, initialProduct }) {
     };
 
     if (initialProduct) {
-      // Server se data aaya — directly use karo
       initProduct(initialProduct);
       return;
     }
 
-    // Server se data nahi aaya — client fetch karo
     const fetchProduct = async () => {
       try {
         setLoading(true);

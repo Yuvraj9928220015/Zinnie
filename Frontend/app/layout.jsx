@@ -45,7 +45,7 @@ export const metadata = {
 
     images: [
       {
-        url: "/Blog-image-4.png",
+        url: "/ZinnieWebsiteImage.jpeg",
         width: 1200,
         height: 630,
         alt: "Affordable Soft Drinks",
