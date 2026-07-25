@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import "./distributor.css";
 import DistributorPageContent from './DistributorPageContent';
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+
 const products = [
   {
     id: 1,
@@ -61,17 +63,41 @@ export default function DistributorClient() {
     subject: '',
     message: '',
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState({ loading: false, success: "", error: "" });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setFormData({ firstName: '', lastName: '', contactNo: '', email: '', subject: '', message: '' });
+    setStatus({ loading: true, success: "", error: "" });
+
+    try {
+      const res = await fetch(`${API_URL}/api/distributor`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Something went wrong.");
+      }
+
+      setStatus({ loading: false, success: data.message || "Thank you! We'll be in touch soon.", error: "" });
+      setFormData({
+        firstName: '',
+        lastName: '',
+        contactNo: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+    } catch (err) {
+      setStatus({ loading: false, success: "", error: err.message || "Something went wrong. Please try again." });
+    }
   };
 
   return (
@@ -134,9 +160,14 @@ export default function DistributorClient() {
 
             {/* Right: Form */}
             <div className="contact-form-wrapper">
-              {submitted && (
+              {status.success && (
                 <div className="form-success">
-                  Thank you! We'll be in touch soon.
+                  {status.success}
+                </div>
+              )}
+              {status.error && (
+                <div className="form-error">
+                  {status.error}
                 </div>
               )}
               <form className="contact-form-grid" onSubmit={handleSubmit}>
@@ -221,8 +252,8 @@ export default function DistributorClient() {
                 </div>
 
                 <div className="form-submit-row">
-                  <button type="submit" className="submit-btn">
-                    Submit
+                  <button type="submit" className="submit-btn" disabled={status.loading}>
+                    {status.loading ? "Sending..." : "Submit"}
                   </button>
                 </div>
               </form>

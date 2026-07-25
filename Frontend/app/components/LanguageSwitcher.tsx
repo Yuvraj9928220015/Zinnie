@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useLanguage } from "../../lib/useTranslate";
 
-const API_BASE_URL = "https://api.zinniezeera.com";
+const API_BASE_URL = "http://localhost:8080";
 
 interface Lang { code: string; name: string; }
 

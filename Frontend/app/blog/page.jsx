@@ -40,7 +40,6 @@ async function getInitialBlogs() {
 
 const PAGE_URL = "https://zinniezeera.com/blog/";
 const OG_IMAGE = "/ZinnieWebsiteImage.jpeg";
-const TWITTER_IMAGE = "/Rustic-spice.png";
 const TITLE = "Zinnie Blog | Latest Trends, Tips & Lifestyle Insights";
 const DESCRIPTION =
   "Explore the Zinnie blog for the latest trends, expert tips, and useful insights. Stay updated with style guides, product tips, and lifestyle inspiration.";
@@ -93,7 +92,9 @@ export const metadata = {
     creator: "@zinnie",
     images: [
       {
-        url: TWITTER_IMAGE,
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
         alt: "Affordable Soft Drinks",
       },
     ],

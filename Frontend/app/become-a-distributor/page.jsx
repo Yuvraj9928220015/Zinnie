@@ -2,7 +2,6 @@ import DistributorClient from './Distributorclient';
 
 const PAGE_URL = "https://zinniezeera.com/become-a-distributor/";
 const OG_IMAGE = "/ZinnieWebsiteImage.jpeg";
-const TWITTER_IMAGE = "/Rustic-spice.png";
 const TITLE = "Become a Beverage Distributor in India | Zinnie Soft Drinks";
 const DESCRIPTION =
   "Join Zinnie as a beverage distributor in India. Partner with a leading soft drink supplier and grow your business with jeera soda, nimbu zeera, masala soda, and flavored drinks.";
@@ -55,7 +54,9 @@ export const metadata = {
     creator: "@zinnie",
     images: [
       {
-        url: TWITTER_IMAGE,
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
         alt: "Affordable Soft Drinks",
       },
     ],

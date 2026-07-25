@@ -2,7 +2,6 @@ import Banner from './Home/Banner';
 
 const PAGE_URL = "https://zinniezeera.com/";
 const OG_IMAGE = "/ZinnieWebsiteImage.jpeg";
-const TWITTER_IMAGE = "/Rustic-spice.png";
 const TITLE = "Buy Affordable Soft Drinks & Cold Drinks in India Online";
 const DESCRIPTION =
   "Searching for soft drinks in India? Zinnie offers affordable, refreshing cold drinks you’ll love. Shop the best cool drinks online today!";
@@ -55,7 +54,9 @@ export const metadata = {
     creator: "@zinnie",
     images: [
       {
-        url: TWITTER_IMAGE,
+        url:  OG_IMAGE,
+        width: 1200,
+        height: 630,
         alt: "Affordable Soft Drinks",
       },
     ],

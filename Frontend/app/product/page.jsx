@@ -2,11 +2,10 @@ import Link from "next/link";
 import styles from "./product.module.css";
 import ProductPageContent from "./ProductPageContent";
 
-const API_BASE_URL = "https://api.zinniezeera.com";
+const API_BASE_URL = "http://localhost:8080";
 
 const PAGE_URL = "https://zinniezeera.com/product";
 const OG_IMAGE = "/ZinnieWebsiteImage.jpeg";
-const TWITTER_IMAGE = "https://zinniezeera.com/Rustic-spice.png";
 const TITLE = "Buy Refreshing Soft Drinks Online in India";
 const DESCRIPTION =
   "Looking to buy soft drinks online in India? Explore Zinnie's range of refreshing and delicious soft drinks — order your favorite drinks today!";
@@ -59,7 +58,9 @@ export const metadata = {
     creator: "@zinnie",
     images: [
       {
-        url: TWITTER_IMAGE,
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
         alt: "Affordable Soft Drinks",
       },
     ],

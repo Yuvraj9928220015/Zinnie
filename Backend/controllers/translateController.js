@@ -125,7 +125,6 @@ const getCountryFromIP = async (ip) => {
     }
 };
 
-// Detect language based on IP
 const detectLanguage = async (req, res) => {
     try {
         const ip =
@@ -157,8 +156,6 @@ const detectLanguage = async (req, res) => {
     }
 };
 
-// Translate text using Google Translate API
-// translateText function ko replace karo — no API key needed!
 const translateText = async (req, res) => {
     try {
         const { texts, targetLanguage, sourceLanguage = "en" } = req.body;
@@ -171,7 +168,6 @@ const translateText = async (req, res) => {
             return res.json({ success: true, translations: texts, targetLanguage });
         }
 
-        // Ek ek text translate karo MyMemory se
         const translations = await Promise.all(
             texts.map(async (text) => {
                 try {
@@ -184,7 +180,7 @@ const translateText = async (req, res) => {
                     });
                     return res.data?.responseData?.translatedText || text;
                 } catch {
-                    return text; // fail hone par original return karo
+                    return text;
                 }
             })
         );

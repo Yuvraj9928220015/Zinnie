@@ -3,7 +3,7 @@ export const productSeoData = {
     // ─────────────────────────────────────────────
     "nimbu-zeera-drink": {
     name: "nimbu-zeera-drink",
-    image: "/images/1.png",
+    image: "/distributor-4.png",
     metaTitle: "Buy Nimbu Zeera Drink Online | Jeera & Lemon Cold Drink",
     metaDescription:
         "Enjoy the refreshing Nimbu Zeera drink — a perfect blend of jeera and lemon water. Order your bottle of this cooling jeera drink online today!",
@@ -396,7 +396,7 @@ export const productSeoData = {
     // ────
     "zeera-masala-soda": {
         name: "Zeera Masala Soda",
-        image: "/images/2.png",
+        image: "/distributor-1.png",
         metaTitle: "Buy Zeera Masala Soda Online | Refreshing Jeera Soda Drink",
         metaDescription: "Enjoy Zinnie’s Zeera Masala Soda — a zesty jeera soft drink with nimbu flavor. Order your refreshing jeera masala soda bottle online today!",
         canonicalUrl: "https://zinniezeera.com/product/zeera-masala-soda/",
@@ -570,7 +570,7 @@ export const productSeoData = {
     // ─────────────────────────────────────────────
     "mango-drink": {
         name: "Mango Drink",
-        image: "/images/4.png",
+        image: "/distributor-2.png",
         metaTitle: "Buy Refreshing Mango Drink Online | Zinnie Fruit Drinks",
         metaDescription: "Quench your thirst with Zinnie’s refreshing mango drink — a delicious fruit drink perfect for every occasion. Order your favorite mango beverage online today!",
         canonicalUrl: "https://zinniezeera.com/product/mango-drink/",
@@ -787,7 +787,7 @@ export const productSeoData = {
     // ─────────────────────────────────────────────
     "ginger-lemon-drink": {
     name: "Ginger Lemon Drink",
-    image: "/images/5.png",
+    image: "/distributor-3.png",
     metaTitle: "Buy Ginger Lemon Drink Online | Refreshing Zinnie Beverage",
     metaDescription: "Enjoy Zinnie’s refreshing ginger lemon drink — a perfect blend of zesty ginger and tangy lemon. Order your favorite drink online today!",
     canonicalUrl: "https://zinniezeera.com/product/ginger-lemon-drink",
@@ -1085,7 +1085,7 @@ export const productSeoData = {
     // ─────────────────────────────────────────────
   "chilli-guava-drink": {
     name: "Chilli Guava Drink",
-    image: "/images/3.png",
+    image: "/distributor-5.png",
     metaTitle: "Buy Chilli Guava Drink Online | Zinnie Chilli Guava Juice",
     metaDescription: "Taste the spicy and refreshing Chilli Guava Drink by Zinnie. Order your favorite chilli guava juice online today and enjoy a unique, flavorful beverage!",
     canonicalUrl: "https://zinniezeera.com/product/chilli-guava-drink",
@@ -1458,7 +1458,7 @@ export function buildProductSchema(slug, apiProduct) {
 
     const imageUrl = apiProduct.image?.startsWith("http")
         ? apiProduct.image
-        : `https://api.zinniezeera.com/${apiProduct.image
+        : `http://localhost:8080/${apiProduct.image
             ?.replace(/\\/g, "/")
             .replace(/^\/+/, "")}`;
 

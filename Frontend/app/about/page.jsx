@@ -2,7 +2,6 @@ import About from "./About";
 
 const PAGE_URL = "https://zinniezeera.com/about/";
 const OG_IMAGE = "/ZinnieWebsiteImage.jpeg";
-const TWITTER_IMAGE = "/Rustic-spice.png";
 const TITLE = "About Zinnie | Our Story, Vision & Brand Journey";
 const DESCRIPTION =
   "Discover the story behind Zinnie, our vision, values, and commitment to quality. Learn how we bring style, comfort, and innovation together for modern lifestyles.";
@@ -42,7 +41,9 @@ export const metadata = {
     creator: "@zinnie",
     images: [
       {
-        url: TWITTER_IMAGE,
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
         alt: "About Zinnie",
       },
     ],

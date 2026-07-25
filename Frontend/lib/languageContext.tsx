@@ -19,9 +19,8 @@ const LanguageContext = createContext<LanguageContextType>({
   countryCode: "US", isLoading: true,
   setLanguage: () => {}, t: (k) => k,
 });
-const API_BASE_URL = "https://api.zinniezeera.com";
+const API_BASE_URL = "http://localhost:8080";
 
-// { nav: { home: "Home" } } → { "nav.home": "Home" }
 function flatten(obj: Record<string, any>, prefix = ""): Record<string, string> {
   return Object.keys(obj).reduce((acc: Record<string, string>, key) => {
     const k = prefix ? `${prefix}.${key}` : key;
@@ -34,7 +33,6 @@ function flatten(obj: Record<string, any>, prefix = ""): Record<string, string> 
   }, {});
 }
 
-// { "nav.home": "होम" } → { nav: { home: "होम" } }
 function unflatten(flat: Record<string, string>): Record<string, any> {
   const result: Record<string, any> = {};
   for (const [key, value] of Object.entries(flat)) {
@@ -49,7 +47,6 @@ function unflatten(flat: Record<string, string>): Record<string, any> {
   return result;
 }
 
-// en.json ke saare values ko Google Translate se translate karo
 async function translateAll(
   flat: Record<string, string>,
   lang: string
@@ -84,10 +81,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [enFlat, setEnFlat] = useState<Record<string, string>>({});
   const [messages, setMessages] = useState<Record<string, any>>({});
-  // Cache: { "hi": { "nav.home": "होम" }, "fr": {...} }
   const [cache, setCache] = useState<Record<string, Record<string, string>>>({});
 
-  // Sirf en.json ek baar load karo
   useEffect(() => {
     import("../app/messages/en.json")
       .then((mod) => {
@@ -98,7 +93,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       .catch(console.error);
   }, []);
 
-  // Language apply karo
   const applyLang = useCallback(
     async (lang: string, flat: Record<string, string>) => {
       if (lang === "en") {
@@ -126,14 +120,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     [cache]
   );
 
-  // en.json load hone ke baad language detect karo
   useEffect(() => {
     if (Object.keys(enFlat).length === 0) return;
 
     const detect = async () => {
       setIsLoading(true);
       try {
-        // User ne pehle manually choose kiya tha?
         const savedLang = localStorage.getItem("userLang");
         const savedName = localStorage.getItem("userLangName");
         if (savedLang) {
@@ -143,7 +135,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
           return;
         }
 
-        // IP se detect karo (local pe DEFAULT_COUNTRY use hoga)
         const res = await fetch(`${API_BASE_URL}/api/translate/detect-language`);
         const data = await res.json();
         if (data.success) {
@@ -160,9 +151,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     };
 
     detect();
-  }, [enFlat]); // enFlat load hone par ek baar chalega
+  }, [enFlat]);
 
-  // Manual language switch (dropdown se)
   const setLanguage = useCallback(
     async (lang: string, name?: string) => {
       setLang(lang);
@@ -173,7 +163,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     [enFlat, applyLang]
   );
 
-  // t("nav.home") → translated string
   const t = useCallback(
     (key: string): string => {
       const keys = key.split(".");

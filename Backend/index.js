@@ -17,6 +17,8 @@ const authRoutes = require('./routes/authRoutes');
 const checkoutRoutes = require('./routes/checkout');
 const translateRoutes = require("./routes/translateRoutes");
 const blogRoutes = require("./routes/blogRoutes");
+const contactRoutes = require("./routes/contactRoutes");
+const distributorRoutes = require("./routes/distributorRoutes");
 
 const app = express();
 
@@ -30,7 +32,7 @@ app.use(cors({
             'http://localhost:3000',
             'http://localhost:3001',
             'http://localhost:3002',
-            'https://api.zinniezeera.com',
+            'http://localhost:8080',
             'http://127.0.0.1:3000',
             'https://zinniezeera.com',
             'https://www.zinniezeera.com'
@@ -63,6 +65,8 @@ app.use('/api/payment', paymentRoutes);
 app.use('/api/checkout', checkoutRoutes);
 app.use("/api/translate", translateRoutes);
 app.use("/api/blogs", blogRoutes);
+app.use("/api/contact", contactRoutes);
+app.use("/api/distributor", distributorRoutes );
 
 app.use((err, req, res, next) => {
     console.error("❌ SERVER ERROR:", err);

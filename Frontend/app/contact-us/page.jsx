@@ -2,7 +2,6 @@ import Contact from "./Contact";
 
 const PAGE_URL = "https://zinniezeera.com/contact-us/";
 const OG_IMAGE = "/ZinnieWebsiteImage.jpeg";
-const TWITTER_IMAGE = "/Rustic-spice.png";
 const TITLE = "Contact Zinnie | Get in Touch With Us Today";
 const DESCRIPTION =
   "Have questions or need support? Contact Zinnie for quick assistance. Reach out via email, phone, or our contact form—we’re here to help you.";
@@ -55,7 +54,9 @@ export const metadata = {
     creator: "@zinnie",
     images: [
       {
-        url: TWITTER_IMAGE,
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
         alt: "Affordable Soft Drinks",
       },
     ],

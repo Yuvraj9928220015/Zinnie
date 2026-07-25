@@ -1,7 +1,7 @@
 export const dynamic = "force-static";
 
 const SITE_URL = "https://zinniezeera.com";
-const API_BASE_URL = "https://api.zinniezeera.com";
+const API_BASE_URL = "http://localhost:8080";
 
 export default async function sitemap() {
   const staticPages = [

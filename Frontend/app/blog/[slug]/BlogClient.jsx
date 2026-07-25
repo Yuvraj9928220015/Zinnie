@@ -18,6 +18,25 @@ function getSlugFromURL() {
   return null;
 }
 
+function getAbsoluteImageUrl(imagePath) {
+  if (!imagePath || imagePath.trim() === "") return null;
+  return imagePath.startsWith("http") ? imagePath : `${API_URL}${imagePath}`;
+}
+
+function extractJsonLd(rawScript) {
+  if (!rawScript || typeof rawScript !== "string") return null;
+  let jsonString = rawScript.trim();
+  const match = jsonString.match(/<script[^>]*>([\s\S]*?)<\/script>/i);
+  if (match && match[1]) jsonString = match[1].trim();
+  if (!jsonString) return null;
+  try {
+    JSON.parse(jsonString);
+    return jsonString;
+  } catch {
+    return null;
+  }
+}
+
 export default function BlogClient({ initialBlog }) {
   const [blog, setBlog] = useState(initialBlog || null);
   const [loading, setLoading] = useState(!initialBlog);
@@ -55,10 +74,41 @@ export default function BlogClient({ initialBlog }) {
   }, [initialBlog]);
 
   useEffect(() => {
-    if (blog && !initialBlog) {
-      document.title = blog.pageTitle || blog.title;
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.setAttribute("content", blog.metaDescription || "");
+    if (!blog || initialBlog) return;
+
+    document.title = blog.pageTitle || blog.title;
+
+    const setMeta = (selector, attr, value) => {
+      if (!value) return;
+      let tag = document.querySelector(selector);
+      if (!tag) {
+        tag = document.createElement("meta");
+        const [, attrName, attrValue] = selector.match(/\[(\w+)="([^"]+)"\]/) || [];
+        if (attrName && attrValue) tag.setAttribute(attrName, attrValue);
+        document.head.appendChild(tag);
+      }
+      tag.setAttribute(attr, value);
+    };
+
+    const description = blog.metaDescription || "";
+    const absoluteImage = getAbsoluteImageUrl(blog.image);
+
+    setMeta('meta[name="description"]', "content", description);
+    setMeta('meta[property="og:title"]', "content", blog.pageTitle || blog.title);
+    setMeta('meta[property="og:description"]', "content", description);
+    if (absoluteImage) setMeta('meta[property="og:image"]', "content", absoluteImage);
+    setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
+    setMeta('meta[name="twitter:title"]', "content", blog.pageTitle || blog.title);
+    setMeta('meta[name="twitter:description"]', "content", description);
+    if (absoluteImage) setMeta('meta[name="twitter:image"]', "content", absoluteImage);
+
+    const jsonLd = extractJsonLd(blog.script);
+    if (jsonLd && !document.getElementById("blog-jsonld")) {
+      const scriptTag = document.createElement("script");
+      scriptTag.type = "application/ld+json";
+      scriptTag.id = "blog-jsonld";
+      scriptTag.textContent = jsonLd;
+      document.head.appendChild(scriptTag);
     }
   }, [blog, initialBlog]);
 
@@ -70,12 +120,7 @@ export default function BlogClient({ initialBlog }) {
     return notFound();
   }
 
-  const imgSrc =
-    blog.image && blog.image.trim() !== ""
-      ? blog.image.startsWith("http")
-        ? blog.image
-        : `${API_URL}${blog.image}`
-      : null;
+  const imgSrc = getAbsoluteImageUrl(blog.image);
 
   return (
     <div className="blog-detail-wrapper">
@@ -83,7 +128,13 @@ export default function BlogClient({ initialBlog }) {
         <h1>{blog.title}</h1>
         <div className="blog-detail-meta">
           <span>{blog.author}</span> ·{" "}
-          <span>{new Date(blog.createdAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+          <span>
+            {new Date(blog.createdAt).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })}
+          </span>
         </div>
       </div>
       {imgSrc && (

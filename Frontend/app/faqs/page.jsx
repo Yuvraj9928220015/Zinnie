@@ -2,7 +2,6 @@ import Faqs from "./Faqs";
 
 const PAGE_URL = "https://zinniezeera.com/faqs/";
 const OG_IMAGE = "/ZinnieWebsiteImage.jpeg";
-const TWITTER_IMAGE = "/Rustic-spice.png";
 const TITLE = "Zinnie FAQs | Answers to Common Questions";
 const DESCRIPTION =
   "Find answers to frequently asked questions about orders, shipping, returns, and more at Zinnie. Get quick solutions to your queries.";
@@ -55,7 +54,9 @@ export const metadata = {
     creator: "@zinnie",
     images: [
       {
-        url: TWITTER_IMAGE,
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
         alt: "Affordable Soft Drinks",
       },
     ],
