@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./product.module.css";
 import ProductPageContent from "./ProductPageContent";
 
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = "https://api.zinniezeera.com";
 
 const PAGE_URL = "https://zinniezeera.com/product";
 const OG_IMAGE = "/ZinnieWebsiteImage.jpeg";

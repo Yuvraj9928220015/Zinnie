@@ -7,7 +7,7 @@ import {
   buildBreadcrumbSchema,
 } from "../data/productData";
 
-const API_BASE_URL = "http://localhost:8080";
+const API_BASE_URL = "https://api.zinniezeera.com";
 const API_URL = `${API_BASE_URL}/api`;
 const SITE_URL = "https://zinniezeera.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/ZinnieWebsiteImage.jpeg`;

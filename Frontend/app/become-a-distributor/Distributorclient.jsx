@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import "./distributor.css";
 import DistributorPageContent from './DistributorPageContent';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.zinniezeera.com";
 
 const products = [
   {

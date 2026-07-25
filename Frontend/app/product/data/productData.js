@@ -1458,7 +1458,7 @@ export function buildProductSchema(slug, apiProduct) {
 
     const imageUrl = apiProduct.image?.startsWith("http")
         ? apiProduct.image
-        : `http://localhost:8080/${apiProduct.image
+        : `https://api.zinniezeera.com/${apiProduct.image
             ?.replace(/\\/g, "/")
             .replace(/^\/+/, "")}`;
 

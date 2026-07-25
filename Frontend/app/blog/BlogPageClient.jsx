@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import "./blog.css";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.zinniezeera.com";
 
 function stripMarkdown(md = "") {
   return md.replace(/[#*_`>~-]/g, "").replace(/\[(.*?)\]\(.*?\)/g, "$1").replace(/\n+/g, " ").trim();

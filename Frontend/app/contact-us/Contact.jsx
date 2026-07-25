@@ -3,7 +3,7 @@
 import { useState } from "react";
 import "./contact.css";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.zinniezeera.com";
 
 export default function Contact() {
   const [formData, setFormData] = useState({

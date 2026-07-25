@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import "./admin-blog.css";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
-const SITE_URL = "http://localhost:8080";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.zinniezeera.com";
+const SITE_URL = "https://api.zinniezeera.com";
 
 const MDXEditorComponent = dynamic(
   () => import("../components/Toolbar/MDXEditorComponent"),

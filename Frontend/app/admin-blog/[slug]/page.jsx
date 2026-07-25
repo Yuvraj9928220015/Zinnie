@@ -1,6 +1,6 @@
 import EditBlogPageClient from "./EditBlogPage";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.zinniezeera.com";
 
 export async function generateStaticParams() {
   try {

@@ -128,7 +128,7 @@ export default function MDXEditorComponent({
 }) {
   
   async function imageUploadHandler(file) {
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.zinniezeera.com";
   const formData = new FormData();
   formData.append('image', file);
   const response = await fetch(`${API_URL}/api/blogs/upload-image`, {
