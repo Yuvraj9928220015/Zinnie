@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import "./admin-blog.css";
 
+// 🔑 YAHAN APNA USERNAME AUR PASSWORD SET KAREIN
+const HARDCODED_USERNAME = "admin";
+const HARDCODED_PASSWORD = "123456";
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://api.zinniezeera.com";
-const SITE_URL = "https://api.zinniezeera.com";
 
 const MDXEditorComponent = dynamic(
   () => import("../components/Toolbar/MDXEditorComponent"),
@@ -17,6 +20,14 @@ function toUrlHandle(str) {
 }
 
 export default function AdminPage() {
+  // Auth State
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [loginError, setLoginError] = useState("");
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  // Form & Blog State
   const [title, setTitle] = useState("");
   const [urlHandle, setUrlHandle] = useState("");
   const [urlHandleEdited, setUrlHandleEdited] = useState(false);
@@ -31,14 +42,58 @@ export default function AdminPage() {
   const [metaDescription, setMetaDescription] = useState("");
   const [script, setScript] = useState("");
 
-  useEffect(() => { fetchBlogs(); }, []);
+  // Check login status & username on load
+  useEffect(() => {
+    const token = localStorage.getItem("adminToken");
+    const savedUser = localStorage.getItem("adminUser");
+    if (token) {
+      setIsAuthenticated(true);
+      if (savedUser) setUsername(savedUser);
+      fetchBlogs(token);
+    } else {
+      setLoadingBlogs(false);
+    }
+  }, []);
 
   useEffect(() => {
     if (!urlHandleEdited) setUrlHandle(toUrlHandle(title));
   }, [title, urlHandleEdited]);
 
-  const fetchBlogs = () => {
-    fetch(`${API_URL}/api/blogs`)
+  // 🔒 HARDCODED LOGIN HANDLER
+  const handleLogin = (e) => {
+    e.preventDefault();
+    setLoginError("");
+
+    // Backend request ke bajaye direct credential check:
+    if (username === HARDCODED_USERNAME && password === HARDCODED_PASSWORD) {
+      const token = "admin-local-token"; // Temporary token
+
+      localStorage.setItem("adminToken", token);
+      localStorage.setItem("adminUser", username);
+
+      setIsAuthenticated(true);
+      fetchBlogs(token);
+    } else {
+      setLoginError("Invalid Username or Password!");
+    }
+  };
+
+  // Logout Handler
+  const handleLogout = () => {
+    localStorage.removeItem("adminToken");
+    localStorage.removeItem("adminUser");
+    setIsAuthenticated(false);
+    setUsername("");
+    setPassword("");
+  };
+
+  const fetchBlogs = (token) => {
+    const authToken = token || localStorage.getItem("adminToken");
+    fetch(`${API_URL}/api/blogs`, {
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => {
         setBlogs(Array.isArray(data) ? data : []);
@@ -75,8 +130,12 @@ export default function AdminPage() {
     formData.append("script", script);
 
     try {
+      const token = localStorage.getItem("adminToken");
       const response = await fetch(`${API_URL}/api/blogs`, {
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         body: formData,
       });
       const data = await response.json();
@@ -105,12 +164,16 @@ export default function AdminPage() {
   const handleDelete = async (identifier) => {
     if (!confirm("Are you sure you want to delete this blog?")) return;
     try {
+      const token = localStorage.getItem("adminToken");
       const res = await fetch(`${API_URL}/api/blogs/${identifier}`, {
         method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       const data = await res.json();
       if (data.success) {
-        alert("Blog deleted!"); 
+        alert("Blog deleted!");
         fetchBlogs();
       }
     } catch (error) {
@@ -118,10 +181,58 @@ export default function AdminPage() {
     }
   };
 
+  // 🔒 LOGIN FORM SCREEN
+  if (!isAuthenticated) {
+    return (
+      <div className="admin-page-wrapper admin-login-wrapper">
+        <div className="admin-card admin-login-card">
+          <div className="admin-header">
+            <h2>Admin Login</h2>
+          </div>
+          <form onSubmit={handleLogin}>
+            {loginError && <div className="admin-error-msg">{loginError}</div>}
+            <div className="admin-input-group">
+              <label>Username</label>
+              <input
+                className="admin-input-field"
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Enter username"
+                required
+              />
+            </div>
+            <div className="admin-input-group">
+              <label>Password</label>
+              <input
+                className="admin-input-field"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter password"
+                required
+              />
+            </div>
+            <button type="submit" className="admin-submit-btn">
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  // 🔓 ADMIN DASHBOARD
   return (
     <div className="admin-page-wrapper">
-      <div className="admin-layout">
+      <div className="admin-top-bar">
+        <span>Logged in as <strong>{username || "Admin"}</strong></span>
+        <button onClick={handleLogout} className="admin-logout-btn">
+          Logout 🚪
+        </button>
+      </div>
 
+      <div className="admin-layout">
         {/* LEFT: New Blog Form */}
         <div className="admin-card">
           <div className="admin-header">
@@ -134,7 +245,6 @@ export default function AdminPage() {
               <input
                 className="admin-input-field"
                 type="text"
-               
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 required
@@ -144,7 +254,17 @@ export default function AdminPage() {
             <div className="admin-input-group">
               <label>URL Handle</label>
               <div style={{ display: "flex" }}>
-                <span style={{ padding: "10px 12px", background: "#1a1a1a", border: "1px solid #333", borderRight: "none", borderRadius: "6px 0 0 6px", color: "#666", fontSize: "0.875rem" }}>
+                <span
+                  style={{
+                    padding: "10px 12px",
+                    background: "#1a1a1a",
+                    border: "1px solid #333",
+                    borderRight: "none",
+                    borderRadius: "6px 0 0 6px",
+                    color: "#666",
+                    fontSize: "0.875rem",
+                  }}
+                >
                   blog/
                 </span>
                 <input
@@ -152,7 +272,6 @@ export default function AdminPage() {
                   type="text"
                   value={urlHandle}
                   onChange={handleUrlChange}
-                  placeholder=""
                   style={{ borderRadius: "0 6px 6px 0", marginBottom: 0 }}
                 />
               </div>
@@ -184,7 +303,6 @@ export default function AdminPage() {
               <input
                 className="admin-input-field"
                 type="text"
-                
                 value={altTag}
                 onChange={(e) => setAltTag(e.target.value)}
               />
@@ -220,22 +338,18 @@ export default function AdminPage() {
                     <input
                       className="admin-seo-input"
                       type="text"
-                      
                       value={pageTitle}
                       onChange={(e) => setPageTitle(e.target.value)}
                     />
-                   
                   </div>
 
                   <div className="admin-seo-group">
                     <label>Meta Description</label>
                     <textarea
                       className="admin-seo-textarea"
-                      
                       value={metaDescription}
                       onChange={(e) => setMetaDescription(e.target.value)}
                     />
-                
                   </div>
 
                   <div className="admin-seo-group">
@@ -244,7 +358,6 @@ export default function AdminPage() {
                       className="admin-seo-textarea"
                       value={script}
                       onChange={(e) => setScript(e.target.value)}
-                     
                     />
                   </div>
                 </div>
@@ -257,6 +370,7 @@ export default function AdminPage() {
           </form>
         </div>
 
+        {/* RIGHT: Published Blogs */}
         <div className="admin-card admin-blog-list-card">
           <div className="admin-header">
             <h2>Published Blogs</h2>
@@ -267,7 +381,7 @@ export default function AdminPage() {
             <p className="admin-empty">Loading...</p>
           ) : blogs.length === 0 ? (
             <div className="admin-empty">
-              <div className="admin-empty-icon"></div>
+              <div className="admin-empty-icon">📝</div>
               <p>No blogs published yet.</p>
             </div>
           ) : (
@@ -278,13 +392,23 @@ export default function AdminPage() {
                   <div key={blog._id} className="admin-blog-item">
                     <div className="admin-blog-info">
                       <h3>{blog.title}</h3>
-                      <p>By {blog.author} · {new Date(blog.createdAt).toLocaleDateString("en-US", {
-                        month: "short", day: "numeric", year: "numeric"
-                      })}</p>
-                      <p style={{ fontSize: "0.75rem", color: "#999" }}>/blog/{identifier}</p>
+                      <p>
+                        By {blog.author} ·{" "}
+                        {new Date(blog.createdAt).toLocaleDateString("en-US", {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        })}
+                      </p>
+                      <p style={{ fontSize: "0.75rem", color: "#999" }}>
+                        /blog/{identifier}
+                      </p>
                     </div>
                     <div className="admin-blog-actions">
-                      <Link href={`/admin-blog/${identifier}`} className="admin-edit-btn">
+                      <Link
+                        href={`/admin-blog/${identifier}`}
+                        className="admin-edit-btn"
+                      >
                         Edit
                       </Link>
                       <button
@@ -300,7 +424,6 @@ export default function AdminPage() {
             </div>
           )}
         </div>
-
       </div>
     </div>
   );

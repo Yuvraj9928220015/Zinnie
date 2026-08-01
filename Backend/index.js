@@ -32,7 +32,7 @@ app.use(cors({
             'http://localhost:3000',
             'http://localhost:3001',
             'http://localhost:3002',
-            'http://localhost:8080',
+            'https://api.zinniezeera.com',
             'http://127.0.0.1:3000',
             'https://zinniezeera.com',
             'https://www.zinniezeera.com'

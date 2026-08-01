@@ -1,7 +1,3 @@
-/* ===========================
-   ADMIN PANEL - FULL UI
-=========================== */
-
 * {
   box-sizing: border-box;
 }
@@ -12,6 +8,57 @@
   width: 100%;
   padding: 120px 20px 100px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0;
+}
+
+.admin-login-card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.admin-top-bar {
+  max-width: 1200px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: 500;
+}
+
+.admin-logout-btn {
+  background: #fdf6ec;
+  color: #c9a96e;
+  border: 1px solid #f0e4cc;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.admin-logout-btn:hover {
+  background: #c9a96e;
+  color: white;
+}
+
+.admin-error-msg {
+  background: #fff5f5;
+  color: #e05252;
+  border: 1px solid #fad4d4;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
 .admin-layout {
@@ -75,19 +122,15 @@
 
 .admin-input-field:focus {
   border-color: #c9a96e;
-  box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.12);
+  box-shadow: 0 0 0 3px #c9a96e1f;
 }
 
-/* ── EDITOR BOX ──
-   Isko khud ek scroll-container banaya hai (fixed height + overflow-y: auto).
-   Sticky ko kaam karne ke liye ek scrolling ancestor chahiye — ab toolbar
-   isi box ke andar top par chipka rahega jab tum editor content scroll karoge. */
 .admin-editor-box {
   width: 100%;
   border: 1.5px solid #e8e0d5;
   border-radius: 8px;
   background: #fff;
-  height: 480px;         /* zaroorat ke hisab se ghata/badha sakte ho */
+  height: 480px;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
@@ -97,7 +140,6 @@
   width: 100% !important;
 }
 
-/* ── TOOLBAR: apne parent (.admin-editor-box) ke andar top pe chipka rahega ── */
 .mdxeditor-toolbar {
   background: #faf8f5 !important;
   border-bottom: 1px solid #e8e0d5 !important;
@@ -109,7 +151,6 @@
   border-radius: 8px 8px 0 0;
 }
 
-/* ── QUOTE BLOCK: jab QuoteToggle se text quote banaya jaye to aisa dikhega ── */
 .mdxeditor-root blockquote {
   font-family: Georgia, serif !important;
   font-style: italic !important;
@@ -121,7 +162,6 @@
   border-radius: 0 6px 6px 0;
 }
 
-/* ── TABLE CELLS: force textarea-jaisa look ── */
 .mdxeditor-root table {
   border-collapse: collapse !important;
   width: 100% !important;
@@ -140,8 +180,6 @@
   background: #fdfcfb !important;
 }
 
-/* MDXEditor cell ke andar jo bhi editable content aata hai (paragraph/div/span)
-   usko textarea jaisa dikhaya — padding, background, min-height sab wahi wale */
 .mdxeditor-root table td > *,
 .mdxeditor-root table th > * {
   display: block !important;
@@ -178,7 +216,7 @@
 .admin-submit-btn:hover {
   background: linear-gradient(135deg, #000, #2c2825);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(44, 40, 37, 0.25);
+  box-shadow: 0 6px 20px #2c282540;
 }
 
 .admin-blog-list-card {
@@ -296,46 +334,6 @@
   border-color: #e05252;
 }
 
-.admin-back-btn {
-  background: #f5f0e8;
-  color: #2c2825;
-  border: 1px solid #e8e0d5;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-
-.admin-back-btn:hover {
-  background: #2c2825;
-  color: white;
-}
-
-.admin-existing-image {
-  margin-bottom: 12px;
-}
-
-.admin-existing-image img {
-  height: 100px;
-  border-radius: 8px;
-  object-fit: cover;
-  border: 2px solid #f0e4cc;
-}
-
-.admin-empty {
-  text-align: center;
-  padding: 40px 20px;
-  color: #ccc;
-  font-size: 0.9rem;
-}
-
-.admin-empty-icon {
-  font-size: 2.5rem;
-  margin-bottom: 12px;
-}
-
 /* ── SEO SECTION ── */
 .admin-seo-section {
   margin-bottom: 20px;
@@ -407,30 +405,7 @@
   letter-spacing: 0;
 }
 
-.admin-seo-char-count {
-  display: block;
-  font-size: 12px;
-  color: #999;
-  margin-top: 4px;
-}
-
-.admin-seo-input {
-  width: 100%;
-  padding: 10px 14px;
-  border: 1.5px solid #d0c9be;
-  border-radius: 6px;
-  font-size: 14px;
-  outline: none;
-  background: #fff;
-  color: #2c2825;
-  transition: border 0.2s;
-}
-
-.admin-seo-input:focus {
-  border-color: #c9a96e;
-  box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.12);
-}
-
+.admin-seo-input,
 .admin-seo-textarea {
   width: 100%;
   padding: 10px 14px;
@@ -440,25 +415,32 @@
   outline: none;
   background: #fff;
   color: #2c2825;
-  resize: vertical;
-  min-height: 100px;
   transition: border 0.2s;
-  font-family: inherit;
 }
 
+.admin-seo-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.admin-seo-input:focus,
 .admin-seo-textarea:focus {
   border-color: #c9a96e;
   box-shadow: 0 0 0 3px #c9a96e1f;
 }
 
-.admin-seo-url-preview {
-  display: block;
-  margin-top: 6px;
-  font-size: 12px;
-  color: #999;
+.admin-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #ccc;
+  font-size: 0.9rem;
 }
 
-/* ── MOBILE ── */
+.admin-empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
 @media (max-width: 900px) {
   .admin-layout {
     grid-template-columns: 1fr;

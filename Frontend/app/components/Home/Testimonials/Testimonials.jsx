@@ -4,33 +4,43 @@ import "./Testimonials.css";
 const testimonialsData = [
     {
         id: 1,
-        text: "The perfect blend of authentic jeera flavor and refreshing taste! It feels truly traditional, not overly sweet, and instantly refreshing. A favorite in our home.",
-        author: "Shradha",
+        text: "Zinnie ka taste kaafi alag aur refreshing hai. Nimbu Zeera peene ke baad sach mein thandak feel hoti hai.",
+        author: " Deepak R.",
     },
     {
         id: 2,
-        text: "Zinnie Zeera has become my everyday refreshment, especially during hot days. The taste feels unique, satisfying, and far better than ordinary soft drinks.",
-        author: "Yuvraj",
+        text: "Chilli Guava ekdum unique flavor hai. Pehle kabhi aisa taste try nahi kiya — really liked it!",
+        author: "Ritu S.",
     },
     {
         id: 3,
-        text: "From the first sip, you can experience the premium quality. Refreshing taste, authentic flavor, and attractive packaging make Zinnie Zeera stand out.",
-        author: "Mukul",
+        text: "Mango flavor kaafi natural lagta hai. Sweetness bhi balanced hai, over nahi lagti.",
+        author: "Anuj K.",
     },
     {
         id: 4,
-        text: "Whether it’s a family gathering, celebration, or daily refreshment, Zinnie Zeera always brings the perfect desi touch to every moment.",
-        author: "Ashraf Khan",
+        text: "Ginger Lemon ka flavor light aur refreshing hai. Daily peene ke liye perfect drink hai.",
+        author: "Kavita P.",
     },
     {
         id: 5,
-        text: "Absolutely loved the authentic jeera taste! It’s refreshing, nostalgic, and offers something completely different from regular beverages.",
-        author: "Mr. Sahil",
+        text: "Zinnie drinks ka sabse accha part hai ki taste consistent rehta hai. Har baar same quality milti hai.",
+        author: "Mohit A",
     },
     {
         id: 6,
-        text: "Zinnie Zeera is a family favorite at our home. Kids enjoy the refreshing taste, while adults love its authentic traditional flavor.",
-        author: "Gaurav Singh",
+        text: "Family ke saath try kiya tha, sabko alag-alag flavors pasand aaye. Kaafi versatile range hai.",
+        author: "Farhan M.",
+    },
+    {
+        id: 7,
+        text: "Zinnie ka overall experience kaafi acha hai — taste, price aur quality sab balanced hai.",
+        author: "Sneha T.",
+    },
+    {
+        id: 8,
+        text: "Garmi ke time pe Zinnie drinks kaafi refreshing lagte hain. Light aur easy to drink hain.",
+        author: "Nitin G.",
     },
 ];
 
@@ -46,6 +56,8 @@ export default function Testimonials() {
     const trackRef = useRef(null);
     const autoPlayRef = useRef(null);
     const isJumping = useRef(false);
+    const isAnimating = useRef(false); // NEW: lock so goNext can't fire mid-transition
+    const fallbackTimer = useRef(null); // NEW: safety unlock if transitionend never fires
 
     const extendedSlides = [
         testimonialsData[TOTAL - 1],
@@ -58,10 +70,21 @@ export default function Testimonials() {
         setTrackIndex(index);
     }, []);
 
+    const clearFallbackTimer = () => {
+        if (fallbackTimer.current) {
+            clearTimeout(fallbackTimer.current);
+            fallbackTimer.current = null;
+        }
+    };
+
     const handleTransitionEnd = useCallback(() => {
+        clearFallbackTimer();
+        isAnimating.current = false; // unlock, transition is genuinely done
+
         if (isJumping.current) return;
 
-        if (trackIndex === TOTAL + 1) {
+        // Use >= / <= instead of === so any out-of-range value self-corrects
+        if (trackIndex >= TOTAL + 1) {
             isJumping.current = true;
             setIsTransitioning(false);
             setTrackIndex(1);
@@ -72,7 +95,7 @@ export default function Testimonials() {
                     setIsTransitioning(true);
                 });
             });
-        } else if (trackIndex === 0) {
+        } else if (trackIndex <= 0) {
             isJumping.current = true;
             setIsTransitioning(false);
             setTrackIndex(TOTAL);
@@ -88,18 +111,37 @@ export default function Testimonials() {
 
     // Next slide
     const goNext = useCallback(() => {
+        if (isAnimating.current) return; // guard: skip if a transition is already running
+        isAnimating.current = true;
+        setIsTransitioning(true);
+
         setTrackIndex((prev) => {
             const next = prev + 1;
             const realIndex = next > TOTAL ? 0 : next - 1;
             setActiveDot(realIndex < TOTAL ? realIndex : 0);
             return next;
         });
-        setIsTransitioning(true);
+
+        // Safety net: if transitionend somehow never fires (tab was
+        // backgrounded, CSS transition got interrupted, etc.), force-unlock
+        // after a bit longer than the transition duration so autoplay
+        // doesn't get stuck forever.
+        clearFallbackTimer();
+        fallbackTimer.current = setTimeout(() => {
+            isAnimating.current = false;
+        }, TRANSITION_DURATION + 300);
     }, []);
 
     const goToDot = useCallback((dotIndex) => {
+        if (isAnimating.current) return;
+        isAnimating.current = true;
         setActiveDot(dotIndex);
         moveTo(dotIndex + 1);
+
+        clearFallbackTimer();
+        fallbackTimer.current = setTimeout(() => {
+            isAnimating.current = false;
+        }, TRANSITION_DURATION + 300);
     }, [moveTo]);
 
     // Auto-play
@@ -115,6 +157,27 @@ export default function Testimonials() {
     useEffect(() => {
         startAutoPlay();
         return () => stopAutoPlay();
+    }, [startAutoPlay]);
+
+    // NEW: pause autoplay while the tab is hidden, resume when it's visible
+    // again. This stops trackIndex from silently drifting out of bounds
+    // while transitions can't run in the background.
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.hidden) {
+                stopAutoPlay();
+            } else {
+                isAnimating.current = false;
+                clearFallbackTimer();
+                startAutoPlay();
+            }
+        };
+
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+        return () => {
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
+            clearFallbackTimer();
+        };
     }, [startAutoPlay]);
 
     return (

@@ -1,16 +1,121 @@
-.team-wrapper {
-    width: 100%;
-    height: 100vh;
+/* ===================== PAGE TRANSITION ===================== */
+.page-transition-enter {
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
-.team-wrapper video {
-    width: 100%;
-    height: 100vh;
+.page-transition-enter-active {
+    opacity: 1;
 }
 
-.banner__video,
-.banner__image {
+/* ===================== FOUNDER SECTION ===================== */
+.founder-section {
     width: 100%;
-    height: 100vh;
-    object-fit: cover;
+    display: grid;
+    grid-template-columns: 0.5fr 0.7fr;
+    align-items: stretch;
+    background-color: #ffffff;
+    min-height: 560px;
+}
+
+/* Left - Image */
+.founder-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.founder-image {
+       position: absolute;
+    inset: 0;
+    width: 414px;
+    height: 741px;
+    margin-left: 300px;
+}
+
+/* Right - Content */
+.founder-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 90px 80px 60px;
+}
+
+.founder-label {
+    font-size: 22px;
+    font-weight: 400;
+    color: #1a1a1a;
+    font-family: Georgia, "Times New Roman", serif;
+    margin-bottom: 10px;
+}
+
+.founder-name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400;
+    color: #e63946;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.founder-content p {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 1.85;
+    color: #1a1a1a;
+    margin-bottom: 26px;
+}
+
+.founder-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1024px) {
+    .founder-content {
+        padding: 70px 50px 50px;
+    }
+
+    .founder-name {
+        margin-bottom: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .founder-section {
+        grid-template-columns: 1fr;
+    }
+
+    .founder-image-wrapper {
+        aspect-ratio: 4 / 3;
+    }
+
+    .founder-content {
+        padding: 40px 24px 60px;
+    }
+
+    .founder-label {
+        font-size: 18px;
+    }
+
+    .founder-content p {
+        font-size: 15px;
+        line-height: 1.75;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .founder-image-wrapper {
+        aspect-ratio: 3 / 4;
+    }
+
+    .founder-content {
+        padding: 32px 18px 50px;
+    }
+
+    .founder-name {
+        margin-bottom: 18px;
+    }
 }

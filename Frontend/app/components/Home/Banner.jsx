@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import "./Banner.css";
 import Header from "./Header/Header";
 import ChooseUs from "./chooseUs/ChooseUs";
+import AboutUs from "./Aboutsection/aboutUs";
+import FeatureBadges from "./featureBadges/featureBadges";
 import Testimonials from "./Testimonials/Testimonials";
 import BestSelling from "./BestSelling/BestSelling";
-
+import LatestBlog from "./LatestBlog/LatestBlog";
 
 export default function Banner() {
   const [isMobile, setIsMobile] = useState(false);
@@ -27,7 +29,6 @@ export default function Banner() {
 
   return (
     <>
-      <h1 className="Affordable">Affordable Soft Drinks & Cold Drinks in India</h1>
       {banners.map((banner, index) => (
         <section className="banner" key={index}>
           <video
@@ -42,7 +43,10 @@ export default function Banner() {
       ))}
       <ChooseUs/>
       <BestSelling/>
+      <AboutUs/>
+      <FeatureBadges/>
       <Testimonials/>
+      <LatestBlog/>
       <Header/>
     </>
   );
