@@ -35,6 +35,10 @@ export const metadata = {
     icon: "/Zinnie-logo.png",
   },
 
+  alternates: {
+    canonical: "https://zinniezeera.com/",
+  },
+
   openGraph: {
     title: "Buy Affordable Soft Drinks & Cold Drinks in India Online",
     siteName: "Zinnie",
@@ -59,7 +63,7 @@ export const metadata = {
     description:
       "Searching for soft drinks in India? Zinnie offers affordable, refreshing cold drinks you’ll love. Shop the best cool drinks online today.",
     creator: "@zinnie",
-     images: [
+    images: [
       {
         url: "/ZinnieWebsiteImage.jpeg",
         width: 1200,
@@ -74,15 +78,67 @@ export const metadata = {
     follow: true,
   },
 };
+//  global
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://zinniezeera.com/#organization",
+  name: "Zinnie",
+  url: "https://zinniezeera.com/",
+  logo: {
+    "@type": "ImageObject",
+    url: "https://zinniezeera.com/Zinnie-logo.png",
+  },
+  sameAs: [
+    "https://x.com/zinniezeera",
+    "https://www.instagram.com/zinniezeera/",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    areaServed: "India",
+    availableLanguage: ["English", "Hindi"],
+  },
+};
+//  global
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://zinniezeera.com/#website",
+  url: "https://zinniezeera.com/",
+  name: "Zinnie",
+  publisher: {
+    "@id": "https://zinniezeera.com/#organization",
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://zinniezeera.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning className={merriweather.className}>
+        {/* Organization Schema - Global */}
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
 
-      <body
-        suppressHydrationWarning
-        className={merriweather.className}
-      >
+        {/* Website Schema - Global */}
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+
         <LanguageProvider>
           {/* Google Analytics */}
           <Script
@@ -90,18 +146,18 @@ export default function RootLayout({ children }) {
             strategy="afterInteractive"
           />
 
-          <Script strategy="afterInteractive">
-            {`
-              window.dataLayer = window.dataLayer || [];
-
-              function gtag() {
-                dataLayer.push(arguments);
-              }
-
-              gtag('js', new Date());
-              gtag('config', 'G-S07YWT3NCJ');
-            `}
-          </Script>
+          <Script
+            id="ga-init"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-S07YWT3NCJ');
+              `,
+            }}
+          />
 
           <Navbar />
           {children}

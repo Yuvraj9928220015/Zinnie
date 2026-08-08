@@ -88,7 +88,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       .then((mod) => {
         const data = mod.default || mod;
         setEnFlat(flatten(data));
-        setMessages(data); // default = English
+        setMessages(data);
       })
       .catch(console.error);
   }, []);

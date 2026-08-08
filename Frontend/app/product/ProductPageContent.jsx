@@ -3,48 +3,6 @@
 import { useState } from "react";
 import "./ProductPageContent.css";
 
-// ── Schema Scripts (JSON-LD) ───
-
-const schemaItemList = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Buy Cold Drinks Online in India",
-    "url": "https://zinniezeera.com/product",
-    "numberOfItems": 5,
-    "itemListElement": [
-        { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "Nimbu Zeera", "url": "https://zinniezeera.com/product/nimbu-zeera/" } },
-        { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "Zinnie Zeera", "url": "https://zinniezeera.com/product/zinnie-zeera/" } },
-        { "@type": "ListItem", "position": 3, "item": { "@type": "Product", "name": "Mango", "url": "https://zinniezeera.com/product/zinnie-mango/" } },
-        { "@type": "ListItem", "position": 4, "item": { "@type": "Product", "name": "Ginger Lemon", "url": "https://zinniezeera.com/product/ginger-lemon/" } },
-        { "@type": "ListItem", "position": 5, "item": { "@type": "Product", "name": "Chilli Guava", "url": "https://zinniezeera.com/product/chilli-guava/" } },
-    ],
-};
-
-const schemaCollectionPage = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Buy Cold Drinks Online in India",
-    "url": "https://zinniezeera.com/product",
-    "description": "Explore and buy refreshing cold drinks online in India. Discover affordable, flavourful beverages from Zinnie Zeera.",
-};
-
-const schemaBreadcrumb = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://zinniezeera.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://zinniezeera.com/product" },
-    ],
-};
-
-const schemaWebPage = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Buy Cold Drinks Online in India",
-    "url": "https://zinniezeera.com/product",
-    "description": "Buy refreshing cold drinks online in India. Explore affordable, flavourful beverages from Zinnie Zeera.",
-};
-
 
 
 const mainContent = [
@@ -179,8 +137,7 @@ const mainContent = [
     { level: "p", body: "<b>Explore our range today and discover a better alternative to regular beverages—where every sip brings together flavor, quality, and satisfaction in one bottle.</b>" },
 ];
 
-// ── Data: FAQs ──
-
+// ── Data: FAQs (content/UI only — schema for these already lives in page.jsx) ──
 
 const faqs = [
     { q: "What makes Zinnie different from other soft drinks in India?", a: "Zinnie offers a unique blend of traditional Indian flavors and modern refreshment, unlike regular sugary sodas." },
@@ -204,17 +161,6 @@ const faqs = [
     { q: "What occasions are best for drinking Zinnie?", a: "Zinnie is perfect for daily refreshment, social gatherings, travel, and special occasions." },
     { q: " Why should I choose Zinnie?", a: "Zinnie offers a unique taste, consistent quality, affordability, and a refreshing experience in every sip." },
 ];
-
-
-const schemaFAQPage = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map((faq) => ({
-        "@type": "Question",
-        "name": faq.q,
-        "acceptedAnswer": { "@type": "Answer", "text": faq.a },
-    })),
-};
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
@@ -242,7 +188,6 @@ function ContentCard({ item, index }) {
             style={{ animationDelay: `${index * 40}ms` }}
         >
             {isHeading && item.heading ? (
-                // dangerouslySetInnerHTML lets you drop <b>/<a>/<i> tags straight into item.heading if you ever need to
                 <Tag
                     className={`card-heading card-heading--${item.level}`}
                     dangerouslySetInnerHTML={{ __html: item.heading }}
@@ -252,14 +197,12 @@ function ContentCard({ item, index }) {
             {isList && Array.isArray(item.items) ? (
                 <ul className="card-list">
                     {item.items.map((li, i) => (
-                        // dangerouslySetInnerHTML lets you add <b>bold</b> or <a href="...">links</a> inside any list item
                         <li key={i} dangerouslySetInnerHTML={{ __html: li }} />
                     ))}
                 </ul>
             ) : null}
 
             {!isList && item.body ? (
-                // dangerouslySetInnerHTML lets you add <b>bold</b> or <a href="...">links</a> directly inside item.body
                 <p className="card-text" dangerouslySetInnerHTML={{ __html: item.body }} />
             ) : null}
         </div>
@@ -276,78 +219,54 @@ export default function ProductPageContent() {
     };
 
     return (
-        <>
-            {/* ── Schema Scripts (JSON-LD) ── */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaItemList) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaCollectionPage) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebPage) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFAQPage) }}
-            />
+        <div className="accordion-root-container">
+            <div className="accordion-root">
 
-            <div className="accordion-root-container">
-                <div className="accordion-root">
+                {/* ── Section 1: Main Content ── */}
+                <div className={`panel ${openSection === "content" ? "is-open" : ""}`}>
+                    <button
+                        className="panel-header"
+                        onClick={() => toggle("content")}
+                        aria-expanded={openSection === "content"}
+                    >
+                        <span className="panel-title"> Cold Drinks Online in India</span>
+                        <span className="panel-chevron">▾</span>
+                    </button>
 
-                    {/* ── Section 1: Main Content ── */}
-                    <div className={`panel ${openSection === "content" ? "is-open" : ""}`}>
-                        <button
-                            className="panel-header"
-                            onClick={() => toggle("content")}
-                            aria-expanded={openSection === "content"}
-                        >
-                            <span className="panel-title"> Cold Drinks Online in India</span>
-                            <span className="panel-chevron">▾</span>
-                        </button>
-
-                        <div className={`panel-body ${openSection === "content" ? "open" : ""}`}>
-                            <div className="panel-inner">
-                                <div className="content-grid">
-                                    {mainContent.map((item, i) => (
-                                        <ContentCard key={i} item={item} index={i} />
-                                    ))}
-                                </div>
+                    <div className={`panel-body ${openSection === "content" ? "open" : ""}`}>
+                        <div className="panel-inner">
+                            <div className="content-grid">
+                                {mainContent.map((item, i) => (
+                                    <ContentCard key={i} item={item} index={i} />
+                                ))}
                             </div>
                         </div>
                     </div>
-
-                    {/* ── Section 2: FAQs ── */}
-                    <div className={`panel ${openSection === "faq" ? "is-open" : ""}`}>
-                        <button
-                            className="panel-header"
-                            onClick={() => toggle("faq")}
-                            aria-expanded={openSection === "faq"}
-                        >
-                            <span className="panel-title">Frequently Asked Questions</span>
-                            <span className="panel-chevron">▾</span>
-                        </button>
-
-                        <div className={`panel-body ${openSection === "faq" ? "open" : ""}`}>
-                            <div className="panel-inner">
-                                <div className="faq-list">
-                                    {faqs.map((faq, i) => (
-                                        <FaqItem key={i} faq={faq} index={i} />
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+
+                {/* ── Section 2: FAQs ── */}
+                <div className={`panel ${openSection === "faq" ? "is-open" : ""}`}>
+                    <button
+                        className="panel-header"
+                        onClick={() => toggle("faq")}
+                        aria-expanded={openSection === "faq"}
+                    >
+                        <span className="panel-title">Frequently Asked Questions</span>
+                        <span className="panel-chevron">▾</span>
+                    </button>
+
+                    <div className={`panel-body ${openSection === "faq" ? "open" : ""}`}>
+                        <div className="panel-inner">
+                            <div className="faq-list">
+                                {faqs.map((faq, i) => (
+                                    <FaqItem key={i} faq={faq} index={i} />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </>
+        </div>
     );
 }

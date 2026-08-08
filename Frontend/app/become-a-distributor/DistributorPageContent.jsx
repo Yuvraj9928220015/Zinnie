@@ -3,76 +3,7 @@
 import { useState } from "react";
 import "./DistributorPageContent.css";
 
-// ── Schema Scripts (JSON-LD) ───────────────────────────────────────────────────
 
-const schemaBreadcrumb = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://zinniezeera.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Become a Distributor", "item": "https://zinniezeera.com/distributor" },
-    ],
-};
-
-const schemaFAQPage = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-        { "@type": "Question", "name": "How can I become a beverage distributor in India?", "acceptedAnswer": { "@type": "Answer", "text": "You can apply through the distributor form and complete the approval process." } },
-        { "@type": "Question", "name": "What products are available for distribution?", "acceptedAnswer": { "@type": "Answer", "text": "Products include jeera soda, nimbu drinks, masala soda, and fruit-based beverages." } },
-        { "@type": "Question", "name": "Is beverage distribution profitable in India?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, it is a high-demand business with consistent growth opportunities." } },
-        { "@type": "Question", "name": "Who can apply for distributorship?", "acceptedAnswer": { "@type": "Answer", "text": "Retailers, wholesalers, entrepreneurs, and FMCG distributors can apply." } },
-        { "@type": "Question", "name": "What is the investment required?", "acceptedAnswer": { "@type": "Answer", "text": "Investment depends on location, scale, and distribution capacity." } },
-        { "@type": "Question", "name": "Do you provide distributor support?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we provide supply chain, marketing, and business support." } },
-        { "@type": "Question", "name": "Do you offer exclusive territory?", "acceptedAnswer": { "@type": "Answer", "text": "This depends on availability and market evaluation." } },
-        { "@type": "Question", "name": "How long does approval take?", "acceptedAnswer": { "@type": "Answer", "text": "Approval timelines vary based on application review." } },
-        { "@type": "Question", "name": "Can I expand to multiple locations?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, based on your business capacity and agreement." } },
-        { "@type": "Question", "name": "Why choose Zinnie Zeera for distributorship?", "acceptedAnswer": { "@type": "Answer", "text": "Because of high-demand products, reliable supply, and strong business support." } },
-    ],
-};
-
-const schemaContactPage = {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Become a Distributor",
-    "url": "https://zinniezeera.com/distributor",
-    "description": "Apply to become a beverage distributor in India with Zinnie Zeera and grow your business.",
-    "mainEntity": {
-        "@type": "Organization",
-        "name": "Zinnie Zeera",
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "contactType": "sales",
-            "areaServed": "IN",
-            "availableLanguage": ["English", "Hindi"],
-        },
-    },
-};
-
-const schemaService = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Beverage Distribution",
-    "provider": { "@type": "Organization", "name": "Zinnie Zeera" },
-    "areaServed": { "@type": "Country", "name": "India" },
-    "description": "Become a beverage distributor in India with Zinnie Zeera. Offering opportunities for soft drink distribution, jeera soda, masala soda, and flavored drinks supply.",
-    "offers": { "@type": "Offer", "availability": "https://schema.org/InStock" },
-};
-
-const schemaOrganization = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Zinnie Zeera",
-    "url": "https://zinniezeera.com/",
-    "logo": "https://zinniezeera.com/Zinnie-logo.png",
-    "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-8432221711",
-        "contactType": "customer service",
-        "areaServed": "IN",
-        "availableLanguage": ["English", "Hindi"],
-    },
-};
 
 // ── Data ──
 
@@ -633,28 +564,7 @@ export default function DistributorPageContent() {
 
     return (
         <>
-            {/* ── Schema Scripts (JSON-LD) ── */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBreadcrumb) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFAQPage) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaContactPage) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaService) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrganization) }}
-            />
-
+        
             <div className="">
                 <div className="accordion-root">
 

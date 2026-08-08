@@ -75,7 +75,8 @@ const Footer = () => {
                     </p>
 
                     <p className="Developed">
-                       <a href="/sitemap"> Sitemap </a> | Developed By<a href="/lensclickerdigital.com"> LensClickerDigital </a>
+                        <a href="/sitemap"> Sitemap </a> | Developed By
+                        <a href="https://lensclickerdigital.com" target="_blank" rel="noopener noreferrer"> LensClickerDigital </a>
                     </p>
                 </div>
             </div>

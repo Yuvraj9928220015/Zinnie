@@ -3,84 +3,6 @@
 import { useState } from "react";
 import "./Header.css";
 
-// ── Schema Scripts (JSON-LD) ───
-
-const schemaOrganization = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Zinnie Zeera",
-    "url": "https://zinniezeera.com/",
-    "logo": "https://zinniezeera.com/Zinnie-logo.png",
-    "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+91-8432221711",
-        "contactType": "customer support",
-        "areaServed": "IN",
-        "availableLanguage": ["English", "Hindi"]
-    },
-    "sameAs": ["https://www.instagram.com/zinniezeera/"]
-};
-
-const schemaWebSite = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Zinnie Zeera",
-    "url": "https://zinniezeera.com/",
-    "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://zinniezeera.com/?s={search_term_string}",
-        "query-input": "required name=search_term_string"
-    }
-};
-
-const schemaWebPage = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "Buy Cold Drinks Online in India – Affordable & Best Soft Drinks",
-    "url": "https://zinniezeera.com/",
-    "description": "Searching for soft drinks in India? Zinnie offers affordable, refreshing cold drinks you'll love. Shop the best cool drinks online today!",
-    "inLanguage": "en-IN",
-    "isPartOf": {
-        "@type": "WebSite",
-        "name": "Zinnie Zeera",
-        "url": "https://zinniezeera.com/"
-    }
-};
-
-const schemaBeverageBusiness = {
-    "@context": "https://schema.org",
-    "@type": "Store",
-    "name": "Zinnie Zeera",
-    "image": "https://zinniezeera.com/Zinnie-logo.png",
-    "url": "https://zinniezeera.com/",
-    "telephone": "+91-8432221711",
-    "email": "info@balajibeverages.com",
-    "areaServed": "IN",
-    "sameAs": ["https://www.instagram.com/zinniezeera/"]
-};
-
-const schemaItemList = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Buy Soft Drinks Online in India",
-    "url": "https://zinniezeera.com/",
-    "numberOfItems": 5,
-    "itemListElement": [
-        { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "Zeera Masala Soda", "url": "https://zinniezeera.com/product/zeera-masala-soda/" } },
-        { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "Nimbu Zeera Drink", "url": "https://zinniezeera.com/product/nimbu-zeera/" } },
-        { "@type": "ListItem", "position": 3, "item": { "@type": "Product", "name": "Mango Drink", "url": "https://zinniezeera.com/product/zinnie-mango/" } },
-        { "@type": "ListItem", "position": 4, "item": { "@type": "Product", "name": "Ginger Lemon Drink", "url": "https://zinniezeera.com/product/ginger-lemon/" } },
-        { "@type": "ListItem", "position": 5, "item": { "@type": "Product", "name": "Chilli Guava Drink", "url": "https://zinniezeera.com/product/chilli-guava/" } },
-    ],
-};
-
-const schemaFAQPage = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [],
-};
-
-
 function renderRichText(text) {
     const regex = /\*\*(.+?)\*\*|\[([^\]]+)\]\(([^)]+)\)/g;
     const nodes = [];
@@ -752,12 +674,6 @@ const faqs = [
     },
 ];
 
-schemaFAQPage.mainEntity = faqs.map((faq) => ({
-    "@type": "Question",
-    "name": faq.q,
-    "acceptedAnswer": { "@type": "Answer", "text": faq.a },
-}));
-
 // ── Sub-components ──
 function FaqItem({ faq, index }) {
     return (
@@ -849,32 +765,6 @@ export default function Header() {
 
     return (
         <>
-            {/* ── Schema Scripts (JSON-LD) ── */}
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrganization) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebSite) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaWebPage) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaBeverageBusiness) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaItemList) }}
-            />
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFAQPage) }}
-            />
-
             <div className="accordion-root">
 
                 {/* ── Section 1: Main Content ── */}

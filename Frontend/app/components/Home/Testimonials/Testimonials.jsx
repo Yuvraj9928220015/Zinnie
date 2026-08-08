@@ -56,8 +56,8 @@ export default function Testimonials() {
     const trackRef = useRef(null);
     const autoPlayRef = useRef(null);
     const isJumping = useRef(false);
-    const isAnimating = useRef(false); // NEW: lock so goNext can't fire mid-transition
-    const fallbackTimer = useRef(null); // NEW: safety unlock if transitionend never fires
+    const isAnimating = useRef(false);
+    const fallbackTimer = useRef(null);
 
     const extendedSlides = [
         testimonialsData[TOTAL - 1],
@@ -79,11 +79,10 @@ export default function Testimonials() {
 
     const handleTransitionEnd = useCallback(() => {
         clearFallbackTimer();
-        isAnimating.current = false; // unlock, transition is genuinely done
+        isAnimating.current = false;
 
         if (isJumping.current) return;
 
-        // Use >= / <= instead of === so any out-of-range value self-corrects
         if (trackIndex >= TOTAL + 1) {
             isJumping.current = true;
             setIsTransitioning(false);
@@ -111,7 +110,7 @@ export default function Testimonials() {
 
     // Next slide
     const goNext = useCallback(() => {
-        if (isAnimating.current) return; // guard: skip if a transition is already running
+        if (isAnimating.current) return;
         isAnimating.current = true;
         setIsTransitioning(true);
 
@@ -122,10 +121,6 @@ export default function Testimonials() {
             return next;
         });
 
-        // Safety net: if transitionend somehow never fires (tab was
-        // backgrounded, CSS transition got interrupted, etc.), force-unlock
-        // after a bit longer than the transition duration so autoplay
-        // doesn't get stuck forever.
         clearFallbackTimer();
         fallbackTimer.current = setTimeout(() => {
             isAnimating.current = false;
@@ -159,9 +154,6 @@ export default function Testimonials() {
         return () => stopAutoPlay();
     }, [startAutoPlay]);
 
-    // NEW: pause autoplay while the tab is hidden, resume when it's visible
-    // again. This stops trackIndex from silently drifting out of bounds
-    // while transitions can't run in the background.
     useEffect(() => {
         const handleVisibilityChange = () => {
             if (document.hidden) {
@@ -214,7 +206,6 @@ export default function Testimonials() {
                     </div>
                 </div>
 
-                {/* Dots (only TOTAL dots for real slides) */}
                 <div className="testimonials-dots">
                     {testimonialsData.map((_, index) => (
                         <button

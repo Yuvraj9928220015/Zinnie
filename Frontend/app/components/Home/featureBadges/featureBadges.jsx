@@ -28,6 +28,7 @@ const featuresData = [
 
 const FeatureBadges = () => {
   return (
+   <>
     <section className="fb-badges-section">
       <div className="fb-badges-container">
         {featuresData.map((item, idx) => (
@@ -41,6 +42,7 @@ const FeatureBadges = () => {
         ))}
       </div>
     </section>
+   </>
   );
 };
 

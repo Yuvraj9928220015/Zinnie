@@ -56,7 +56,7 @@ export default function LanguageSwitcher() {
         <div style={{
           position: "absolute", top: "110%", right: 0,
           background: "#fff", border: "1px solid #e0e0e0",
-          borderRadius: 10, boxShadow: "0 8px 28px rgba(0,0,0,0.11)",
+          borderRadius: 10, boxShadow: "0 8px 28px #0000001c",
           zIndex: 9999, minWidth: 175, maxHeight: 280,
           overflowY: "auto", padding: "5px 0",
         }}>

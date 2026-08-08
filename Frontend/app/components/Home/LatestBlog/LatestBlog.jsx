@@ -29,7 +29,6 @@ export default function LatestBlog() {
 
         const list = Array.isArray(data) ? data : [];
 
-        // Sabse naye blog pehle (createdAt descending) aur sirf top 3
         const latest = [...list]
           .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
           .slice(0, BLOGS_TO_SHOW);

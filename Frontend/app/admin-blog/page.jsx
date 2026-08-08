@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import "./admin-blog.css";
 
-// 🔑 YAHAN APNA USERNAME AUR PASSWORD SET KAREIN
 const HARDCODED_USERNAME = "admin";
 const HARDCODED_PASSWORD = "123456";
 
@@ -20,14 +19,13 @@ function toUrlHandle(str) {
 }
 
 export default function AdminPage() {
-  // Auth State
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
-  // Form & Blog State
   const [title, setTitle] = useState("");
   const [urlHandle, setUrlHandle] = useState("");
   const [urlHandleEdited, setUrlHandleEdited] = useState(false);
@@ -42,7 +40,6 @@ export default function AdminPage() {
   const [metaDescription, setMetaDescription] = useState("");
   const [script, setScript] = useState("");
 
-  // Check login status & username on load
   useEffect(() => {
     const token = localStorage.getItem("adminToken");
     const savedUser = localStorage.getItem("adminUser");
@@ -59,14 +56,12 @@ export default function AdminPage() {
     if (!urlHandleEdited) setUrlHandle(toUrlHandle(title));
   }, [title, urlHandleEdited]);
 
-  // 🔒 HARDCODED LOGIN HANDLER
   const handleLogin = (e) => {
     e.preventDefault();
     setLoginError("");
 
-    // Backend request ke bajaye direct credential check:
     if (username === HARDCODED_USERNAME && password === HARDCODED_PASSWORD) {
-      const token = "admin-local-token"; // Temporary token
+      const token = "admin-local-token";
 
       localStorage.setItem("adminToken", token);
       localStorage.setItem("adminUser", username);
@@ -78,7 +73,6 @@ export default function AdminPage() {
     }
   };
 
-  // Logout Handler
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
     localStorage.removeItem("adminUser");
@@ -233,7 +227,6 @@ export default function AdminPage() {
       </div>
 
       <div className="admin-layout">
-        {/* LEFT: New Blog Form */}
         <div className="admin-card">
           <div className="admin-header">
             <h2>New Blog Article</h2>

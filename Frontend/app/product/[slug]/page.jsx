@@ -1,11 +1,7 @@
 import ProductDetailClient from "./ProductDetailClient";
 import "./productFaqAccordion.css";
-import {
-  productSeoData,
-  buildProductSchema,
-  buildFaqSchema,
-  buildBreadcrumbSchema,
-} from "../data/productData";
+import { productSeoData } from "../data/productData";
+import { buildProductGraphSchema, buildFaqPageSchema } from "../data/productSchemas";
 
 const API_BASE_URL = "https://api.zinniezeera.com";
 const API_URL = `${API_BASE_URL}/api`;
@@ -245,30 +241,25 @@ export default async function Page({ params }) {
     );
   }
 
-  const productSchema = buildProductSchema(slug, initialProduct);
-  const faqSchema = buildFaqSchema(slug);
-  const breadcrumbSchema = buildBreadcrumbSchema(slug, initialProduct.title || seo?.name);
+  // Exact per-product schema, matched by slug/URL — transcribed as-is
+  // from the schema you supplied, not recomputed.
+  const productGraphSchema = buildProductGraphSchema(slug);
+  const faqPageSchema = buildFaqPageSchema(slug);
   const productTitle = initialProduct.title || seo?.name || "";
 
   return (
     <>
       <div className="product-seo-bottom-container">
-        {productSchema && (
+        {productGraphSchema && (
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(productGraphSchema) }}
           />
         )}
-        {faqSchema && (
+        {faqPageSchema && (
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-          />
-        )}
-        {breadcrumbSchema && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
           />
         )}
 
