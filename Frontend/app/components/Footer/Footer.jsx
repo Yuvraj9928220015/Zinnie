@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaInstagram, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { FaInstagram, FaPhone, FaTwitter, FaPinterest, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 import './Footer.css';
 
 const Footer = () => {
@@ -17,8 +17,17 @@ const Footer = () => {
                             SHREE BALAJI FOODS
                         </p>
                         <div className="social-icons">
-                            <a href="https://www.instagram.com/zinniezeera/" className="social-btn" aria-label="Instagram">
-                                <FaInstagram />
+                            <a href="https://x.com/zinniezeera" target="_blank" rel="noopener noreferrer" className="social-icon">
+                                <FaTwitter size={20} />
+                            </a>
+                            <a href="https://www.linkedin.com/in/zinniezeera/" target="_blank" rel="noopener noreferrer" className="social-icon">
+                                <FaLinkedin size={20} />
+                            </a>
+                            <a href="https://www.instagram.com/zinniezeera/" target="_blank" rel="noopener noreferrer" className="social-icon">
+                                <FaInstagram size={20} />
+                            </a>
+                            <a href="https://in.pinterest.com/zinniezeera/" target="_blank" rel="noopener noreferrer" className="social-icon">
+                                <FaPinterest size={20} />
                             </a>
                         </div>
                     </div>

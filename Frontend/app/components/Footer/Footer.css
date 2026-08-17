@@ -8,6 +8,13 @@
     overflow: hidden;
 }
 
+.footer-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.55);
+    z-index: 1;
+}
+
 .footer-content {
     position: relative;
     z-index: 2;
@@ -45,7 +52,7 @@
     gap: 1px;
 }
 
-.social-btn {
+.social-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -56,6 +63,11 @@
     text-decoration: none;
     transition: all 0.3s ease;
     background: #ffffff0d;
+}
+
+.social-icon:hover {
+    background: #ffc86433;
+    color: #ffc864;
 }
 
 /* Headings */
@@ -159,7 +171,7 @@
     height: 1px;
     background: linear-gradient(90deg,
             transparent,
-            #ffc86466
+            #ffc86466,
             transparent);
     margin-bottom: 24px;
 }
@@ -200,5 +212,11 @@
 
     .footer-wrapper {
         background-attachment: scroll;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
     }
 }
